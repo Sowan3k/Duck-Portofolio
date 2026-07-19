@@ -29,9 +29,9 @@ Status values: **ready**, **candidate review**, **approved**, **gated**,
 | V-031 | OG/social image | Crop/derive or generate | Swan at desk; social-safe crop | V-001–003 | **approved — v01** |
 | V-032 | 404 illustration | Generate | Swan alone; blank composition for DOM caption | V-001–003 | **approved — v01** |
 | V-033 | Avatar/favicon source | Derive | Simplified Swan head crop, no redesign | V-002–004 | **approved — v01** |
-| V-034 | Entry portrait of Sowan | Generate from owner photo + canonical trio | Framed cartoon portrait (wooden frame, blank plaque), head-and-shoulders, warm backdrop, no text/logos; welcome text is DOM | V-001–003 + `visuals/Sowan's real photo.jpeg` | **approved — v01** |
-| V-040 | Featured project screenshots | Authentic capture | Desktop/mobile captures and consistent thumbnails | Final project list + URLs/builds | **pending input** |
-| V-041 | Award/certificate source media | Owner-supplied/capture | Authentic PIXEL Silver and education artifacts if displayed | Source artifacts | **pending input** |
+| V-034 | Entry portrait of Sowan | Generate from owner photo + canonical trio | Framed cartoon portrait (wooden frame, blank plaque), head-and-shoulders, warm backdrop, no text/logos; welcome text is DOM | V-001–003 + `visuals/00-references/owner/Sowan's real photo.jpeg` (local-only, not in repo) | **approved — v01** |
+| V-040 | Featured project screenshots | Authentic capture | Privacy-safe crops and consistent responsive thumbnails for BahasaBot, My Bibi, and USM Evently; Virtual Zara remains described-only | Locked four-project roster + existing source captures | **ready** |
+| V-041 | Award/certificate source media | Owner-supplied only | Optional authentic PIXEL/education artifacts; v1 uses approved blank V-025/V-026 surfaces plus DOM text | Future owner artifacts | **excluded from raster generation — optional/deferred** |
 | V-050 | Rain, steam, smoke, dust, clock hands, plant sway, lamp glow | CSS/SVG/Rive later | Lightweight runtime behavior | Development | **excluded from raster generation** |
 | V-051 | Rive state machine | Rig during development | `idle`, `read`, `notice`, `talk`, `think`, `sleep`, `return` | V-004 | **derived later** |
 | V-052 | Labels, dialogue, headlines, notes, pages, UI controls | DOM/SVG later | Accessible live text and controls | Development/content | **excluded from raster generation** |

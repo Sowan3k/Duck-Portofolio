@@ -36,16 +36,15 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 
 ## In progress
 - V-005 calm static Swan candidate v01 passed internal and independent QA and is prepared for owner review: exact approved-atlas pose, transparent 320/640/1280 PNG masters, AVIF/WebP runtime variants, and a refreshed final integration proof using approved V-011/V-012 plus the real 724w mobile resource path.
+- V-040 source captures and featured roster are ready for production after V-005: curate privacy-safe BahasaBot, My Bibi, and USM Evently media; Virtual Zara remains screenshot-free by owner decision.
 
 ## Blocked (what + what's needed to unblock)
-- V-040 authentic project captures — largely delivered 2026-07-20 under `visuals/07-project-media/source-captures/`: five BahasaBot captures (`bahasabot/`), nine USM Evently captures (`usm-evently/`, from github.com/Sowan3k/usm_evently docs), six My Bibi captures (`my-bibi/`, from github.com/Sowan3k/My-Bibi-App docs, demo data only). Virtual Zara has no captures by decision (see decisions log). Remaining: confirm the final featured roster and whether the Grab real-time demo is included.
-- V-041 authentic award/certificate media — owner note 2026-07-20: PIXEL has not issued the certificate yet; awards card ships with the approved blank plaque + DOM text (per locked decision) and real imagery slots in whenever the certificate arrives. Not blocking.
-- ~~Final `resume.pdf` remains owner-supplied media~~ — delivered 2026-07-20: `Noor_Mohammad_Sowan_CV.pdf` copied to `public/resume.pdf` (law 2 download target) with source files (PDF, DOCX, `Sowan_Master_CV.md` — the porting source for `profile.ts`) filed under `visuals/07-project-media/resume-source/`. Confirm this PDF is the final version before Phase 9.
+- No required visual media is blocked. Authentic PIXEL/education imagery remains an optional future owner-supplied enhancement; v1 uses approved blank V-025/V-026 surfaces plus DOM text.
 
 ## Next 3 actions
 1. Complete owner review and promotion of V-005 calm static Swan v01.
-2. Complete the remaining visual-media inventory audit and resolve any unblocked export gaps.
-3. Prepare authentic project/award media when owner sources are available.
+2. Curate and approve privacy-safe V-040 project crops/thumbnails from the existing authentic captures.
+3. Produce missing runtime exports for approved scene props, physical UI, and V-032, then verify the complete scene stack against the 700 KB budget.
 
 ## Decisions log (date — decision — why)
 - 2026-07-18 — Visual production will be completed before development work begins in this conversation — direct owner instruction; source workspace and approval gates live under `visuals/`.
@@ -65,7 +64,7 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 - 2026-07-18 — External review (GPT) adopted in part: expression sheet added as the acting reference before any animation; one canonical timing table added to CLAUDE.md §5. Rejected: per-object cinematic scripts and a separate "Director's Book" — one deliberate interaction pattern means one timing table, and feel is already owned by the two vision documents.
 - 2026-07-20 — Content roster locked (owner delegated the call, quality-first): featured storybook = exactly four entries — BahasaBot, Virtual Zara (described-only), My Bibi, USM Evently. The Grab real-time demo stays off the storybook (coursework demo; four strong pages beat five uneven ones) and lives only as a GitHub-profile link. Wayfinder goes on the whiteboard as the "currently building" item alongside the CV master's learning roadmap, and graduates to the storybook only when it has captures, a license, and a README worth linking. Contact publishes email, GitHub, and LinkedIn only — no phone number on a public site. Awards card ships with the approved blank plaque + DOM text; real PIXEL certificate imagery is optional and can be added later without rework. `public/resume.pdf` is treated as final unless the owner replaces it.
 - 2026-07-20 — Virtual Zara ships as a described-only project entry (owner decision): it was confidential internship work at ECTrons, so no screenshots, UI recreations, or mockups may be shown — the storybook entry uses text (scope facts from `Sowan_Master_CV.md`: five integrated systems, three domains, three input modes, in use after the internship) and may use a generic in-style illustration that depicts no actual UI. Law 4 applies: describe only what the testimonial letter and CV master file support.
-- 2026-07-20 — Entry screen redesigned (owner decision): the entry/loading cover becomes a framed cartoon portrait of Sowan with DOM welcome text and a "press Enter / tap to come in" affordance; entering plays a warm CRT power-on transition (cream/amber phosphor bloom, ≤ 1s, no strobing — a cold digital glitch is rejected per art_style.md §8), collapsing to a ≤ 0.15s crossfade under `prefers-reduced-motion`. The standard-view link stays on the entry screen (law 5) and the resume seven-second path is unaffected. New asset V-034 generates the portrait from the owner photo `visuals/Sowan's real photo.jpeg` with the canonical trio attached; the photo's clothing brand logo must not be reproduced. Approved V-030 door vignette v01 is retained as an approved alternate, not deleted. CLAUDE.md §8 updated accordingly; vision documents untouched.
+- 2026-07-20 — Entry screen redesigned (owner decision): the entry/loading cover becomes a framed cartoon portrait of Sowan with DOM welcome text and a "press Enter / tap to come in" affordance; entering plays a warm CRT power-on transition (cream/amber phosphor bloom, ≤ 1s, no strobing — a cold digital glitch is rejected per art_style.md §8), collapsing to a ≤ 0.15s crossfade under `prefers-reduced-motion`. The standard-view link stays on the entry screen (law 5) and the resume seven-second path is unaffected. New asset V-034 generates the portrait from the owner photo `visuals/00-references/owner/Sowan's real photo.jpeg` with the canonical trio attached; the photo's clothing brand logo must not be reproduced. Approved V-030 door vignette v01 is retained as an approved alternate, not deleted. CLAUDE.md §8 updated accordingly; vision documents untouched.
 
 ## TODO(content) — personal data still needed from owner
 - Updated bio, current status line, and location for profile.ts.
@@ -74,7 +73,7 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 - Awards list (PIXEL Silver confirmed; anything else), certifications.
 - ~~Whiteboard roadmap items~~ — locked 2026-07-20: "Building Wayfinder — an AI codebase mentor" + learning roadmap from the CV master (LangGraph, CrewAI, MCP, AWS, CI/CD, pytest). Exact wording drafted at dialogue-writing time, owner reviews.
 - Newspaper masthead + first headline; sticky-note flavor texts (owner-approved).
-- Final resume.pdf.
+- ~~Final resume.pdf.~~ — delivered to `public/resume.pdf`; replace only if the owner supplies a newer final.
 - ~~Contact links to display~~ — locked 2026-07-20: email, GitHub, LinkedIn (from `Sowan_Master_CV.md`); no phone number. Note: if the owner sets the custom LinkedIn URL, update profile.ts then.
 
 ## TODO(assets) — art pipeline (owner-driven, blocks Phases 5–6 only)
@@ -85,6 +84,6 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 - ~~Scene cut into layers (background / midground / desk foreground / liftable props), gaps inpainted, exported as transparent AVIF/WebP.~~ — approved V-011 v01 plus approved V-012 cutouts.
 - Rigged Rive file with state machine (idle, read, notice, talk, think, sleep, return), poses and acting from the approved sheets.
 - ~~Loading vignette illustration (office door + "come in" note).~~ — approved V-030 v01; retained as an alternate. The entry screen now uses V-034 (decision 2026-07-20).
-- ~~V-034 entry portrait: cartoonish framed portrait of Sowan derived from `visuals/Sowan's real photo.jpeg`, style-matched via the canonical trio, wooden frame with blank plaque, no text or logos anywhere; welcome text renders in DOM. Also reusable (inner crop) on the About card and standard-view About section.~~ — approved v01 with framed and inner responsive sets.
+- ~~V-034 entry portrait: cartoonish framed portrait of Sowan derived from `visuals/00-references/owner/Sowan's real photo.jpeg`, style-matched via the canonical trio, wooden frame with blank plaque, no text or logos anywhere; welcome text renders in DOM. Also reusable (inner crop) on the About card and standard-view About section.~~ — approved v01 with framed and inner responsive sets.
 - OG image (the duck at his desk).
 - Ambience sound files (rain, paper, cup, chair, clock), ≤ 150KB total.

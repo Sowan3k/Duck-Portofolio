@@ -189,7 +189,8 @@ door vignette v01 is retained as an alternate, not deleted.
 
 - New generation V-034: a head-and-shoulders cartoon portrait of the owner,
   translated into the locked storybook style from the photo
-  `visuals/Sowan's real photo.jpeg`, with the canonical trio attached.
+  `visuals/00-references/owner/Sowan's real photo.jpeg` (local-only, excluded
+  from the public repo), with the canonical trio attached.
 - Warm wooden frame with a small blank brass plaque; plain warm-cream backdrop;
   portrait orientation.
 - The photo's clothing brand logo must NOT be reproduced; no text, letters, or
@@ -207,10 +208,15 @@ on 2026-07-20.**
 
 ## Stage 6 — authentic portfolio media
 
-Capture real screenshots for the final featured projects and prepare consistent
-crops/thumbnails. Import real award/certificate imagery only when the owner
-supplies it. These items remain pending until the project list, URLs, and source
-artifacts are available; they do not block Stages 1–5.
+The featured roster is locked to BahasaBot, Virtual Zara, My Bibi, and USM
+Evently. Existing authentic source captures are filed for BahasaBot, My Bibi,
+and Evently, so V-040 is ready for privacy-safe selection, consistent crops,
+responsive AVIF/WebP export, and review. Virtual Zara remains deliberately
+described-only: no screenshot, UI recreation, or authentic-looking mockup.
+
+V-041 does not block v1. Awards and education use the approved blank V-025 and
+V-026 physical surfaces with DOM text. Authentic certificate imagery is an
+optional future owner-supplied enhancement.
 
 ## Review and delivery
 

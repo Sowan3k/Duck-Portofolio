@@ -2,7 +2,7 @@
 tmp/
 
 # --- private owner material: never push to the public repo ---
-visuals/Sowan's real photo.jpeg
+visuals/00-references/owner/
 visuals/07-project-media/resume-source/
 
 # --- third-party inspiration image: style guide only, not redistributable ---
