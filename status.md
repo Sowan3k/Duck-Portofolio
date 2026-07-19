@@ -1,7 +1,7 @@
 # STATUS — Swan's Office
 
 Updated: 2026-07-20 by Claude (entry-screen decision appended; production state below is Codex's)
-Current phase: Visual production — calm Swan review / remaining-media audit
+Current phase: Visual production — authentic project media / runtime packaging
 
 ## Done (cumulative, one line per item)
 - Visual-production workspace, complete asset manifest, gated generation plan, and V-001 master-scene prompt created under `visuals/`.
@@ -33,18 +33,18 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 - V-032 caption-free 404 illustration v01 and deterministic V-033 avatar/favicon set v01 approved by owner and promoted byte-identically after identity, blankness, contrast, alpha-edge, mobile, and 16px favicon QA.
 - V-034 entry portrait of Sowan v01 approved by owner and promoted byte-identically: margin-safe 2600×3250 framed master, 1200×1500 reusable inner portrait, and twelve responsive AVIF/WebP variants, with the source-photo logo/backpack excluded and the brass plaque kept blank.
 - V-011 scene-depth layers v01 approved by owner and promoted byte-identically: eight native/retina source PNGs, twenty-four 724/1448/2896 AVIF/WebP files, and five exhaustive ownership masks; exact reconstruction, exact runtime alpha, mobile-resource, seam, and sub-700 KB pack gates passed.
+- V-005 calm static Swan v01 approved by owner and promoted byte-identically: exact approved-atlas extraction, transparent 320/640/1280 PNGs, six AVIF/WebP runtime files, and final approved V-011/V-012 desktop/mobile integration evidence.
 
 ## In progress
-- V-005 calm static Swan candidate v01 passed internal and independent QA and is prepared for owner review: exact approved-atlas pose, transparent 320/640/1280 PNG masters, AVIF/WebP runtime variants, and a refreshed final integration proof using approved V-011/V-012 plus the real 724w mobile resource path.
-- V-040 source captures and featured roster are ready for production after V-005: curate privacy-safe BahasaBot, My Bibi, and USM Evently media; Virtual Zara remains screenshot-free by owner decision.
+- V-040 candidate v01 is ready for owner review: six privacy-safe 1440x720 authentic-capture masters and 36 responsive AVIF/WebP variants passed automated, independent, native-360px, and exact-390px QA; Virtual Zara remains screenshot-free by owner decision.
 
 ## Blocked (what + what's needed to unblock)
 - No required visual media is blocked. Authentic PIXEL/education imagery remains an optional future owner-supplied enhancement; v1 uses approved blank V-025/V-026 surfaces plus DOM text.
 
 ## Next 3 actions
-1. Complete owner review and promotion of V-005 calm static Swan v01.
-2. Curate and approve privacy-safe V-040 project crops/thumbnails from the existing authentic captures.
-3. Produce missing runtime exports for approved scene props, physical UI, and V-032, then verify the complete scene stack against the 700 KB budget.
+1. Review V-040 candidate v01 and, once approved, promote all 42 media files byte-identically.
+2. Produce missing runtime exports for approved scene props, physical UI, and V-032.
+3. Verify the complete production scene stack against the 700 KB budget and close the pre-development visual gate.
 
 ## Decisions log (date — decision — why)
 - 2026-07-18 — Visual production will be completed before development work begins in this conversation — direct owner instruction; source workspace and approval gates live under `visuals/`.
@@ -62,6 +62,7 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 - 2026-07-19 — V-028 ships as one blank 7:4 business-card front with transparent surroundings and no generated writing — contact links, labels, icons, and focus states remain accessible DOM/SVG content.
 - 2026-07-19 — V-005 and V-011 moved from gated to ready because all canonical dependencies are approved. V-013 needs no separate raster generation: approved cutouts own physical movement, DOM/CSS/SVG owns fixture emphasis, and Rive later owns Swan reactions.
 - 2026-07-18 — External review (GPT) adopted in part: expression sheet added as the acting reference before any animation; one canonical timing table added to CLAUDE.md §5. Rejected: per-object cinematic scripts and a separate "Director's Book" — one deliberate interaction pattern means one timing table, and feel is already owned by the two vision documents.
+- 2026-07-20 — Cursor effects decided: three third-party cursor components (RetroDvdTv, GSAP MagneticCursor, inverted-cursor) evaluated and rejected — magnetic translation would drag hotspots off the painted objects they anchor to, blend-mode inversion produces cold digital color over the warm art (never-list), one hides the native cursor behind a laggy follower (precision/a11y harm), and GSAP+vecteur would duplicate Motion inside the 180KB budget. Instead, polish phase builds a tiny in-house effect: warm amber glow trailing the visible native cursor + hover label-lean (elastic timing feel only), ~1KB, no deps, desktop-only, disabled under reduced motion, cut without mercy if it competes with the duck.
 - 2026-07-20 — Content roster locked (owner delegated the call, quality-first): featured storybook = exactly four entries — BahasaBot, Virtual Zara (described-only), My Bibi, USM Evently. The Grab real-time demo stays off the storybook (coursework demo; four strong pages beat five uneven ones) and lives only as a GitHub-profile link. Wayfinder goes on the whiteboard as the "currently building" item alongside the CV master's learning roadmap, and graduates to the storybook only when it has captures, a license, and a README worth linking. Contact publishes email, GitHub, and LinkedIn only — no phone number on a public site. Awards card ships with the approved blank plaque + DOM text; real PIXEL certificate imagery is optional and can be added later without rework. `public/resume.pdf` is treated as final unless the owner replaces it.
 - 2026-07-20 — Virtual Zara ships as a described-only project entry (owner decision): it was confidential internship work at ECTrons, so no screenshots, UI recreations, or mockups may be shown — the storybook entry uses text (scope facts from `Sowan_Master_CV.md`: five integrated systems, three domains, three input modes, in use after the internship) and may use a generic in-style illustration that depicts no actual UI. Law 4 applies: describe only what the testimonial letter and CV master file support.
 - 2026-07-20 — Entry screen redesigned (owner decision): the entry/loading cover becomes a framed cartoon portrait of Sowan with DOM welcome text and a "press Enter / tap to come in" affordance; entering plays a warm CRT power-on transition (cream/amber phosphor bloom, ≤ 1s, no strobing — a cold digital glitch is rejected per art_style.md §8), collapsing to a ≤ 0.15s crossfade under `prefers-reduced-motion`. The standard-view link stays on the entry screen (law 5) and the resume seven-second path is unaffected. New asset V-034 generates the portrait from the owner photo `visuals/00-references/owner/Sowan's real photo.jpeg` with the canonical trio attached; the photo's clothing brand logo must not be reproduced. Approved V-030 door vignette v01 is retained as an approved alternate, not deleted. CLAUDE.md §8 updated accordingly; vision documents untouched.
@@ -86,4 +87,4 @@ Current phase: Visual production — calm Swan review / remaining-media audit
 - ~~Loading vignette illustration (office door + "come in" note).~~ — approved V-030 v01; retained as an alternate. The entry screen now uses V-034 (decision 2026-07-20).
 - ~~V-034 entry portrait: cartoonish framed portrait of Sowan derived from `visuals/00-references/owner/Sowan's real photo.jpeg`, style-matched via the canonical trio, wooden frame with blank plaque, no text or logos anywhere; welcome text renders in DOM. Also reusable (inner crop) on the About card and standard-view About section.~~ — approved v01 with framed and inner responsive sets.
 - OG image (the duck at his desk).
-- Ambience sound files (rain, paper, cup, chair, clock), ≤ 150KB total.
+- Ambience sound files (rain, paper, cup, chair, clock), ≤ 150KB total — candidates delivered 2026-07-20: six Pixabay files (rain-window, clock-tick, paper-rustle, chair-creak, mug-set-down, plus a CRT power-on for the entry transition) filed under `visuals/08-audio/candidates/` (local-only, gitignored — raw third-party downloads are not re-hosted in the public repo). During development: convert to mono Opus/OGG ~32–48kbps, loudness-match, verify loop seams, and confirm the 150KB budget. Flag to check at conversion: the rain source is titled "with a fireplace" — the office has no fireplace, so if crackle is audible it gets EQ'd/trimmed or re-picked. Open owner decision: sound opt-in toggle on the entry screen (law 8 default) vs sound-on-by-default after Enter (would amend law 8).

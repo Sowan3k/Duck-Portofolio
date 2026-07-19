@@ -1,0 +1,1342 @@
+{
+  "asset_id": "V-040",
+  "version": "v01",
+  "created": "2026-07-20",
+  "status": "candidate review",
+  "method": "authentic source capture curation; deterministic crop/resize/staging only; no generated or recreated UI",
+  "master_standard": {
+    "mode": "RGB",
+    "size": [
+      1440,
+      720
+    ],
+    "aspect_ratio": "2:1",
+    "metadata_stripped": true
+  },
+  "runtime_standard": {
+    "widths": [
+      360,
+      720,
+      1440
+    ],
+    "formats": [
+      "AVIF",
+      "WebP"
+    ],
+    "avif": "quality 68, speed 6, 4:4:4",
+    "webp": "quality 90, method 6",
+    "decoded_quality_gates": {
+      "psnr_min_db": 35.0,
+      "ssim_min": 0.985,
+      "mae_max": 3.5
+    }
+  },
+  "assets": [
+    {
+      "project": "BahasaBot",
+      "role": "Overview / product identity",
+      "basename": "bahasabot-overview--v01",
+      "privacy_review": "Complete clean branded frame; empty sign-in fields; no account rail.",
+      "provenance": {
+        "path": "visuals/07-project-media/source-captures/bahasabot/bahasabot--source-03--2026-05-31.png",
+        "source_size": [
+          1919,
+          914
+        ],
+        "source_sha256": "D43D426D5491F070A0A288F3BE7CB5CCD7940258B3A67B0A6C514DB9EB2F01EA",
+        "method": "complete authentic frame contained without cropping; thin vertical matte only",
+        "crop": [
+          0,
+          0,
+          1919,
+          914
+        ],
+        "placed_size": [
+          1440,
+          686
+        ],
+        "offset": [
+          0,
+          17
+        ],
+        "matte_rgb": [
+          6,
+          8,
+          6
+        ]
+      },
+      "master": {
+        "path": "visuals/07-project-media/drafts/bahasabot-overview--v01.png",
+        "size": [
+          1440,
+          720
+        ],
+        "mode": "RGB",
+        "bytes": 344650,
+        "metadata": {
+          "mode": "RGB",
+          "size": [
+            1440,
+            720
+          ],
+          "exif_entries": 0,
+          "info_keys": []
+        },
+        "sha256": "AED7053ECEEE82DFD3585A8B8B1890E9FB16E84E7D6ABAA467A5EC3BE6B6AAAD"
+      }
+    },
+    {
+      "project": "BahasaBot",
+      "role": "AI course builder",
+      "basename": "bahasabot-course-builder--v01",
+      "privacy_review": "Crop begins to the right of the account rail.",
+      "provenance": {
+        "path": "visuals/07-project-media/source-captures/bahasabot/bahasabot--source-01--2026-05-19.png",
+        "source_size": [
+          1912,
+          872
+        ],
+        "source_sha256": "D96E76A847C4132C7288995EEAFC24BEC7E0E6E1D5E4179A7846B7B193D48865",
+        "method": "exact privacy-safe 2:1 crop, then one Lanczos resize",
+        "crop": [
+          312,
+          36,
+          1912,
+          836
+        ]
+      },
+      "master": {
+        "path": "visuals/07-project-media/drafts/bahasabot-course-builder--v01.png",
+        "size": [
+          1440,
+          720
+        ],
+        "mode": "RGB",
+        "bytes": 436535,
+        "metadata": {
+          "mode": "RGB",
+          "size": [
+            1440,
+            720
+          ],
+          "exif_entries": 0,
+          "info_keys": []
+        },
+        "sha256": "AC95B6B7F5827D002CF8941C11DAECEC5F08A18D85916E7933F50E21C00D5F69"
+      }
+    },
+    {
+      "project": "My Bibi",
+      "role": "Desktop conversation",
+      "basename": "my-bibi-chat--v01",
+      "privacy_review": "Top crop excludes the lower-left account identity block.",
+      "provenance": {
+        "path": "visuals/07-project-media/source-captures/my-bibi/my-bibi--desktop-us-dark.png",
+        "source_size": [
+          1440,
+          900
+        ],
+        "source_sha256": "D362B6C903BE482494DC12CADFB8F8DED97BFFF68B23932BE13005F9877032FC",
+        "method": "exact privacy-safe 2:1 crop, then one Lanczos resize",
+        "crop": [
+          0,
+          0,
+          1440,
+          720
+        ]
+      },
+      "master": {
+        "path": "visuals/07-project-media/drafts/my-bibi-chat--v01.png",
+        "size": [
+          1440,
+          720
+        ],
+        "mode": "RGB",
+        "bytes": 109431,
+        "metadata": {
+          "mode": "RGB",
+          "size": [
+            1440,
+            720
+          ],
+          "exif_entries": 0,
+          "info_keys": []
+        },
+        "sha256": "B2E9EDED99DB1D532D821E2F1893A6F45F5F8044206001F7A330F66A322288F1"
+      }
+    },
+    {
+      "project": "My Bibi",
+      "role": "Mobile product flow",
+      "basename": "my-bibi-mobile-flow--v01",
+      "privacy_review": "Three privacy-safe full-screen captures; no settings/account card.",
+      "provenance": {
+        "method": "three complete safe screenshots resized uniformly and staged on a flat matte",
+        "sources": [
+          {
+            "path": "visuals/07-project-media/source-captures/my-bibi/my-bibi--phone-us-onboarding.png",
+            "size": [
+              390,
+              844
+            ],
+            "sha256": "91D25AAEADFC086881912834301EF95112568C5E4ACC45B496A32136500F15FA",
+            "safe_region": "complete frame"
+          },
+          {
+            "path": "visuals/07-project-media/source-captures/my-bibi/my-bibi--phone-little-things.png",
+            "size": [
+              390,
+              844
+            ],
+            "sha256": "7DA30A40ABB71233DAD3852C682467CF0B5EB19D4B2219F9EE6264964D0BD5B0",
+            "safe_region": "complete frame"
+          },
+          {
+            "path": "visuals/07-project-media/source-captures/my-bibi/my-bibi--phone-us.png",
+            "size": [
+              390,
+              844
+            ],
+            "sha256": "2AF3342E75B1689A534588D9659312CCE647065382436A8C972A058CDBB0908B",
+            "safe_region": "complete frame"
+          }
+        ],
+        "placements": [
+          {
+            "source": "my-bibi/my-bibi--phone-us-onboarding.png",
+            "box": [
+              229,
+              42,
+              523,
+              678
+            ]
+          },
+          {
+            "source": "my-bibi/my-bibi--phone-little-things.png",
+            "box": [
+              573,
+              42,
+              867,
+              678
+            ]
+          },
+          {
+            "source": "my-bibi/my-bibi--phone-us.png",
+            "box": [
+              917,
+              42,
+              1211,
+              678
+            ]
+          }
+        ],
+        "matte_rgb": [
+          41,
+          27,
+          34
+        ]
+      },
+      "master": {
+        "path": "visuals/07-project-media/drafts/my-bibi-mobile-flow--v01.png",
+        "size": [
+          1440,
+          720
+        ],
+        "mode": "RGB",
+        "bytes": 212189,
+        "metadata": {
+          "mode": "RGB",
+          "size": [
+            1440,
+            720
+          ],
+          "exif_entries": 0,
+          "info_keys": []
+        },
+        "sha256": "A3101C2FC8B83F0594E31FD11013951118A7FDAEE7618F136DDB88224B34C80C"
+      }
+    },
+    {
+      "project": "USM Evently",
+      "role": "Branded event discovery",
+      "basename": "usm-evently-overview--v01",
+      "privacy_review": "Hero-only strip; event photography and attendee faces start below it.",
+      "provenance": {
+        "path": "visuals/07-project-media/source-captures/usm-evently/usm-evently--01-home.png",
+        "source_size": [
+          2560,
+          1800
+        ],
+        "source_sha256": "3A61581A0826281E133A88ECBD9AE2420A5408A7054DCD08EF47755E5F008C6D",
+        "method": "privacy-safe full-width hero strip contained without cropping",
+        "crop": [
+          0,
+          0,
+          2560,
+          800
+        ],
+        "placed_size": [
+          1440,
+          450
+        ],
+        "offset": [
+          0,
+          135
+        ],
+        "matte_rgb": [
+          23,
+          20,
+          48
+        ]
+      },
+      "master": {
+        "path": "visuals/07-project-media/drafts/usm-evently-overview--v01.png",
+        "size": [
+          1440,
+          720
+        ],
+        "mode": "RGB",
+        "bytes": 451583,
+        "metadata": {
+          "mode": "RGB",
+          "size": [
+            1440,
+            720
+          ],
+          "exif_entries": 0,
+          "info_keys": []
+        },
+        "sha256": "8C87947C8DE9F934DC6E31AF1CBB9FF7CF790FFDC0A1903D25F358264FAD7D16"
+      }
+    },
+    {
+      "project": "USM Evently",
+      "role": "Organizer analytics",
+      "basename": "usm-evently-analytics--v01",
+      "privacy_review": "Aggregate dashboard only; contact footer is below the crop.",
+      "provenance": {
+        "path": "visuals/07-project-media/source-captures/usm-evently/usm-evently--09-analytics.png",
+        "source_size": [
+          2560,
+          2324
+        ],
+        "source_sha256": "4502B02924F6BE43F55A096E5B16D6441FE9FE700F14D91C814672A0CE4AACB1",
+        "method": "exact privacy-safe 2:1 crop, then one Lanczos resize",
+        "crop": [
+          0,
+          0,
+          2560,
+          1280
+        ]
+      },
+      "master": {
+        "path": "visuals/07-project-media/drafts/usm-evently-analytics--v01.png",
+        "size": [
+          1440,
+          720
+        ],
+        "mode": "RGB",
+        "bytes": 139079,
+        "metadata": {
+          "mode": "RGB",
+          "size": [
+            1440,
+            720
+          ],
+          "exif_entries": 0,
+          "info_keys": []
+        },
+        "sha256": "C76E5C994BD842187CFD3B282D08145EF3A181FA8397386E69E06CC9F7AFF2A7"
+      }
+    }
+  ],
+  "runtime": [
+    {
+      "asset": "bahasabot-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-overview--v01-360w.avif",
+      "format": "avif",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 6837,
+      "size_budget": 45000,
+      "psnr": 42.295,
+      "ssim": 0.989589,
+      "mae": 1.1206,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "76F115C2D079C44A95528FFED27B1EC9F59D38F8021351B76593B31EB34FB9D4",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-overview--v01-360w.webp",
+      "format": "webp",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 8032,
+      "size_budget": 60000,
+      "psnr": 40.944,
+      "ssim": 0.990797,
+      "mae": 1.2011,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "5D04BDCFA889D82BB46F9631D0401E83D3173D84B41530A05738B335CF705F8E",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-overview--v01-720w.avif",
+      "format": "avif",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 19342,
+      "size_budget": 110000,
+      "psnr": 43.853,
+      "ssim": 0.993285,
+      "mae": 0.8602,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "06E2B2CB839A3EFCE8B84434FC7588BD07668B7A79D39442B5B551652F4AA0EA",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-overview--v01-720w.webp",
+      "format": "webp",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 23954,
+      "size_budget": 150000,
+      "psnr": 42.863,
+      "ssim": 0.993471,
+      "mae": 0.9172,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "4C6E66E7B0535E60CCFE564234A0A02462E7B8CC8871BEAFADA77E91B888E4A1",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-overview--v01-1440w.avif",
+      "format": "avif",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 48867,
+      "size_budget": 260000,
+      "psnr": 45.278,
+      "ssim": 0.996164,
+      "mae": 0.6554,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "2E071F8DA80B9383E04433010D15CF3B1E23D97B08AE74089E6070AD2FE9A731",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-overview--v01-1440w.webp",
+      "format": "webp",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 63686,
+      "size_budget": 340000,
+      "psnr": 44.91,
+      "ssim": 0.995704,
+      "mae": 0.7058,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "3F793CE6F9702E3E9FCE561B1E19AA1826E7E5D5D654FEFE3D958777F21F02CD",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-course-builder--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-course-builder--v01-360w.avif",
+      "format": "avif",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 6808,
+      "size_budget": 45000,
+      "psnr": 40.186,
+      "ssim": 0.98836,
+      "mae": 1.341,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "1A170DFBB2587E7C764B1753D73EEDF50CE218E934BAFC76C5E197D7C0024E07",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-course-builder--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-course-builder--v01-360w.webp",
+      "format": "webp",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 8718,
+      "size_budget": 60000,
+      "psnr": 41.134,
+      "ssim": 0.992609,
+      "mae": 1.1794,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "062AB0167176726DADF3B1EC78B74FA52547A848F1297F67E876E985B6865F64",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-course-builder--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-course-builder--v01-720w.avif",
+      "format": "avif",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 21088,
+      "size_budget": 110000,
+      "psnr": 42.408,
+      "ssim": 0.993413,
+      "mae": 0.9308,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "818E726789CE663E14CA58EB189957B3F8D67186C6DFCFBAC7E86377D5550C0B",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-course-builder--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-course-builder--v01-720w.webp",
+      "format": "webp",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 26578,
+      "size_budget": 150000,
+      "psnr": 42.251,
+      "ssim": 0.994054,
+      "mae": 0.9519,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "C3B6D1535AD82CF232298CF030F7F32A9BBBD1188DE8CD0BD12D10E0B8FFE611",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-course-builder--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-course-builder--v01-1440w.avif",
+      "format": "avif",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 55414,
+      "size_budget": 260000,
+      "psnr": 44.068,
+      "ssim": 0.995735,
+      "mae": 0.7052,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "0383C91F7CDEEA08F51849640003611AC0F79E932DE4828403FC8E60E0FC4128",
+      "passed": true
+    },
+    {
+      "asset": "bahasabot-course-builder--v01",
+      "path": "visuals/07-project-media/drafts/runtime/bahasabot-course-builder--v01-1440w.webp",
+      "format": "webp",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 71600,
+      "size_budget": 340000,
+      "psnr": 43.939,
+      "ssim": 0.995771,
+      "mae": 0.6975,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "79BB69EB286DE43BB1B088E36EBA8875111C7FE10645E0565A976199DC3DBEB7",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-chat--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-chat--v01-360w.avif",
+      "format": "avif",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 3753,
+      "size_budget": 45000,
+      "psnr": 42.542,
+      "ssim": 0.996851,
+      "mae": 1.0905,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "16BBBF1D6595EED6F94E999F7761CBB42A36E88222B34FCCADEF632C63EB2FA0",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-chat--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-chat--v01-360w.webp",
+      "format": "webp",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 4866,
+      "size_budget": 60000,
+      "psnr": 38.8,
+      "ssim": 0.996483,
+      "mae": 1.0772,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "0DB09F04E5781776984E62A151886B1F11479D87DF125CDFA06EFCFA8F9D7D56",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-chat--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-chat--v01-720w.avif",
+      "format": "avif",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 8472,
+      "size_budget": 110000,
+      "psnr": 43.218,
+      "ssim": 0.997774,
+      "mae": 0.9851,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "D96CB5BA665707C5CB8434F61EE045C8B947DB18457C7652A3095976B4E36E5C",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-chat--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-chat--v01-720w.webp",
+      "format": "webp",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 14392,
+      "size_budget": 150000,
+      "psnr": 39.791,
+      "ssim": 0.997737,
+      "mae": 0.8156,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "01FAB8C0F7EBFFEA63101716D839B88CCD53726F46A3B551A2BB388AD76DE946",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-chat--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-chat--v01-1440w.avif",
+      "format": "avif",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 19560,
+      "size_budget": 260000,
+      "psnr": 44.625,
+      "ssim": 0.999274,
+      "mae": 0.8199,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "21C26C32D66B84928FFA3A8EC97EA2429DB0CF551B46FAF1A97E536B73CAB155",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-chat--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-chat--v01-1440w.webp",
+      "format": "webp",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 40396,
+      "size_budget": 340000,
+      "psnr": 39.109,
+      "ssim": 0.998966,
+      "mae": 0.667,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "B9A307EE62D43C08735CC5CC05D7A3E968216EEFB339FD367D7358B3353C87C9",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-mobile-flow--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-mobile-flow--v01-360w.avif",
+      "format": "avif",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 4458,
+      "size_budget": 45000,
+      "psnr": 41.248,
+      "ssim": 0.99298,
+      "mae": 1.283,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "59E22CB48249339B33FEA38C0135B869A9AD93CA53B1EA1B697636D89BD28D91",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-mobile-flow--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-mobile-flow--v01-360w.webp",
+      "format": "webp",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 6128,
+      "size_budget": 60000,
+      "psnr": 40.455,
+      "ssim": 0.993911,
+      "mae": 1.363,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "6DD5F34A11F7317C4AE293901E22FBE209F96532BFE786DC9C84C69E58893289",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-mobile-flow--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-mobile-flow--v01-720w.avif",
+      "format": "avif",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 12479,
+      "size_budget": 110000,
+      "psnr": 44.38,
+      "ssim": 0.996735,
+      "mae": 0.8637,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "BFF1C6FDEF3B4DE8A33A64B995DC5FC9F68F1353487A29C9A1A2C253BFC60757",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-mobile-flow--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-mobile-flow--v01-720w.webp",
+      "format": "webp",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 16916,
+      "size_budget": 150000,
+      "psnr": 42.234,
+      "ssim": 0.995,
+      "mae": 1.069,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "321727175B0993D6B21B5205DC121C9A293DCD284B02F96B53B9916CA468E44D",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-mobile-flow--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-mobile-flow--v01-1440w.avif",
+      "format": "avif",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 33194,
+      "size_budget": 260000,
+      "psnr": 45.777,
+      "ssim": 0.998019,
+      "mae": 0.6952,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "740C383CA23E653C9A02C5F1E64C6EFFEE4CAB7C8A8C0299954E77CD796FAC7A",
+      "passed": true
+    },
+    {
+      "asset": "my-bibi-mobile-flow--v01",
+      "path": "visuals/07-project-media/drafts/runtime/my-bibi-mobile-flow--v01-1440w.webp",
+      "format": "webp",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 45920,
+      "size_budget": 340000,
+      "psnr": 43.225,
+      "ssim": 0.997018,
+      "mae": 0.8516,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "DA15C635FDB24759F8D255684C75302B1A457347C45819038F00403EEE43B0F9",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-overview--v01-360w.avif",
+      "format": "avif",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 4482,
+      "size_budget": 45000,
+      "psnr": 42.095,
+      "ssim": 0.996279,
+      "mae": 1.1018,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "E1747406D84D85AE8529CF7048ED653406AE9E8F6414CB0CCD1ACCBB113E75ED",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-overview--v01-360w.webp",
+      "format": "webp",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 6058,
+      "size_budget": 60000,
+      "psnr": 37.674,
+      "ssim": 0.995445,
+      "mae": 1.3478,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "25ECAB12BBA7CB51B115C5408806AFBD50FB2A9412D679BBA3B81BE57BA0BE99",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-overview--v01-720w.avif",
+      "format": "avif",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 10975,
+      "size_budget": 110000,
+      "psnr": 43.922,
+      "ssim": 0.997177,
+      "mae": 0.9182,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "E2336BE7579E19074BA957ADD1F161A8932D3661513B9F86C41FFDE7BBE9E438",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-overview--v01-720w.webp",
+      "format": "webp",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 15800,
+      "size_budget": 150000,
+      "psnr": 39.21,
+      "ssim": 0.996361,
+      "mae": 1.1262,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "0C090016517E010A57A7C1BA39B89AEE1B7399FA06C47D6C88B827113275F728",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-overview--v01-1440w.avif",
+      "format": "avif",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 23998,
+      "size_budget": 260000,
+      "psnr": 45.097,
+      "ssim": 0.99766,
+      "mae": 0.8115,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "8A5BE44F907CE62DF66763969DBF78BFB35F21DA102EDBDD44845590B668F07A",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-overview--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-overview--v01-1440w.webp",
+      "format": "webp",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 37044,
+      "size_budget": 340000,
+      "psnr": 41.331,
+      "ssim": 0.997174,
+      "mae": 0.9134,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "16B103F39D58E16A6B2D3112BBB72D1AB5BDB51AF9066EBB24706D72412648BC",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-analytics--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-analytics--v01-360w.avif",
+      "format": "avif",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 4966,
+      "size_budget": 45000,
+      "psnr": 43.532,
+      "ssim": 0.995814,
+      "mae": 0.6685,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "57EEA98556D6324E12246680F8E0828F77299356BA7C1769FC811D0C0AEF1F7D",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-analytics--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-analytics--v01-360w.webp",
+      "format": "webp",
+      "size": [
+        360,
+        180
+      ],
+      "bytes": 6532,
+      "size_budget": 60000,
+      "psnr": 35.84,
+      "ssim": 0.995527,
+      "mae": 1.2363,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          360,
+          180
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "0184281A9A7BA9B55BE94BBA3DC5439421E5177403FF58F3EA16F6CC24D6E353",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-analytics--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-analytics--v01-720w.avif",
+      "format": "avif",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 12131,
+      "size_budget": 110000,
+      "psnr": 45.282,
+      "ssim": 0.997781,
+      "mae": 0.4491,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "1A3E31B93080B469B4DC0CECBFF594EDD4A0416BDA4D6160D0A047ACB038621C",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-analytics--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-analytics--v01-720w.webp",
+      "format": "webp",
+      "size": [
+        720,
+        360
+      ],
+      "bytes": 16168,
+      "size_budget": 150000,
+      "psnr": 37.03,
+      "ssim": 0.99589,
+      "mae": 0.9223,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          720,
+          360
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "05903DF422970FE8FC6CA17A68DDBFD9EACCACB5C48F73923759ADFC8019E127",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-analytics--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-analytics--v01-1440w.avif",
+      "format": "avif",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 27314,
+      "size_budget": 260000,
+      "psnr": 47.041,
+      "ssim": 0.998637,
+      "mae": 0.3425,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "AE2BDD33EF602B7287E44D7FD2A63F5D76A55D7FE53574A7E2A1E0CAF8C28DE9",
+      "passed": true
+    },
+    {
+      "asset": "usm-evently-analytics--v01",
+      "path": "visuals/07-project-media/drafts/runtime/usm-evently-analytics--v01-1440w.webp",
+      "format": "webp",
+      "size": [
+        1440,
+        720
+      ],
+      "bytes": 41282,
+      "size_budget": 340000,
+      "psnr": 39.593,
+      "ssim": 0.997706,
+      "mae": 0.664,
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1440,
+          720
+        ],
+        "exif_entries": 0,
+        "info_keys": []
+      },
+      "sha256": "E03DD7B388F29DA1D5527F6AC6178BE3F207274561526AFE4B18BFFD1EE5C5CC",
+      "passed": true
+    }
+  ],
+  "privacy_exclusions": [
+    {
+      "source": "BahasaBot source 02",
+      "reason": "user-management names and email addresses"
+    },
+    {
+      "source": "My Bibi phone settings",
+      "reason": "visible account identity block"
+    },
+    {
+      "source": "My Bibi desktop below y=720",
+      "reason": "visible account identity block"
+    },
+    {
+      "source": "Evently home below y=800",
+      "reason": "identifiable event photography"
+    },
+    {
+      "source": "Evently event detail",
+      "reason": "people plus phone/account/contact data"
+    },
+    {
+      "source": "Evently login",
+      "reason": "visible demo credentials and footer contact data"
+    },
+    {
+      "source": "Evently profile",
+      "reason": "portrait, name, email, phone, and event history"
+    },
+    {
+      "source": "Evently payment",
+      "reason": "credential-like payment fields and footer contact data"
+    },
+    {
+      "source": "Evently tickets",
+      "reason": "scannable QR tokens and footer contact data"
+    },
+    {
+      "source": "Virtual Zara",
+      "reason": "described-only by confidentiality decision; no screenshot or UI recreation"
+    }
+  ],
+  "review_files": [
+    {
+      "path": "visuals/99-review/contact-sheets/v040-project-media-approval-set-v01.png",
+      "sha256": "502561B6935B367A5D2F295942859F257480B5BF3A1A8B74D85AF516154EC7DC",
+      "size": [
+        2100,
+        1770
+      ]
+    },
+    {
+      "path": "visuals/99-review/contact-sheets/v040-project-media-mobile-review-v01.png",
+      "sha256": "CFA86DBA17C0EFDEDBE8CB4C964256A64E46519B2201E5897547A83AA1B9D1CB",
+      "size": [
+        1300,
+        930
+      ]
+    },
+    {
+      "path": "visuals/99-review/contact-sheets/v040-project-media-390px-review-v01.png",
+      "sha256": "A415808C43D5A3B45D788F0A1D1EFFD6143FBDC797E139F29BF3A9B5CD313705",
+      "size": [
+        1370,
+        950
+      ]
+    },
+    {
+      "path": "visuals/99-review/contact-sheets/v040-project-media-privacy-qa-v01.png",
+      "sha256": "EE4617F987779A4CF885DAF97DED0344335EE7FAFA9A3D770E9C8BB1D9B85392",
+      "size": [
+        1800,
+        1310
+      ]
+    }
+  ],
+  "summary": {
+    "master_count": 6,
+    "runtime_count": 36,
+    "runtime_total_bytes": 778208,
+    "minimum_psnr": 35.84,
+    "minimum_ssim": 0.98836,
+    "maximum_mae": 1.363,
+    "maximum_runtime_bytes": 71600,
+    "failed_runtime_gates": 0,
+    "all_gates_passed": true
+  }
+}

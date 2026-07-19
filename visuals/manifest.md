@@ -10,7 +10,7 @@ Status values: **ready**, **candidate review**, **approved**, **gated**,
 | V-002 | Swan pose sheet | Generate | One unlabeled grid; pose, bill, eye, brow, wing, newspaper states | V-001 | **approved** |
 | V-003 | Swan expression sheet | Generate | One unlabeled grid; eleven approved acting states | V-001, V-002 | **approved** |
 | V-004 | Swan rig-parts source | Generate + local alpha preparation | One head/face component atlas plus one upper-body action/prop atlas; transparent PNG working sources | V-001–003 | **approved** |
-| V-005 | Calm static Swan | Derive | Transparent first-paint/reduced-motion pose; 320/640/1280 PNG + AVIF/WebP | V-001–004 | **candidate review — v01** |
+| V-005 | Calm static Swan | Derive | Transparent first-paint/reduced-motion pose; 320/640/1280 PNG + AVIF/WebP | V-001–004 | **approved — v01** |
 | V-010 | Office clean plate | Edit/inpaint | Scene with occluded areas restored behind liftable assets | V-001–004 | **approved — V-010A/B/C plus telephone/contact V-010D v03** |
 | V-011 | Scene depth layers | Segment/derive | Background wall, midground furniture, desk surface and precise occluders; native/retina PNG + 724/1448/2896 AVIF/WebP | V-001, V-010, V-012 | **approved — v01** |
 | V-012 | Interactive prop cutouts | Segment/edit | Clearly isolated moving scene targets where separation is needed | V-010 | **approved — folder, Skills shelf book, telephone handset, and resting contact card** |
@@ -30,7 +30,7 @@ Status values: **ready**, **candidate review**, **approved**, **gated**,
 | V-032 | 404 illustration | Generate | Swan alone; blank composition for DOM caption | V-001–003 | **approved — v01** |
 | V-033 | Avatar/favicon source | Derive | Simplified Swan head crop, no redesign | V-002–004 | **approved — v01** |
 | V-034 | Entry portrait of Sowan | Generate from owner photo + canonical trio | Framed cartoon portrait (wooden frame, blank plaque), head-and-shoulders, warm backdrop, no text/logos; welcome text is DOM | V-001–003 + `visuals/00-references/owner/Sowan's real photo.jpeg` (local-only, not in repo) | **approved — v01** |
-| V-040 | Featured project screenshots | Authentic capture | Privacy-safe crops and consistent responsive thumbnails for BahasaBot, My Bibi, and USM Evently; Virtual Zara remains described-only | Locked four-project roster + existing source captures | **ready** |
+| V-040 | Featured project screenshots | Authentic capture | Six privacy-safe 1440x720 masters plus 36 responsive AVIF/WebP files for BahasaBot, My Bibi, and USM Evently; Virtual Zara remains described-only | Locked four-project roster + existing source captures | **candidate review - v01** |
 | V-041 | Award/certificate source media | Owner-supplied only | Optional authentic PIXEL/education artifacts; v1 uses approved blank V-025/V-026 surfaces plus DOM text | Future owner artifacts | **excluded from raster generation — optional/deferred** |
 | V-050 | Rain, steam, smoke, dust, clock hands, plant sway, lamp glow | CSS/SVG/Rive later | Lightweight runtime behavior | Development | **excluded from raster generation** |
 | V-051 | Rive state machine | Rig during development | `idle`, `read`, `notice`, `talk`, `think`, `sleep`, `return` | V-004 | **derived later** |

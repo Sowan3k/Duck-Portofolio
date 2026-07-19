@@ -8,6 +8,9 @@ visuals/07-project-media/resume-source/
 # --- third-party inspiration image: style guide only, not redistributable ---
 art/references/Reference Image.png
 
+# --- raw third-party audio downloads: used in the product, not re-hosted raw ---
+visuals/08-audio/candidates/
+
 # --- future development ---
 node_modules/
 dist/

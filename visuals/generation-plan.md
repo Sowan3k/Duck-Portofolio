@@ -112,14 +112,14 @@ Use the canonical trio for every edit or new generation.
 4. Extract the nine interactive objects where movement or overlap requires a
    separate layer.
 5. Derive a calm static Swan pose for first paint and reduced motion.
-   **Candidate complete: V-005 v01 is an exact approved-atlas extraction with
-   transparent 320/640/1280 PNG plus AVIF/WebP runtime variants; owner review
-   is pending.**
+   **Complete: owner-approved V-005 v01 is an exact approved-atlas extraction
+   with transparent 320/640/1280 PNG plus AVIF/WebP runtime variants, promoted
+   byte-identically after final approved V-011/V-012 integration QA.**
 6. Validate every isolated asset on light, dark, and checkerboard backgrounds.
 
-After the final supporting-visual pair, production returns to items 3 and 5:
-V-005 calm static Swan remains a candidate awaiting owner review. V-011 scene
-depth layers are owner-approved and promoted. V-013 does not require a
+After the final supporting-visual pair, production returned to items 3 and 5:
+V-005 calm static Swan and V-011 scene depth layers are both owner-approved and
+promoted. V-013 does not require a
 new raster source: approved cutouts provide physical movement, while monitor,
 trophy, frame, whiteboard, and telephone emphasis is derived later with
 DOM/CSS/SVG and Swan reactions belong to the Rive state machine.
@@ -177,8 +177,8 @@ the physical material, silhouette, texture, and lighting.
 **Complete: owner-approved V-030 loading vignette v01 and V-031 OG/social image
 v01, plus owner-approved V-032 404 illustration v01 and V-033 avatar/favicon
 v01, all promoted byte-identically. Stage 5 supporting visuals are complete;
-V-005 calm static Swan candidate v01 is prepared and awaiting owner review;
-V-011 scene-depth-layer v01 is owner-approved and promoted.**
+V-005 calm static Swan v01 and V-011 scene-depth-layer v01 are owner-approved
+and promoted.**
 
 ### Stage 5 addendum (2026-07-20) — V-034 entry portrait
 
@@ -209,10 +209,15 @@ on 2026-07-20.**
 ## Stage 6 — authentic portfolio media
 
 The featured roster is locked to BahasaBot, Virtual Zara, My Bibi, and USM
-Evently. Existing authentic source captures are filed for BahasaBot, My Bibi,
-and Evently, so V-040 is ready for privacy-safe selection, consistent crops,
-responsive AVIF/WebP export, and review. Virtual Zara remains deliberately
-described-only: no screenshot, UI recreation, or authentic-looking mockup.
+Evently. V-040 candidate v01 now contains six privacy-safe 1440x720 authentic
+capture masters and 36 independently encoded 360/720/1440 AVIF/WebP variants
+for BahasaBot, My Bibi, and Evently. Deterministic crop, resize, and staging are
+the only transformations; no interface was generated or recreated. Automated
+quality, metadata, payload, privacy-boundary, native 360px, and exact 390px
+review gates pass. Independent visual and mechanical audits also pass. The
+candidate awaits owner review before byte-identical promotion.
+Virtual Zara remains deliberately described-only: no screenshot, UI
+recreation, or authentic-looking mockup.
 
 V-041 does not block v1. Awards and education use the approved blank V-025 and
 V-026 physical surfaces with DOM text. Authentic certificate imagery is an

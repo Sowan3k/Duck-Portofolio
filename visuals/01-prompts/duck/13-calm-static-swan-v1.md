@@ -1,17 +1,17 @@
-# V-005 — Calm static Swan, candidate 1
+# V-005 — Calm static Swan, approved v01
 
 - Use case: transparent first-paint and `prefers-reduced-motion` fallback
 - Operation: deterministic extraction from approved rig art; no image generation,
   compositing, or redraw
 - Approved pixel authority:
   `visuals/03-duck/rig-parts/body-props-atlas/approved/duck-rig-body-actions--v02--approved.png`
-- Native lossless derivative:
-  `visuals/03-duck/static-swan/drafts/calm-static-swan--v01-native.png`
-- Responsive lossless PNG candidates:
-  - `visuals/03-duck/static-swan/drafts/calm-static-swan--v01-640.png`
-  - `visuals/03-duck/static-swan/drafts/calm-static-swan--v01.png`
-- Runtime AVIF/WebP candidates:
-  `visuals/03-duck/static-swan/drafts/runtime/`
+- Approved native lossless derivative:
+  `visuals/03-duck/static-swan/approved/calm-static-swan--v01-native--approved.png`
+- Approved responsive lossless PNGs:
+  - `visuals/03-duck/static-swan/approved/calm-static-swan--v01-640--approved.png`
+  - `visuals/03-duck/static-swan/approved/calm-static-swan--v01--approved.png`
+- Approved runtime AVIF/WebP set:
+  `visuals/03-duck/static-swan/approved/runtime/`
 - Approval sheet:
   `visuals/99-review/contact-sheets/v005-calm-static-swan-approval-set-v01.png`
 - Alpha QA:
@@ -20,7 +20,7 @@
   `visuals/99-review/contact-sheets/v005-calm-static-swan-mobile-review-v01.png`
 - Final approved-depth integration review:
   `visuals/99-review/contact-sheets/v005-calm-static-swan-v011-final-review-v01.png`
-- Status: candidate v01; internal and independent QA passed, owner review pending
+- Status: owner-approved; promoted byte-identically on 2026-07-20
 
 ## Derivation decision
 
@@ -74,7 +74,7 @@ or geometrically altered.
   surface below both hands, and mug above the right hand. Approved V-012
   resting props are restored after the character where required.
 - The final mobile proof exercises the actual approved `724w` WebP scene-layer
-  pack plus the candidate `640w` V-005 WebP, displayed at 390 and 360 CSS px.
+  pack plus the approved `640w` V-005 WebP, displayed at 390 and 360 CSS px.
 - At a 390px scene width, Swan displays at approximately `121×151` and the
   half-lidded gaze, closed smile, tie, and both resting wings remain readable.
 - QA sheet SHA-256:
@@ -92,5 +92,6 @@ hidden-RGB, spill, responsive-size, compression-budget, full-scene, 390px,
 PSNR from 36.5 dB at 320w to 45.3 dB at 1280w and found no visible fringe or
 blocking correction. The final approved V-011/V-012 integration proof also
 passes character placement, chair depth, desk-edge, mug occlusion, and real
-mobile-resource checks. The candidate remains in `drafts/` until explicit
-owner approval.
+mobile-resource checks. Owner approval was received on 2026-07-20; the three
+lossless PNGs and six runtime files were copied into `approved/` with zero hash
+drift, while draft evidence remains preserved.
