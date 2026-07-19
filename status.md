@@ -76,6 +76,12 @@ Current phase: Ready for development — pre-development visual gate complete
 - 2026-07-20 — Virtual Zara ships as a described-only project entry (owner decision): it was confidential internship work at ECTrons, so no screenshots, UI recreations, or mockups may be shown — the storybook entry uses text (scope facts from `Sowan_Master_CV.md`: five integrated systems, three domains, three input modes, in use after the internship) and may use a generic in-style illustration that depicts no actual UI. Law 4 applies: describe only what the testimonial letter and CV master file support.
 - 2026-07-20 — Entry screen redesigned (owner decision): the entry/loading cover becomes a framed cartoon portrait of Sowan with DOM welcome text and a "press Enter / tap to come in" affordance; entering plays a 1.35s warm CRT power-on transition (cream/amber phosphor bloom, no strobing — a cold digital glitch is rejected per art_style.md §8), collapsing to a ≤ 0.15s crossfade under `prefers-reduced-motion`. The standard-view link stays on the entry screen (law 5) and the résumé seven-second path is unaffected. New asset V-034 generates the portrait from the owner photo `visuals/00-references/owner/Sowan's real photo.jpeg` with the canonical trio attached; the photo's clothing brand logo must not be reproduced. Approved V-030 door vignette v01 is retained as an approved alternate, not deleted. CLAUDE.md §8 updated accordingly; vision documents untouched.
 
+## TODO(owner) — actions outside the repo (gap review 2026-07-20)
+- **Back up the local-only files** (real photo, `resume-source/`, audio candidates) to a private repo or cloud drive — they exist only on this machine.
+- Rename the GitHub repo (`Duck-Portofolio` has the typo the project warns about → e.g. `swans-office`); GitHub auto-redirects.
+- Buy the custom domain (spelled correctly) — needed by the Phase 2 ship-early deploy.
+- Standing follow-ups: custom LinkedIn URL, My Bibi repo rename, Evently demo deploy.
+
 ## TODO(content) — personal data still needed from owner
 - Updated bio, current status line, and location for profile.ts.
 - ~~Final featured project list~~ — locked 2026-07-20 (see decisions log): BahasaBot, Virtual Zara (described-only), My Bibi, USM Evently. Wayfinder (github.com/Sowan3k/Wayfinder-) on the whiteboard only for now; Grab demo GitHub-only. Writeups still to be drafted from `Sowan_Master_CV.md` bullet banks during profile.ts porting, owner reviews before ship.

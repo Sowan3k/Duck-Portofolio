@@ -67,6 +67,8 @@ Tasks:
 6. Placeholder `src/pages/index.astro` + `src/pages/404.astro` (use the
    approved 404 illustration + DOM caption "This page flew south.").
 7. Vitest + Playwright wiring, a first trivial test, npm scripts.
+7b. GitHub Actions CI: typecheck + tests + build on every push (protects the
+   cold-session-per-phase workflow from silent regressions).
 8. Git: keep `.gitignore` rules; verify build output isn't committed.
 
 Exit criteria: `npm run build` clean; typecheck clean; deployable static
@@ -130,6 +132,11 @@ Tasks:
 Exit criteria: Lighthouse ≥95 all four categories on the built page; axe
 clean; works with JS disabled; the page alone is a complete portfolio a
 recruiter could use without ever seeing the office.
+
+**Ship-early rule (2026-07-20 decision): deploy publicly the day this phase
+passes** — Cloudflare Pages, real domain if the owner has bought it (spelled
+correctly). The owner is job-hunting now; the office arrives later on the
+same URL as an upgrade, never a delay.
 
 ---
 
@@ -264,6 +271,11 @@ Tasks:
 3. Bridge engine.ts states → Rive state machine inputs; sync talk state with
    dialogue; idle scheduler drives randomized idle behaviours (bible §7),
    interrupted cleanly by interaction.
+
+**Plan B (use if Rive fights the owner for more than ~3 sessions):** animate
+the layered atlas parts directly with CSS/Motion transforms — blink via eye
+swaps, bill open/close, newspaper up/down, head turns. ~80% of the life,
+zero Rive, same engine states. The ship date always wins over the tool.
 
 Exit criteria: duck idles, notices, talks, returns per the timing table; Rive
 runtime + .riv lazy-load outside the 180KB budget; static fallback verified;
