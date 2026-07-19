@@ -12,14 +12,12 @@ asset; approved original production files live under `visuals/`.
 
 ## Current production gate
 
-**Production stage — V-010 localized prop passes.** V-001 through V-004 and the
-V-010A Swan-cluster clean-plate checkpoint are owner-approved. The stable V-010A
-source is preserved under `clean-plates/approved/`. The V-010B foreground résumé
-folder cutout and matching desk repair are owner-approved and promoted. Production
-has completed the selected rust-red Skills-book shelf cutout and matching
-empty-slot repair; both passed internal and independent QA and are in owner
-review. The telephone pass follows. Fixed fixtures such as the graduation frame
-use reaction overlays and enlarged media instead of destructive scene separation.
+**Visual production is complete and ready for development.** Every required
+raster source is owner-approved, responsive delivery exports are present, and
+the final AVIF and WebP largest-scene stacks pass independent visual and
+mechanical QA below the 700,000-byte compressed-art budget. Development should
+copy approved outputs into `public/assets/` without re-encoding the selected
+WebP production stack.
 
 ## Authority and non-negotiables
 
@@ -49,12 +47,14 @@ visuals/
 ├── 05-physical-ui/         blank storybook, folders, cards, document, whiteboard
 ├── 06-supporting/          loading, social, 404, and small identity derivatives
 ├── 07-project-media/       authentic source captures and approved crops
+├── 08-audio/               local, gitignored source candidates for development
 └── 99-review/              contact sheets and rejected outputs
 ```
 
-Audio is deliberately absent: this conversation is visual-only. Rive rigging,
-CSS/SVG ambient effects, DOM text, and runtime integration belong to the later
-development phase.
+Final audio encoding is deliberately outside this visual-only production gate;
+source candidates are staged separately for later review. Rive rigging,
+CSS/SVG ambient effects, DOM text, audio integration, and runtime wiring belong
+to the development phase and are not missing source visuals.
 
 ## File rules
 

@@ -1,0 +1,97 @@
+{
+  "asset_id": "V-034",
+  "candidate": "v04",
+  "created": "2026-07-20",
+  "status": "candidate awaiting owner approval",
+  "method": "deterministic composite of owner-selected v03b into the recorded v01 inner-portrait aperture",
+  "authorities": {
+    "frame_and_outer_backdrop": "visuals/06-supporting/entry-portrait/approved/entry-portrait-sowan--v01--approved.png",
+    "selected_portrait": "visuals/06-supporting/entry-portrait/drafts/entry-portrait-sowan--v03b.png"
+  },
+  "geometry": {
+    "master_size": [
+      2600,
+      3250
+    ],
+    "inner_box": [
+      423,
+      493,
+      2172,
+      2679
+    ],
+    "selected_source_crop": [
+      0,
+      60,
+      1023,
+      1339
+    ],
+    "feather_pixels": 8,
+    "frame_box": [
+      178,
+      232,
+      2425,
+      2969
+    ],
+    "plaque_box": [
+      845,
+      2740,
+      1758,
+      2947
+    ],
+    "frame_margins_percent": {
+      "left": 6.85,
+      "top": 7.14,
+      "right": 6.73,
+      "bottom": 8.65
+    }
+  },
+  "diff": {
+    "changed_pixel_count": 3809759,
+    "changed_fraction": 0.45085905325443787,
+    "bbox": [
+      424,
+      494,
+      2171,
+      2678
+    ],
+    "changed_pixels_outside_inner_box": 0
+  },
+  "files": {
+    "v04": {
+      "path": "visuals/06-supporting/entry-portrait/drafts/entry-portrait-sowan--v04.png",
+      "sha256": "2BCF03EAD5FF52EED95D35DC1AA2E71D45AAF459E1E7A761E927D9C6E258361E",
+      "bytes": 9631440
+    },
+    "mobile_390": {
+      "path": "visuals/99-review/contact-sheets/v034-entry-portrait-mobile-390-v04.png",
+      "sha256": "E414B23EF610C2944B63D0597A7565AC5FF743AE7095B8E233B15EC756CBBE87"
+    },
+    "qa_sheet": {
+      "path": "visuals/99-review/contact-sheets/v034-entry-portrait-v04-qa.png",
+      "sha256": "1F48BFAE475EA407868B510108FE881E42A9C7D9DF0728D51211C478AB7B1136"
+    },
+    "approval_sheet": {
+      "path": "visuals/99-review/contact-sheets/v034-entry-portrait-approval-set-v04.png",
+      "sha256": "233B1D2B5FFFE17225BDC527335C2E30D12AAD262E9BBDD622DD1EB99A6FE4AE"
+    }
+  },
+  "visual_review": {
+    "blank_plaque": "pass; plaque is byte-identical to approved v01",
+    "blank_shirt": "pass by full-resolution visual inspection; no text, letters, symbols, or logo",
+    "no_text_anywhere": "pass by full-resolution and 390 px visual inspection",
+    "390px_readability": "pass pending owner likeness approval",
+    "owner_likeness": "owner selected source candidate B; framed composite awaits final owner approval"
+  },
+  "gates": {
+    "master_dimensions_2600x3250": true,
+    "opaque_rgb": true,
+    "selected_candidate_b_source_hash": true,
+    "zero_changed_pixels_outside_inner_box": true,
+    "plaque_byte_identical": true,
+    "outer_corners_byte_identical": true,
+    "frame_margins_preserved": true,
+    "mobile_render_exact_390w": true,
+    "all_mechanical_gates_passed": true
+  },
+  "derivatives": "not generated; v01-derived inner/runtime files remain stale candidates for replacement only after v04 owner approval"
+}

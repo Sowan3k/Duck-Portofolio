@@ -1,0 +1,192 @@
+{
+  "asset_id": "V-060",
+  "pack": "largest-breakpoint AVIF production scene stack",
+  "version": "v01",
+  "created": "2026-07-20",
+  "status": "approved byte-identical production pack",
+  "method": "byte-identical collection of already validated approved AVIF runtime assets",
+  "budget_bytes": 700000,
+  "total_bytes": 508051,
+  "headroom_bytes": 191949,
+  "groups": {
+    "V-011_layers": 400200,
+    "V-005_swan": 60037,
+    "V-012_props": 47814
+  },
+  "files": [
+    {
+      "source": "visuals/04-scene-production/layers/avif/approved/scene-background-wall--v01-2896w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/scene-background-wall--v01-2896w.avif",
+      "bytes": 101653,
+      "sha256": "FAB4C8173922B54B49367A4DB4BF8D5B77C52DEA4F05464EAB08A62B278ED816",
+      "source_sha256": "FAB4C8173922B54B49367A4DB4BF8D5B77C52DEA4F05464EAB08A62B278ED816",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          2896,
+          2172
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/layers/avif/approved/scene-midground-furniture--v01-2896w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/scene-midground-furniture--v01-2896w.avif",
+      "bytes": 127794,
+      "sha256": "B4675B3AD33C2C8ECA09075F58FDE6996A8F1774C636B91CD9D0D51E1A05192E",
+      "source_sha256": "B4675B3AD33C2C8ECA09075F58FDE6996A8F1774C636B91CD9D0D51E1A05192E",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          2896,
+          2172
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/layers/avif/approved/scene-desk-surface--v01-2896w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/scene-desk-surface--v01-2896w.avif",
+      "bytes": 159617,
+      "sha256": "D76B13212FFFC658A03300D961046FDD25823BD186CA71E5E692BB52430B0801",
+      "source_sha256": "D76B13212FFFC658A03300D961046FDD25823BD186CA71E5E692BB52430B0801",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          2896,
+          2172
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/layers/avif/approved/scene-desk-occluders--v01-2896w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/scene-desk-occluders--v01-2896w.avif",
+      "bytes": 11136,
+      "sha256": "74405BC206BB429BFCE1A164DCD3F3AB1884CA3F484917ACD5E7F28C5B8170DB",
+      "source_sha256": "74405BC206BB429BFCE1A164DCD3F3AB1884CA3F484917ACD5E7F28C5B8170DB",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          2896,
+          2172
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/03-duck/static-swan/approved/runtime/calm-static-swan--v01-1280.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/calm-static-swan--v01-1280.avif",
+      "bytes": 60037,
+      "sha256": "16C3C20E5AD8A596AA11AF7C693BC9659E689832FB24AF2AE7215E7969D41297",
+      "source_sha256": "16C3C20E5AD8A596AA11AF7C693BC9659E689832FB24AF2AE7215E7969D41297",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          1280,
+          1600
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/liftable-props/approved/runtime/interactive-resume-folder--v01-682w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/interactive-resume-folder--v01-682w.avif",
+      "bytes": 26723,
+      "sha256": "9DE86AC8CAA873B17A5087401A342932620523EDB636F6D2EBCF6A7345DCB5F7",
+      "source_sha256": "9DE86AC8CAA873B17A5087401A342932620523EDB636F6D2EBCF6A7345DCB5F7",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          682,
+          410
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/liftable-props/approved/runtime/interactive-skills-book-shelf-cutout--v01-118w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/interactive-skills-book-shelf-cutout--v01-118w.avif",
+      "bytes": 3765,
+      "sha256": "3FC2EFC66ABF6EBCBECCCD90636DD57240752369A4732642962CF18E89E07220",
+      "source_sha256": "3FC2EFC66ABF6EBCBECCCD90636DD57240752369A4732642962CF18E89E07220",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          118,
+          226
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/liftable-props/approved/runtime/interactive-telephone-handset--v02-210w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/interactive-telephone-handset--v02-210w.avif",
+      "bytes": 8569,
+      "sha256": "10D7AF369FACFB23480971E7458BA01586D13513C7A9AFFE31A052413DBBACBB",
+      "source_sha256": "10D7AF369FACFB23480971E7458BA01586D13513C7A9AFFE31A052413DBBACBB",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          210,
+          256
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    },
+    {
+      "source": "visuals/04-scene-production/liftable-props/approved/runtime/interactive-contact-card-rest--v01-256w.avif",
+      "path": "visuals/04-scene-production/production-stack/approved/avif/interactive-contact-card-rest--v01-256w.avif",
+      "bytes": 8757,
+      "sha256": "D156FECBE721EB5DBCD70D59B54F9C4A58EDFF78023D7D2F108A341090818668",
+      "source_sha256": "D156FECBE721EB5DBCD70D59B54F9C4A58EDFF78023D7D2F108A341090818668",
+      "promotion_hash_match": true,
+      "metadata": {
+        "mode": "RGBA",
+        "size": [
+          256,
+          170
+        ],
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      }
+    }
+  ],
+  "upstream_quality": {
+    "V-011": "visuals/99-review/v011-scene-depth-layers--v01-report.json",
+    "V-005": "visuals/01-prompts/duck/13-calm-static-swan-v1.md",
+    "V-012": "visuals/99-review/v060-final-runtime-exports--v01-report.json"
+  },
+  "gates": {
+    "file_count": true,
+    "budget": true,
+    "promotion_hashes": true,
+    "metadata_stripped": true,
+    "upstream_quality_passed": true
+  }
+}

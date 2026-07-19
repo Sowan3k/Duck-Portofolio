@@ -1,0 +1,572 @@
+{
+  "asset_id": "V-034",
+  "version": "v04",
+  "created": "2026-07-20",
+  "status": "owner-approved, promoted, and responsive derivatives complete",
+  "method": "byte-identical master promotion; deterministic inner crop; independent AVIF/WebP encodes from approved lossless authorities",
+  "approved_master": {
+    "path": "visuals/06-supporting/entry-portrait/approved/entry-portrait-sowan--v04--approved.png",
+    "size": [
+      2600,
+      3250
+    ],
+    "mode": "RGB",
+    "bytes": 9631440,
+    "sha256": "2BCF03EAD5FF52EED95D35DC1AA2E71D45AAF459E1E7A761E927D9C6E258361E"
+  },
+  "approved_inner": {
+    "path": "visuals/06-supporting/entry-portrait/approved/entry-portrait-sowan--v04-inner--approved.png",
+    "source_crop": [
+      423,
+      493,
+      2172,
+      2679
+    ],
+    "size": [
+      1200,
+      1500
+    ],
+    "mode": "RGB",
+    "bytes": 2663314,
+    "sha256": "36C94DB8008033DE1A71665B1D003B93EE8D2F09816490D5C380CD64A10F1C94"
+  },
+  "encoding": {
+    "resize": "each width independently from its lossless master with Lanczos",
+    "avif": "quality 58, speed 6, 4:4:4",
+    "webp": "quality 82, method 6"
+  },
+  "runtime": [
+    {
+      "kind": "framed",
+      "format": "avif",
+      "width": 400,
+      "size": [
+        400,
+        500
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-400w.avif",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-400w.avif",
+      "bytes": 14476,
+      "byte_budget": 32000,
+      "sha256": "EF5805BAA0D13FE224E9FC914710A78032442DFADBAE86B8CB76DAC3686CAE48",
+      "quality": {
+        "psnr_db": 36.5490398273864,
+        "ssim": 0.9498031536738077,
+        "mae": 2.553856611251831
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          400,
+          500
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "framed",
+      "format": "webp",
+      "width": 400,
+      "size": [
+        400,
+        500
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-400w.webp",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-400w.webp",
+      "bytes": 20952,
+      "byte_budget": 45000,
+      "sha256": "95C70E6EE98D81FE75877CE693C0BE014077B9867808B902FFD34734B329F69B",
+      "quality": {
+        "psnr_db": 35.155460797988844,
+        "ssim": 0.9385930299758911,
+        "mae": 2.927213430404663
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          400,
+          500
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "framed",
+      "format": "avif",
+      "width": 800,
+      "size": [
+        800,
+        1000
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-800w.avif",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-800w.avif",
+      "bytes": 55278,
+      "byte_budget": 125000,
+      "sha256": "E20F82A57967A16EF1EAEB652A9B6D79A81C61404566175FD78613E80884D865",
+      "quality": {
+        "psnr_db": 36.36421472652346,
+        "ssim": 0.9302269617716471,
+        "mae": 2.6677942276000977
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          800,
+          1000
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "framed",
+      "format": "webp",
+      "width": 800,
+      "size": [
+        800,
+        1000
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-800w.webp",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-800w.webp",
+      "bytes": 85800,
+      "byte_budget": 175000,
+      "sha256": "4F6EF780F932EEDFBFC492B5386A097C660957080E93B74A457F27A31CB24502",
+      "quality": {
+        "psnr_db": 35.91555352049692,
+        "ssim": 0.9275287985801697,
+        "mae": 2.788703680038452
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          800,
+          1000
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "framed",
+      "format": "avif",
+      "width": 1600,
+      "size": [
+        1600,
+        2000
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-1600w.avif",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-1600w.avif",
+      "bytes": 209958,
+      "byte_budget": 420000,
+      "sha256": "261FC19826D995EFAF47D77E8645518C5E30ACA375190AAEC1D92765C2C7FE55",
+      "quality": {
+        "psnr_db": 38.611675674960125,
+        "ssim": 0.9502030611038208,
+        "mae": 2.1483206748962402
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1600,
+          2000
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "framed",
+      "format": "webp",
+      "width": 1600,
+      "size": [
+        1600,
+        2000
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-1600w.webp",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-1600w.webp",
+      "bytes": 286118,
+      "byte_budget": 560000,
+      "sha256": "349F614E8A0920151A57F170AFE97F215AE4B969E77FACD2FB26031C97889B17",
+      "quality": {
+        "psnr_db": 37.77927563423463,
+        "ssim": 0.9413800239562988,
+        "mae": 2.3327701091766357
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1600,
+          2000
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "inner",
+      "format": "avif",
+      "width": 320,
+      "size": [
+        320,
+        400
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-inner-320w.avif",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-inner-320w.avif",
+      "bytes": 10776,
+      "byte_budget": 26000,
+      "sha256": "3774CA219DC055387EB6199A715A8F318E31972CF6BE5BE8AA40A700D4ED6A9A",
+      "quality": {
+        "psnr_db": 35.879048882993054,
+        "ssim": 0.9254256288210551,
+        "mae": 2.8218932151794434
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          320,
+          400
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "inner",
+      "format": "webp",
+      "width": 320,
+      "size": [
+        320,
+        400
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-inner-320w.webp",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-inner-320w.webp",
+      "bytes": 15042,
+      "byte_budget": 38000,
+      "sha256": "C3060D538BC9534ABD5D7F77F8F7A4935E3D666AFA93BA3D61F604891657C73C",
+      "quality": {
+        "psnr_db": 35.600168779280125,
+        "ssim": 0.9230677882830302,
+        "mae": 2.8914635181427
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          320,
+          400
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "inner",
+      "format": "avif",
+      "width": 640,
+      "size": [
+        640,
+        800
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-inner-640w.avif",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-inner-640w.avif",
+      "bytes": 43163,
+      "byte_budget": 105000,
+      "sha256": "A7BB197A8AF3C868CC5F1A6B8ED5808DC68CD457640D08AA79C30F1B20583B30",
+      "quality": {
+        "psnr_db": 35.93986829620561,
+        "ssim": 0.9054869413375854,
+        "mae": 2.9529550075531006
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          640,
+          800
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "inner",
+      "format": "webp",
+      "width": 640,
+      "size": [
+        640,
+        800
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-inner-640w.webp",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-inner-640w.webp",
+      "bytes": 59448,
+      "byte_budget": 150000,
+      "sha256": "EA4FB3739713F923AECFFAFA325395462E5BA7E8C8B155C785B8757903854403",
+      "quality": {
+        "psnr_db": 35.789638287918805,
+        "ssim": 0.9036716421445211,
+        "mae": 2.983684778213501
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          640,
+          800
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "inner",
+      "format": "avif",
+      "width": 1200,
+      "size": [
+        1200,
+        1500
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-inner-1200w.avif",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-inner-1200w.avif",
+      "bytes": 135751,
+      "byte_budget": 320000,
+      "sha256": "170012B24358798287277F2B5F20972C0B88A7BD4836B56DDF8D866AA9E11266",
+      "quality": {
+        "psnr_db": 38.394260921425584,
+        "ssim": 0.9404927094777426,
+        "mae": 2.2912025451660156
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1200,
+          1500
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "inner",
+      "format": "webp",
+      "width": 1200,
+      "size": [
+        1200,
+        1500
+      ],
+      "path": "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v04-inner-1200w.webp",
+      "draft_path": "visuals/06-supporting/entry-portrait/drafts/runtime/entry-portrait-sowan--v04-inner-1200w.webp",
+      "bytes": 171628,
+      "byte_budget": 430000,
+      "sha256": "69FB672BCEADD84A389E73C9F653F8732E7627B13B99C72A25DBB5AFEF0E381C",
+      "quality": {
+        "psnr_db": 37.583682967839366,
+        "ssim": 0.930025597413381,
+        "mae": 2.4781997203826904
+      },
+      "metadata": {
+        "mode": "RGB",
+        "size": [
+          1200,
+          1500
+        ],
+        "frames": 1,
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "gates": {
+        "draft_approved_hash_match": true,
+        "dimensions": true,
+        "opaque_rgb": true,
+        "single_frame": true,
+        "metadata_stripped": true,
+        "quality": true,
+        "byte_budget": true
+      },
+      "passed": true
+    }
+  ],
+  "summary": {
+    "runtime_file_count": 12,
+    "avif_count": 6,
+    "webp_count": 6,
+    "total_runtime_bytes": 1108390,
+    "min_psnr_db": 35.155460797988844,
+    "min_ssim": 0.9036716421445211,
+    "max_mae": 2.983684778213501,
+    "all_runtime_gates_passed": true
+  },
+  "review": {
+    "runtime_sheet": {
+      "path": "visuals/99-review/contact-sheets/v034-entry-portrait-runtime-v04.png",
+      "sha256": "4AB5BEE06DC75A152D0BADC6ED1607DF6FEFA5DB8CC1EF84CB16D425691012A4"
+    },
+    "mobile_sheet": {
+      "path": "visuals/99-review/contact-sheets/v034-entry-portrait-mobile-review-v04.png",
+      "sha256": "71918D15D13C5309A3E8635B47CE84C8E7467ECE6EE5940B05C3AB9530D9B210"
+    }
+  },
+  "supersession": {
+    "v01_status": "superseded historical approved set; preserved and byte-identical",
+    "v01_file_count_checked": 14,
+    "v01_hashes": {
+      "visuals/06-supporting/entry-portrait/approved/entry-portrait-sowan--v01--approved.png": "B5D1FF95DB12333152DF018328F2430E6B969BA59184816BC4F03D6C8ACC6728",
+      "visuals/06-supporting/entry-portrait/approved/entry-portrait-sowan--v01-inner--approved.png": "009B339738CA2CFFF24684712AFB5F42D5DCCA57110E740F014325DD67A17B87",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-1600w.avif": "82D222CFFEA286D93D35AD074CE6AFF2C5A7AE9083429450691437F6FF39E34D",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-1600w.webp": "011C04055B0E541E32960B772E9DA615ACE41BFA25FB267DB05BA092654E2BCD",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-400w.avif": "96DA1C76FADFB7EF94B3AAA4BB8A6D3C82528617D69EA6E1A89A0A274393553A",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-400w.webp": "AC24DAC3BFEAE04F66AB181555AF66B6C7510D5C2CDB043A851E2056B78B41E4",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-800w.avif": "8B80834F156002771A2DE94539E80EF313E83314780B0926647CA91FDE5193F7",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-800w.webp": "7C8B80B862F4526E48F6C9DDE64CFCA0ECD6F2A02B527308FDA21E3CB87B7352",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-inner-1200w.avif": "AA9C55704B80890DF69F943869B8E82537BA1E1C065727BBF5556E33C249B880",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-inner-1200w.webp": "ABF614B40719C73C8E2D3D2956A699484522CF5DAB7CC7B018B57E9ADFE8911D",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-inner-320w.avif": "41F138E4EBA69453F6740846C3A13954CB8152D93EB6394E1AB0226B4E087497",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-inner-320w.webp": "B8C3B7D6FB926F3C84F43F9DE150C5CA59EFCCB10669AF8D8B65BCB3D4A50541",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-inner-640w.avif": "2E06F3F8DF6E8F1BC231A67CFB21726E8683E516F4BAA021D5D511FEF241C996",
+      "visuals/06-supporting/entry-portrait/approved/runtime/entry-portrait-sowan--v01-inner-640w.webp": "F733164A2C0C1C82CA2D353843FC02726B345C8FA6100B9694B3A552057A19EA"
+    },
+    "v01_unchanged": true
+  },
+  "gates": {
+    "master_promoted_byte_identically": true,
+    "inner_draft_approved_byte_identical": true,
+    "runtime_count_12": true,
+    "approved_runtime_count_12": true,
+    "draft_runtime_count_12": true,
+    "all_runtime_gates": true,
+    "v01_history_unchanged": true,
+    "review_sheets_present": true,
+    "all_passed": true
+  }
+}

@@ -109,8 +109,9 @@ Use the canonical trio for every edit or new generation.
    packs pass internal and independent reconstruction, exact-alpha,
    boundary-seam, mobile-resource, and payload QA; all source, runtime, and
    ownership-mask files were promoted byte-identically.**
-4. Extract the nine interactive objects where movement or overlap requires a
-   separate layer.
+4. Extract the four interactive scene targets that physically move or uncover
+   pixels: résumé folder, Skills shelf book, telephone handset, and resting
+   contact card. Fixed fixtures stay in the scene plate.
 5. Derive a calm static Swan pose for first paint and reduced motion.
    **Complete: owner-approved V-005 v01 is an exact approved-atlas extraction
    with transparent 320/640/1280 PNG plus AVIF/WebP runtime variants, promoted
@@ -200,28 +201,45 @@ door vignette v01 is retained as an alternate, not deleted.
 - Reuse: the unframed inner portrait may be cropped for the About desk card
   overlay and the standard-view About section; no separate generation needed.
 
-**Candidate complete: V-034 v01 uses the canonical trio plus the owner photo,
-ships as a margin-safe 2600×3250 framed RGB master and deterministic 1200×1500
-inner portrait, and includes independently validated AVIF/WebP responsive sets.
-Internal and independent QA passed; owner-approved and promoted byte-identically
-on 2026-07-20.**
+**Complete: the owner selected fresh portrait candidate v03b for likeness and
+age, and V-034 v04 composites it only inside the approved v01 portrait aperture.
+The v01 wooden frame, blank plaque, outer backdrop, margins, and every pixel
+outside that aperture remain unchanged. The owner-approved v04 delivery ships
+as a byte-identically promoted 2600×3250 framed RGB master, a deterministic
+1200×1500 reusable inner portrait, and twelve independently encoded responsive
+AVIF/WebP files at framed widths 400/800/1600 and inner widths 320/640/1200.
+Internal and independent visual/mechanical QA passed on 2026-07-20. The v01
+master, inner crop, and responsive files remain preserved as superseded history.**
 
 ## Stage 6 — authentic portfolio media
 
 The featured roster is locked to BahasaBot, Virtual Zara, My Bibi, and USM
-Evently. V-040 candidate v01 now contains six privacy-safe 1440x720 authentic
+Evently. Owner-approved V-040 v01 contains six privacy-safe 1440x720 authentic
 capture masters and 36 independently encoded 360/720/1440 AVIF/WebP variants
 for BahasaBot, My Bibi, and Evently. Deterministic crop, resize, and staging are
 the only transformations; no interface was generated or recreated. Automated
 quality, metadata, payload, privacy-boundary, native 360px, and exact 390px
-review gates pass. Independent visual and mechanical audits also pass. The
-candidate awaits owner review before byte-identical promotion.
+review gates pass. Independent visual and mechanical audits also pass. All 42
+files were promoted byte-identically after owner approval.
 Virtual Zara remains deliberately described-only: no screenshot, UI
 recreation, or authentic-looking mockup.
 
 V-041 does not block v1. Awards and education use the approved blank V-025 and
 V-026 physical surfaces with DOM text. Authentic certificate imagery is an
 optional future owner-supplied enhancement.
+
+## Stage 7 — final runtime packaging
+
+**Complete: V-060 v01 derives 108 responsive AVIF/WebP files
+directly from 18 approved PNG authorities: four registered V-012 scene props,
+thirteen V-020–029 physical-UI states, and V-032. Independent visual and
+mechanical audits passed with no failing files or report mismatches.**
+
+The largest-breakpoint production scene is locked as two immutable nine-file
+stacks. AVIF totals 508,051 bytes and WebP totals 695,540 bytes; both satisfy
+the 700,000-byte compressed-art budget with decoded-quality, alpha, composite,
+and seam gates passing. Development must consume the selected WebP files
+byte-identically because its remaining headroom is only 4,460 bytes.
 
 ## Review and delivery
 
@@ -231,7 +249,9 @@ edge quality, mobile readability, and asset invariants. Rejected outputs move
 to `99-review/rejected/`; approved contact sheets go to
 `99-review/contact-sheets/`.
 
-The visual phase is complete when every non-blocked row in `manifest.md` is
-approved, canonical references are present, source layers are lossless, and
-the eventual largest-breakpoint scene export can fit the 700 KB compressed art
-budget without visible failure.
+**This completion gate is satisfied.** Every required raster row is approved,
+the canonical references and lossless sources are present, and both selected
+largest-breakpoint scene stacks fit the 700,000-byte compressed-art budget
+without visible failure. Rive rigging, CSS/SVG ambient behavior, DOM text, and
+audio encoding/integration remain development tasks rather than missing source
+visuals.

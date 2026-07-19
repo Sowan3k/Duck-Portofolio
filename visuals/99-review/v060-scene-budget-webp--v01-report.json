@@ -1,0 +1,297 @@
+{
+  "asset_id": "V-060",
+  "pack": "largest-breakpoint WebP production scene stack",
+  "version": "v01",
+  "created": "2026-07-20",
+  "status": "approved deterministic production pack",
+  "method": "byte-identical promotion of independently audited temporary encodes; approved PNG/layer authorities unchanged",
+  "encoding": "WebP method 6, exact alpha, alpha_quality 100; per-file quality recorded below",
+  "budget_bytes": 700000,
+  "total_bytes": 695540,
+  "headroom_bytes": 4460,
+  "files": [
+    {
+      "asset": "scene-background-wall",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/scene-background-wall--q80.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/scene-background-wall--v01-2896w.webp",
+      "bytes": 112016,
+      "size": [
+        2896,
+        2172
+      ],
+      "quality": 80,
+      "psnr_db": 43.44118733518768,
+      "ssim": 0.9832741913959261,
+      "mae": 0.7670183432886909,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": true,
+        "iou15": 1.0,
+        "mae": 0.0,
+        "max_error": 0
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "C5C68C8EDF550EBF7A4FC0AF83772B9DC593B75417D40DDED5301AC25BD9C574",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "scene-midground-furniture",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/scene-midground-furniture--q83.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/scene-midground-furniture--v01-2896w.webp",
+      "bytes": 169722,
+      "size": [
+        2896,
+        2172
+      ],
+      "quality": 83,
+      "psnr_db": 41.626723580787754,
+      "ssim": 0.973870202600505,
+      "mae": 1.1769947959234983,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": true,
+        "iou15": 1.0,
+        "mae": 0.0,
+        "max_error": 0
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "21B310CC974CAC406E2242ED1AD9F4F1B894C8190A860B0FE96E65F2E22047A0",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "scene-desk-surface",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/scene-desk-surface--q83.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/scene-desk-surface--v01-2896w.webp",
+      "bytes": 227334,
+      "size": [
+        2896,
+        2172
+      ],
+      "quality": 83,
+      "psnr_db": 40.675276340210516,
+      "ssim": 0.9688111554860193,
+      "mae": 1.3736621082698026,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": true,
+        "iou15": 1.0,
+        "mae": 0.0,
+        "max_error": 0
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "76A7712FFAD9373C5303F5BCF4C843C2C3BCF68F6E621E111C4B9BEDACF0C0A8",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "scene-desk-occluders",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/scene-desk-occluders--q83.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/scene-desk-occluders--v01-2896w.webp",
+      "bytes": 21106,
+      "size": [
+        2896,
+        2172
+      ],
+      "quality": 83,
+      "psnr_db": 42.14476478302258,
+      "ssim": 0.9820390500947033,
+      "mae": 0.8930518812463257,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": true,
+        "iou15": 1.0,
+        "mae": 0.0,
+        "max_error": 0
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "5C44C9DCDF39748E9F41853EA56931C3B859B1720DEA20E416130A115675D548",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "calm-static-swan",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/calm-static-swan--q82.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/calm-static-swan--v01-1280.webp",
+      "bytes": 117524,
+      "size": [
+        1280,
+        1600
+      ],
+      "quality": 82,
+      "psnr_db": 42.54953440089083,
+      "ssim": 0.984596777291762,
+      "mae": 1.0093887542089883,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": true,
+        "iou15": 1.0,
+        "mae": 0.0,
+        "max_error": 0
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "5A3C47190AC8906258413457230BFF86316586716C7ACCDFF9A35AD389454E0E",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "interactive-resume-folder",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/interactive-resume-folder--q80.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/interactive-resume-folder--v01-682w.webp",
+      "bytes": 26826,
+      "size": [
+        682,
+        410
+      ],
+      "quality": 80,
+      "psnr_db": 41.00510856411424,
+      "ssim": 0.9746246632553475,
+      "mae": 1.227837133616028,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": false,
+        "iou15": 0.9990283431663312,
+        "mae": 0.10114083398898505,
+        "max_error": 7
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "890C4BC5A1ABA0FC864320CC48705459126584CE67E7E8BAB207E6142DDFAD39",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "interactive-skills-book-shelf-cutout",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/interactive-skills-book-shelf-cutout--q80.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/interactive-skills-book-shelf-cutout--v01-118w.webp",
+      "bytes": 3946,
+      "size": [
+        118,
+        226
+      ],
+      "quality": 80,
+      "psnr_db": 42.00996762243915,
+      "ssim": 0.975874342727681,
+      "mae": 1.0696039340776182,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": false,
+        "iou15": 0.9996784307420211,
+        "mae": 0.32900854957252135,
+        "max_error": 16
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "B2EE88A12020B0A334BDEAD491A7A50D680C6BF9010F04283675DC23544CBFA0",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "interactive-telephone-handset",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/interactive-telephone-handset--q80.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/interactive-telephone-handset--v02-210w.webp",
+      "bytes": 9130,
+      "size": [
+        210,
+        256
+      ],
+      "quality": 80,
+      "psnr_db": 41.45443621596685,
+      "ssim": 0.9723143558396145,
+      "mae": 1.20031539444267,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": false,
+        "iou15": 0.9993093922651933,
+        "mae": 0.2318452380952381,
+        "max_error": 16
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "04AE73C1823A99EB7E3AEA739D92BA58B77CD96F3CAD80893497F405B8474E34",
+      "promotion_hash_match": true
+    },
+    {
+      "asset": "interactive-contact-card-rest",
+      "source_audit_path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/interactive-contact-card-rest--q80.webp",
+      "path": "visuals/04-scene-production/production-stack/approved/webp/interactive-contact-card-rest--v01-256w.webp",
+      "bytes": 7936,
+      "size": [
+        256,
+        170
+      ],
+      "quality": 80,
+      "psnr_db": 42.17167760176055,
+      "ssim": 0.9758274773279924,
+      "mae": 1.2253836908284024,
+      "alpha_exact": true,
+      "cross_reference_alpha": {
+        "exact": false,
+        "iou15": 0.9992829672120461,
+        "mae": 0.25043658088235293,
+        "max_error": 16
+      },
+      "metadata": {
+        "exif_entries": 0,
+        "icc_present": false,
+        "xmp_present": false
+      },
+      "sha256": "5039B78B8C841893636C384C0353EB4C251599C8942BB921B1912A0C563315EE",
+      "promotion_hash_match": true
+    }
+  ],
+  "composite": {
+    "psnr_db": 38.89814420305317,
+    "ssim": 0.9540010767056587,
+    "mae": 2.128752132447456,
+    "max_error": 36,
+    "boundary_ring_pixels": 76520,
+    "boundary_ring_mae": 2.4346837428123367,
+    "boundary_to_global_mae_ratio": 1.1437140593786026
+  },
+  "gates": {
+    "file_count": true,
+    "budget": true,
+    "promotion_hashes": true,
+    "alpha_exact": true,
+    "metadata_stripped": true,
+    "file_quality": true,
+    "composite_quality": true,
+    "boundary_seams": true
+  },
+  "review_file": {
+    "path": "visuals/99-review/contact-sheets/v060-scene-budget-webp-v01.png",
+    "size": [
+      1840,
+      1450
+    ],
+    "sha256": "5C959DDAFDEF75838BD2E5A62784D5E00EB0FDA590AB7C173C2D2FE5A33CF89C"
+  },
+  "upstream_audit": {
+    "path": "tmp/imagegen/webp-scene-stack-audit/recommended-695540/report.json",
+    "sha256": "ADC107564649AE43BC54A4D2067DFA08832B5B0F2ABACE11CA3DAD0ADD1646BF"
+  }
+}

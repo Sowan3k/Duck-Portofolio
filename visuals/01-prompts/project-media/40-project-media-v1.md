@@ -6,6 +6,8 @@
 - Image generation: not used; no interface was invented, redrawn, or recreated
 - Candidate masters: `visuals/07-project-media/drafts/`
 - Candidate runtime set: `visuals/07-project-media/drafts/runtime/`
+- Approved masters: `visuals/07-project-media/approved/`
+- Approved runtime set: `visuals/07-project-media/approved/runtime/`
 - QA report: `visuals/99-review/v040-project-media--v01-report.json`
 - Owner-review sheet:
   `visuals/99-review/contact-sheets/v040-project-media-approval-set-v01.png`
@@ -15,7 +17,7 @@
   `visuals/99-review/contact-sheets/v040-project-media-390px-review-v01.png`
 - Privacy/provenance review:
   `visuals/99-review/contact-sheets/v040-project-media-privacy-qa-v01.png`
-- Status: internal and independent QA passed; awaiting owner review before promotion
+- Status: owner-approved and promoted byte-identically on 2026-07-20
 
 ## Locked delivery system
 
@@ -88,7 +90,7 @@ label; the overview was rebuilt from the complete source frame and passed the
 repeat review.
 
 Final report SHA-256:
-`AA5040A1FD376FFEFE265F4395EBE7FBD02E535F884D54E446A937BB3C7674E5`.
+`237A8F0E571B516FDDC81F45416C8773B2C57EF64D3E29320BEF7D6BB2DC9E31`.
 
 Review sheet SHA-256 values:
 
@@ -97,7 +99,8 @@ Review sheet SHA-256 values:
 - exact-390px review: `A415808C43D5A3B45D788F0A1D1EFFD6143FBDC797E139F29BF3A9B5CD313705`
 - privacy/provenance review: `EE4617F987779A4CF885DAF97DED0344335EE7FAFA9A3D770E9C8BB1D9B85392`
 
-Promotion is intentionally deferred until the owner approves the review sheet.
-When approved, all six masters and all 36 runtime files must be copied
-byte-identically into `visuals/07-project-media/approved/` and its `runtime/`
-subdirectory; no re-encoding is allowed during promotion.
+The owner approved the review sheet on 2026-07-20. All six masters and all 36
+runtime files were copied byte-identically into
+`visuals/07-project-media/approved/` and its `runtime/` subdirectory. Approved
+master filenames add `--approved`; runtime filenames are unchanged. Promotion
+reported zero hash mismatches and performed no re-encoding.

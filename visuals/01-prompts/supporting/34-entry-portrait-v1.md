@@ -6,7 +6,7 @@
   - `visuals/00-references/canonical/ref-02-duck-pose-sheet.png`
   - `visuals/00-references/canonical/ref-03-duck-expression-sheet.png`
 - Owner likeness reference attached to generation:
-  `visuals/Sowan's real photo.jpeg`
+  `visuals/00-references/owner/Sowan's real photo.jpeg`
 - Selected generated source:
   `visuals/06-supporting/entry-portrait/drafts/entry-portrait-sowan--v01-source.png`
 - Production candidate:
@@ -27,7 +27,8 @@
   `visuals/99-review/contact-sheets/v034-entry-portrait-approval-set-v01.png`
 - Mobile review:
   `visuals/99-review/contact-sheets/v034-entry-portrait-mobile-review-v01.png`
-- Status: owner-approved and promoted byte-identically on 2026-07-20
+- Status: historical owner-approved delivery; superseded by owner-approved v04
+  on 2026-07-20 and preserved byte-identically
 
 ## Exact successful generation prompt
 

@@ -4,6 +4,8 @@ tmp/
 # --- private owner material: never push to the public repo ---
 visuals/00-references/owner/
 visuals/07-project-media/resume-source/
+# Contains a crop of the private owner photo; local selection aid only.
+visuals/99-review/contact-sheets/v034-face-candidates-v03-review.png
 
 # --- third-party inspiration image: style guide only, not redistributable ---
 art/references/Reference Image.png

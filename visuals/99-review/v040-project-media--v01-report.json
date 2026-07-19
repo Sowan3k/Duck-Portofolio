@@ -2,7 +2,7 @@
   "asset_id": "V-040",
   "version": "v01",
   "created": "2026-07-20",
-  "status": "candidate review",
+  "status": "owner-approved and promoted",
   "method": "authentic source capture curation; deterministic crop/resize/staging only; no generated or recreated UI",
   "master_standard": {
     "mode": "RGB",
@@ -1328,6 +1328,15 @@
       ]
     }
   ],
+  "promotion": {
+    "approved_on": "2026-07-20",
+    "master_directory": "visuals/07-project-media/approved",
+    "runtime_directory": "visuals/07-project-media/approved/runtime",
+    "master_count": 6,
+    "runtime_count": 36,
+    "hash_mismatches": 0,
+    "method": "byte-identical copy; approved masters add the --approved filename suffix; runtime filenames are unchanged"
+  },
   "summary": {
     "master_count": 6,
     "runtime_count": 36,
