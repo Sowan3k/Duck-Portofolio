@@ -1,0 +1,16 @@
+# --- local-only working areas ---
+tmp/
+
+# --- private owner material: never push to the public repo ---
+visuals/Sowan's real photo.jpeg
+visuals/07-project-media/resume-source/
+
+# --- third-party inspiration image: style guide only, not redistributable ---
+art/references/Reference Image.png
+
+# --- future development ---
+node_modules/
+dist/
+.astro/
+.env
+.env.*

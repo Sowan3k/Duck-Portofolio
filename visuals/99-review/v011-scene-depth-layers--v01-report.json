@@ -1,0 +1,386 @@
+{
+  "asset": "V-011 scene depth layers",
+  "status": "owner-approved v01; promoted byte-identically 2026-07-20",
+  "source": {
+    "path": "visuals/04-scene-production/clean-plates/approved/office-clean-plate-telephone-contact--v03--approved.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "541E9C1381F30819DCE831E964A57A96E925DEC629EFDDBDD13088738A97B5A8"
+  },
+  "layer_order": [
+    "background-wall",
+    "midground-furniture",
+    "desk-surface",
+    "V-005 Swan (working candidate)",
+    "desk-occluders",
+    "V-012 movable props"
+  ],
+  "native_masks": {
+    "background-wall": {
+      "pixels": 411387,
+      "bbox": [
+        0,
+        0,
+        1448,
+        764
+      ]
+    },
+    "midground-furniture": {
+      "pixels": 493704,
+      "bbox": [
+        246,
+        15,
+        1448,
+        754
+      ]
+    },
+    "desk-surface": {
+      "pixels": 651402,
+      "bbox": [
+        0,
+        370,
+        1448,
+        1086
+      ]
+    },
+    "desk-occluders": {
+      "pixels": 16035,
+      "bbox": [
+        585,
+        682,
+        990,
+        794
+      ]
+    }
+  },
+  "lossless_reconstruction": {
+    "1448": {
+      "changed_pixels": 0,
+      "mae": 0.0,
+      "max_error": 0,
+      "psnr_db": "infinite",
+      "ssim": 1.0,
+      "final_alpha_min": 255,
+      "final_alpha_max": 255,
+      "transparent_rgb_nonzero": 0
+    },
+    "2896": {
+      "changed_pixels": 0,
+      "mae": 0.0,
+      "max_error": 0,
+      "psnr_db": "infinite",
+      "ssim": 1.0,
+      "final_alpha_min": 255,
+      "final_alpha_max": 255,
+      "transparent_rgb_nonzero": 0
+    }
+  },
+  "runtime": {
+    "724": {
+      "avif": {
+        "changed_pixels": 390290,
+        "mae": 2.96602667806233,
+        "max_error": 73,
+        "psnr_db": 35.59432966186171,
+        "ssim": 0.9320314748886633,
+        "boundary_ring_pixels": 18202,
+        "boundary_ring_mae": 3.5866388308977037,
+        "boundary_to_global_mae_ratio": 1.2092402463624543,
+        "alpha_iou": {
+          "background-wall": 1.0,
+          "midground-furniture": 1.0,
+          "desk-surface": 1.0,
+          "desk-occluders": 1.0
+        },
+        "alpha_exact": {
+          "background-wall": true,
+          "midground-furniture": true,
+          "desk-surface": true,
+          "desk-occluders": true
+        },
+        "composite_alpha_min": 255,
+        "composite_alpha_max": 255,
+        "pack_bytes": 69151,
+        "files": [
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-background-wall--v01-724w.avif",
+            "bytes": 19442,
+            "sha256": "7AAE8ACB1CA4D200824A1954D98F31540ADBC0D4632387A6A80D85B5983BF96F"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-midground-furniture--v01-724w.avif",
+            "bytes": 22285,
+            "sha256": "95522CE65C3BBD76B6BA25D15D6E2F8C3FFE7D445F802FC4F77766FAD6B39805"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-desk-surface--v01-724w.avif",
+            "bytes": 23412,
+            "sha256": "C90DBEEABE5E9C78DD2EFAB1B1A0E3B4117A81324335925559BCB4AD42B5E7F6"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-desk-occluders--v01-724w.avif",
+            "bytes": 4012,
+            "sha256": "ABCEA3D388F7F8388DA00E70E3A8753B568F268F510477E65DBBC9DD29CD77C9"
+          }
+        ]
+      },
+      "webp": {
+        "changed_pixels": 391029,
+        "mae": 3.117647507707335,
+        "max_error": 74,
+        "psnr_db": 35.23753998174606,
+        "ssim": 0.9264775242168634,
+        "boundary_ring_pixels": 18202,
+        "boundary_ring_mae": 3.704025198696114,
+        "boundary_to_global_mae_ratio": 1.1880833832366093,
+        "alpha_iou": {
+          "background-wall": 1.0,
+          "midground-furniture": 1.0,
+          "desk-surface": 1.0,
+          "desk-occluders": 1.0
+        },
+        "alpha_exact": {
+          "background-wall": true,
+          "midground-furniture": true,
+          "desk-surface": true,
+          "desk-occluders": true
+        },
+        "composite_alpha_min": 255,
+        "composite_alpha_max": 255,
+        "pack_bytes": 81102,
+        "files": [
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-background-wall--v01-724w.webp",
+            "bytes": 21470,
+            "sha256": "3DE247F854E8A6B3AB62C3C2D6ECAB1EF9C2CB85CE45D4C27E5820FE7277A2A7"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-midground-furniture--v01-724w.webp",
+            "bytes": 25918,
+            "sha256": "EE6BE96C4645DA9536D21F0086CFDDF297E14738D2D8BB40BFD90B3114A4F917"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-desk-surface--v01-724w.webp",
+            "bytes": 30686,
+            "sha256": "AFC3B004A557417E2919F3CE81412DEAC05818912F40B652F1806B1408A2C382"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-desk-occluders--v01-724w.webp",
+            "bytes": 3028,
+            "sha256": "568BA9538E640A16F0965EFA985600DC9EA9D75279FA6F24F06A925A0F88BA9C"
+          }
+        ]
+      }
+    },
+    "1448": {
+      "avif": {
+        "changed_pixels": 1561085,
+        "mae": 2.6641810723455057,
+        "max_error": 64,
+        "psnr_db": 36.9791029770125,
+        "ssim": 0.9338981318933254,
+        "boundary_ring_pixels": 37362,
+        "boundary_ring_mae": 2.9496368859625646,
+        "boundary_to_global_mae_ratio": 1.1071458004788495,
+        "alpha_iou": {
+          "background-wall": 1.0,
+          "midground-furniture": 1.0,
+          "desk-surface": 1.0,
+          "desk-occluders": 1.0
+        },
+        "alpha_exact": {
+          "background-wall": true,
+          "midground-furniture": true,
+          "desk-surface": true,
+          "desk-occluders": true
+        },
+        "composite_alpha_min": 255,
+        "composite_alpha_max": 255,
+        "pack_bytes": 192000,
+        "files": [
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-background-wall--v01-1448w.avif",
+            "bytes": 49357,
+            "sha256": "00ACEDA06F6E9BD02C519478BD9E27E9D0FEC7D012CA3788C2D1556575FDE4EE"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-midground-furniture--v01-1448w.avif",
+            "bytes": 62220,
+            "sha256": "8320EFF7CF1028F33BF0B33AE488BDAE30A4366EDFFC94AEAA85B876A4874FF6"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-desk-surface--v01-1448w.avif",
+            "bytes": 72379,
+            "sha256": "53D7C47177BC806748153C7E4AD87E06376385CA2808B54612512394AC20B724"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-desk-occluders--v01-1448w.avif",
+            "bytes": 8044,
+            "sha256": "7C44EDB82873B8339BC0441264E4B0FF984779876A024ABA9B05BF9BD37C8AAA"
+          }
+        ]
+      },
+      "webp": {
+        "changed_pixels": 1563943,
+        "mae": 2.9241762308842834,
+        "max_error": 55,
+        "psnr_db": 36.06542497505509,
+        "ssim": 0.9246224600081275,
+        "boundary_ring_pixels": 37362,
+        "boundary_ring_mae": 3.311359134949949,
+        "boundary_to_global_mae_ratio": 1.1324075136020717,
+        "alpha_iou": {
+          "background-wall": 1.0,
+          "midground-furniture": 1.0,
+          "desk-surface": 1.0,
+          "desk-occluders": 1.0
+        },
+        "alpha_exact": {
+          "background-wall": true,
+          "midground-furniture": true,
+          "desk-surface": true,
+          "desk-occluders": true
+        },
+        "composite_alpha_min": 255,
+        "composite_alpha_max": 255,
+        "pack_bytes": 252074,
+        "files": [
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-background-wall--v01-1448w.webp",
+            "bytes": 60164,
+            "sha256": "0FA976517BA3D53325BCAB70D178C47BCEBC715EDFA115C59A7522F8A7E0E266"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-midground-furniture--v01-1448w.webp",
+            "bytes": 79214,
+            "sha256": "CA3662C802B65F3A00A1C1A175A9DE4BADC776057AF3B8830B20073B1B006869"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-desk-surface--v01-1448w.webp",
+            "bytes": 104440,
+            "sha256": "6936C762F01B501D49092A99F6E1F026B942E36AB99632ED4E3EA5533FA587AE"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-desk-occluders--v01-1448w.webp",
+            "bytes": 8256,
+            "sha256": "2484F94C473F559149AE542BA5FA406FA6DDEC351DC09A980F6CAE2ACD85C4AD"
+          }
+        ]
+      }
+    },
+    "2896": {
+      "avif": {
+        "changed_pixels": 6208372,
+        "mae": 1.6822595527710795,
+        "max_error": 51,
+        "psnr_db": 41.067522267159234,
+        "ssim": 0.9684697496755904,
+        "boundary_ring_pixels": 76520,
+        "boundary_ring_mae": 1.8574664575710054,
+        "boundary_to_global_mae_ratio": 1.1041497458054665,
+        "alpha_iou": {
+          "background-wall": 1.0,
+          "midground-furniture": 1.0,
+          "desk-surface": 1.0,
+          "desk-occluders": 1.0
+        },
+        "alpha_exact": {
+          "background-wall": true,
+          "midground-furniture": true,
+          "desk-surface": true,
+          "desk-occluders": true
+        },
+        "composite_alpha_min": 255,
+        "composite_alpha_max": 255,
+        "pack_bytes": 400200,
+        "files": [
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-background-wall--v01-2896w.avif",
+            "bytes": 101653,
+            "sha256": "FAB4C8173922B54B49367A4DB4BF8D5B77C52DEA4F05464EAB08A62B278ED816"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-midground-furniture--v01-2896w.avif",
+            "bytes": 127794,
+            "sha256": "B4675B3AD33C2C8ECA09075F58FDE6996A8F1774C636B91CD9D0D51E1A05192E"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-desk-surface--v01-2896w.avif",
+            "bytes": 159617,
+            "sha256": "D76B13212FFFC658A03300D961046FDD25823BD186CA71E5E692BB52430B0801"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/avif/drafts/scene-desk-occluders--v01-2896w.avif",
+            "bytes": 11136,
+            "sha256": "74405BC206BB429BFCE1A164DCD3F3AB1884CA3F484917ACD5E7F28C5B8170DB"
+          }
+        ]
+      },
+      "webp": {
+        "changed_pixels": 6232723,
+        "mae": 2.030579635677923,
+        "max_error": 38,
+        "psnr_db": 39.34185644877548,
+        "ssim": 0.9556822797503322,
+        "boundary_ring_pixels": 76520,
+        "boundary_ring_mae": 2.293870883429169,
+        "boundary_to_global_mae_ratio": 1.1296630987158227,
+        "alpha_iou": {
+          "background-wall": 1.0,
+          "midground-furniture": 1.0,
+          "desk-surface": 1.0,
+          "desk-occluders": 1.0
+        },
+        "alpha_exact": {
+          "background-wall": true,
+          "midground-furniture": true,
+          "desk-surface": true,
+          "desk-occluders": true
+        },
+        "composite_alpha_min": 255,
+        "composite_alpha_max": 255,
+        "pack_bytes": 575838,
+        "files": [
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-background-wall--v01-2896w.webp",
+            "bytes": 135018,
+            "sha256": "47989BCDF781A10F237A88F5B72758241E10A077A78C181B33E68A0180050B98"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-midground-furniture--v01-2896w.webp",
+            "bytes": 178170,
+            "sha256": "52EF34452031E3758E46D8B7F97664AFEDE503451C4A7869F1B31C45E6220092"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-desk-surface--v01-2896w.webp",
+            "bytes": 241034,
+            "sha256": "9A99F4BD62126E9F4A17DE78BEF0B29565B3FF92C3C42089612F6F1904998C64"
+          },
+          {
+            "path": "visuals/04-scene-production/layers/webp/drafts/scene-desk-occluders--v01-2896w.webp",
+            "bytes": 21616,
+            "sha256": "2C2D57B92B954708C8B7DA79BC3642BF0B3388BE86F25423F516970545AF13F0"
+          }
+        ]
+      }
+    }
+  },
+  "gates": {
+    "native_union_pixels": 1572528,
+    "native_uncovered_pixels": 0,
+    "native_overlap_pixels": 0,
+    "native_class_values": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "lossless_exact": true,
+    "runtime_quality": true,
+    "runtime_alpha": true,
+    "runtime_seams": true,
+    "largest_pack_under_700kb": true
+  }
+}

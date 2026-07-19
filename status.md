@@ -1,0 +1,90 @@
+# STATUS — Swan's Office
+
+Updated: 2026-07-20 by Claude (entry-screen decision appended; production state below is Codex's)
+Current phase: Visual production — calm Swan review / remaining-media audit
+
+## Done (cumulative, one line per item)
+- Visual-production workspace, complete asset manifest, gated generation plan, and V-001 master-scene prompt created under `visuals/`.
+- V-001 master-scene candidate generated at 1448×1086, saved under `visuals/02-master-scene/drafts/`, and checked at full resolution and 390px width.
+- V-001 approved by owner, promoted to canonical reference #1, and upscaled once to 2896×2172.
+- V-002 pose-sheet candidate 2 generated at 1448×1086 with twelve required unlabeled states; saved under `visuals/03-duck/pose-sheet/drafts/` and internally reviewed.
+- V-002 approved by owner and promoted to canonical reference #2 with its exact successful prompt recorded.
+- V-003 expression-sheet candidate 1 generated at 1448×1086 with all eleven required acting states and one empty grid position; saved under `visuals/03-duck/expression-sheet/drafts/` and internally reviewed.
+- V-003 approved by owner and promoted to canonical reference #3; the complete canonical trio is now locked for every downstream generation.
+- V-004A head/face rig-source atlas candidate 1 generated at 1448×1086 and passed silhouette, corner-alpha, and green-spill QA, but independent rig QA rejected its oversized eye/brow states because they do not register to the control head without rescaling.
+- V-004B upper-body action/prop atlas generated at 1448×1086 after one safety-filtered detached-layer attempt, converted locally to transparent RGBA, and passed content, silhouette, corner-alpha, and green-spill QA.
+- V-004A candidate 6 completed the focused registration corrections; eyes, brows, bill halves, mouth plate, top-row clearance, component separation, canonical identity, and alpha now pass independent QA with no runtime rescaling required.
+- V-004 approved by owner; stable transparent head/face and upper-body action/prop sources were promoted under their respective `approved/` folders.
+- V-004A feather palette corrected without redraw: head atlas v07 now matches the approved body-actions cream authority while retaining byte-identical alpha, geometry, bill/brow/ink materials, and all RGB outside the feather mask; v06 and body-actions v02 remain unchanged.
+- V-010A full hidden-surface repair generated from the approved native master with the canonical trio attached; only the saved Swan-region mask was composited into the master.
+- V-010A composite v03 passed internal and independent QA: no Swan/newspaper/shadow ghost, coherent empty chair and office repair, original pipe/mug restored, and zero changed pixels outside the effective repair support.
+- V-010A approved by owner and promoted to `office-clean-plate-swan--v03--approved.png` as the immutable source for localized prop-removal passes.
+- V-010B and V-012A approved by owner: the exact foreground résumé-folder RGBA and its matching masked desk repair were promoted as immutable sources after alpha, keep-out, seam, and zero-outside-drift QA.
+- V-010C and V-012B approved by owner: the exact rust-red Skills shelf cutout and matching empty-slot repair were promoted byte-identically after alpha, mobile-readability, recomposition, keep-out, and zero-outside-drift QA.
+- V-010D and the Contact scene layers approved by owner: the telephone handset v02, resting contact card v01, and integration-safe localized clean plate v03 were promoted byte-identically; v03 changes zero pixels outside the exact 14,943-pixel handset/card support and recomposes with the approved cutouts at only 0.010658 mean absolute RGB error.
+- V-028 blank Contact business card v02 approved and promoted at 2800×1600 RGBA after alpha, spill, paper-tone, text-absence, and mobile-size QA. The generated surface remains blank so all real contact content can be DOM-rendered later.
+- V-024 Skills book paired v01 approved by owner and promoted byte-identically: a complete rust-red closed desk state and matching open two-page blank spread, both transparent, spill-free, palette-matched, and reserved for DOM-rendered Skills content.
+- V-020 blank dialogue panel v01 and V-021 blank About desk card v01 approved by owner and promoted byte-identically after paired alpha, spill, blankness, warm-paper, silhouette, and office-scale QA.
+- V-022 Projects storybook paired v01 approved by owner and promoted byte-identically: a deep banker-green closed cover and matching open two-page blank spread, both transparency-ready and reserved for DOM-rendered project content.
+- V-023 Experience folder paired v01 approved by owner and promoted byte-identically: a slate pressboard closed dossier and matching open folder with a large blank paper stack, visually distinct from the résumé folder.
+- V-025 Award detail plaque v01 and V-026 Education certificate enlargement v01 approved by owner and promoted byte-identically: distinct blank walnut/brass and walnut/parchment physical surfaces, both transparent and reserved for DOM-rendered content.
+- V-027 blank résumé document v01 and V-029 whiteboard enlargement v01 approved by owner and promoted byte-identically after blankness, transparency, spill, proportion, office-scale, and 390px QA.
+- V-030 loading vignette v01 and V-031 OG/social image v01 approved by owner and promoted byte-identically: an opaque 4:5 blank-note office door and a deterministic 1200×630 crop of the approved master scene.
+- V-032 caption-free 404 illustration v01 and deterministic V-033 avatar/favicon set v01 approved by owner and promoted byte-identically after identity, blankness, contrast, alpha-edge, mobile, and 16px favicon QA.
+- V-034 entry portrait of Sowan v01 approved by owner and promoted byte-identically: margin-safe 2600×3250 framed master, 1200×1500 reusable inner portrait, and twelve responsive AVIF/WebP variants, with the source-photo logo/backpack excluded and the brass plaque kept blank.
+- V-011 scene-depth layers v01 approved by owner and promoted byte-identically: eight native/retina source PNGs, twenty-four 724/1448/2896 AVIF/WebP files, and five exhaustive ownership masks; exact reconstruction, exact runtime alpha, mobile-resource, seam, and sub-700 KB pack gates passed.
+
+## In progress
+- V-005 calm static Swan candidate v01 passed internal and independent QA and is prepared for owner review: exact approved-atlas pose, transparent 320/640/1280 PNG masters, AVIF/WebP runtime variants, and a refreshed final integration proof using approved V-011/V-012 plus the real 724w mobile resource path.
+
+## Blocked (what + what's needed to unblock)
+- V-040 authentic project captures — largely delivered 2026-07-20 under `visuals/07-project-media/source-captures/`: five BahasaBot captures (`bahasabot/`), nine USM Evently captures (`usm-evently/`, from github.com/Sowan3k/usm_evently docs), six My Bibi captures (`my-bibi/`, from github.com/Sowan3k/My-Bibi-App docs, demo data only). Virtual Zara has no captures by decision (see decisions log). Remaining: confirm the final featured roster and whether the Grab real-time demo is included.
+- V-041 authentic award/certificate media — owner note 2026-07-20: PIXEL has not issued the certificate yet; awards card ships with the approved blank plaque + DOM text (per locked decision) and real imagery slots in whenever the certificate arrives. Not blocking.
+- ~~Final `resume.pdf` remains owner-supplied media~~ — delivered 2026-07-20: `Noor_Mohammad_Sowan_CV.pdf` copied to `public/resume.pdf` (law 2 download target) with source files (PDF, DOCX, `Sowan_Master_CV.md` — the porting source for `profile.ts`) filed under `visuals/07-project-media/resume-source/`. Confirm this PDF is the final version before Phase 9.
+
+## Next 3 actions
+1. Complete owner review and promotion of V-005 calm static Swan v01.
+2. Complete the remaining visual-media inventory audit and resolve any unblocked export gaps.
+3. Prepare authentic project/award media when owner sources are available.
+
+## Decisions log (date — decision — why)
+- 2026-07-18 — Visual production will be completed before development work begins in this conversation — direct owner instruction; source workspace and approval gates live under `visuals/`.
+- 2026-07-18 — Project pivoted from "SowanOS" to "Swan's Office" — owner judged the OS concept too ambiguous to imagine and build; one scene, one character, one interaction pattern is finishable and more memorable.
+- 2026-07-18 — Sound amended from "subtle ambience" (bible §14) to muted-by-default with a visible opt-in toggle — autoplaying audio harms first impressions and accessibility; silence is the professional default.
+- 2026-07-18 — Rive (canvas) permitted for the duck only, lazy-loaded — a rigged state machine beats sprite sheets for a character with 7+ states; scoped exception, nothing else may use canvas/WebGL.
+- 2026-07-18 — Resume Folder ships with no dialogue gate — a recruiter must reach the PDF in one activation; charm never gates content (CLAUDE.md law 2).
+- 2026-07-18 — All readable text renders in DOM over blank art props — crisp at every size, editable without regenerating art, screen-reader accessible (CLAUDE.md law 3).
+- 2026-07-18 — Art direction locked: warm cartoon illustration (heavy ink outlines, soft shading, muted warm palette, green lamp glow) per the owner's chosen reference; reference is style-only, all assets original. Full constitution in art_style.md.
+- 2026-07-18 — All visuals generated with OpenAI image generation; consistency strategy: locked style paragraph pasted verbatim + approved master scene and duck sheets attached as references to every subsequent generation; assets generated without references are auto-rejected.
+- 2026-07-18 — V-004 uses two source atlases: isolated head/face components plus complete upper-body action states and matching standalone props — this preserves clean animation choices while avoiding unsafe-looking detached costume or limb imagery.
+- 2026-07-18 — Graduation frame, monitor, trophy, and whiteboard remain fixed scene fixtures; their interactions use highlight/reaction overlays and dedicated enlarged media — the brief asks them to expand or reveal content, not physically lift, and the chair naturally occludes the frame. Ambient pipe, mug, lamp, clock, plants, and weather also remain baked into the scene. Clean-plate removal is reserved for objects that visibly move or uncover a hidden surface.
+- 2026-07-19 — The rust-red upright lower-shelf book is the Skills reaction layer; two top-shelf teal-book repair drafts were rejected — the rust book has the safer extractable silhouette, larger mobile footprint, simpler empty-slot repair, and more believable small outward pull. The bookshelf remains the single focusable DOM hotspot; the cutout is aria-hidden, and V-024 owns the completed closed/open book media.
+- 2026-07-19 — Telephone/contact clean plate v03 uses localized image-generation donors registered by translation and composited only through the approved handset/card silhouettes — this preserves every fixed pixel outside support and gives the strongest resting-state recomposition. Broad v01 and expanded-fringe v02 plates remain superseded QA evidence and are not production sources.
+- 2026-07-19 — V-028 ships as one blank 7:4 business-card front with transparent surroundings and no generated writing — contact links, labels, icons, and focus states remain accessible DOM/SVG content.
+- 2026-07-19 — V-005 and V-011 moved from gated to ready because all canonical dependencies are approved. V-013 needs no separate raster generation: approved cutouts own physical movement, DOM/CSS/SVG owns fixture emphasis, and Rive later owns Swan reactions.
+- 2026-07-18 — External review (GPT) adopted in part: expression sheet added as the acting reference before any animation; one canonical timing table added to CLAUDE.md §5. Rejected: per-object cinematic scripts and a separate "Director's Book" — one deliberate interaction pattern means one timing table, and feel is already owned by the two vision documents.
+- 2026-07-20 — Content roster locked (owner delegated the call, quality-first): featured storybook = exactly four entries — BahasaBot, Virtual Zara (described-only), My Bibi, USM Evently. The Grab real-time demo stays off the storybook (coursework demo; four strong pages beat five uneven ones) and lives only as a GitHub-profile link. Wayfinder goes on the whiteboard as the "currently building" item alongside the CV master's learning roadmap, and graduates to the storybook only when it has captures, a license, and a README worth linking. Contact publishes email, GitHub, and LinkedIn only — no phone number on a public site. Awards card ships with the approved blank plaque + DOM text; real PIXEL certificate imagery is optional and can be added later without rework. `public/resume.pdf` is treated as final unless the owner replaces it.
+- 2026-07-20 — Virtual Zara ships as a described-only project entry (owner decision): it was confidential internship work at ECTrons, so no screenshots, UI recreations, or mockups may be shown — the storybook entry uses text (scope facts from `Sowan_Master_CV.md`: five integrated systems, three domains, three input modes, in use after the internship) and may use a generic in-style illustration that depicts no actual UI. Law 4 applies: describe only what the testimonial letter and CV master file support.
+- 2026-07-20 — Entry screen redesigned (owner decision): the entry/loading cover becomes a framed cartoon portrait of Sowan with DOM welcome text and a "press Enter / tap to come in" affordance; entering plays a warm CRT power-on transition (cream/amber phosphor bloom, ≤ 1s, no strobing — a cold digital glitch is rejected per art_style.md §8), collapsing to a ≤ 0.15s crossfade under `prefers-reduced-motion`. The standard-view link stays on the entry screen (law 5) and the resume seven-second path is unaffected. New asset V-034 generates the portrait from the owner photo `visuals/Sowan's real photo.jpeg` with the canonical trio attached; the photo's clothing brand logo must not be reproduced. Approved V-030 door vignette v01 is retained as an approved alternate, not deleted. CLAUDE.md §8 updated accordingly; vision documents untouched.
+
+## TODO(content) — personal data still needed from owner
+- Updated bio, current status line, and location for profile.ts.
+- ~~Final featured project list~~ — locked 2026-07-20 (see decisions log): BahasaBot, Virtual Zara (described-only), My Bibi, USM Evently. Wayfinder (github.com/Sowan3k/Wayfinder-) on the whiteboard only for now; Grab demo GitHub-only. Writeups still to be drafted from `Sowan_Master_CV.md` bullet banks during profile.ts porting, owner reviews before ship.
+- Experience entries with impact bullets, including ECTrons and Virtual Zara production details.
+- Awards list (PIXEL Silver confirmed; anything else), certifications.
+- ~~Whiteboard roadmap items~~ — locked 2026-07-20: "Building Wayfinder — an AI codebase mentor" + learning roadmap from the CV master (LangGraph, CrewAI, MCP, AWS, CI/CD, pytest). Exact wording drafted at dialogue-writing time, owner reviews.
+- Newspaper masthead + first headline; sticky-note flavor texts (owner-approved).
+- Final resume.pdf.
+- ~~Contact links to display~~ — locked 2026-07-20: email, GitHub, LinkedIn (from `Sowan_Master_CV.md`); no phone number. Note: if the owner sets the custom LinkedIn URL, update profile.ts then.
+
+## TODO(assets) — art pipeline (owner-driven, blocks Phases 5–6 only)
+- ~~Locked style paragraph~~ — done: art_style.md §1.
+- ~~Master scene image, iterated to approval, all text props blank, generated at max resolution and upscaled per art_style.md §9.~~ — approved V-001; canonical reference #1: `visuals/00-references/canonical/ref-01-master-scene.png` (2896×2172); exact approved prompt and review record: `visuals/01-prompts/master-scene/00-master-scene-v1.md`.
+- ~~Duck pose sheet (one grid image, master attached): front pose, bill open/closed, eye states, brow states, two wing poses, newspaper up/down.~~ — approved V-002; canonical reference #2: `visuals/00-references/canonical/ref-02-duck-pose-sheet.png` (1448×1086); exact approved prompt and review record: `visuals/01-prompts/duck/02-duck-pose-sheet-v2.md`.
+- ~~Duck expression sheet (one grid image, master attached) — the acting reference: relaxed, neutral, thinking, sleeping, surprised, smirk, laughing, looking at viewer, reading, coffee, pipe.~~ — approved V-003; canonical reference #3: `visuals/00-references/canonical/ref-03-duck-expression-sheet.png` (1448×1086); exact approved prompt and review record: `visuals/01-prompts/duck/03-duck-expression-sheet-v1.md`.
+- ~~Scene cut into layers (background / midground / desk foreground / liftable props), gaps inpainted, exported as transparent AVIF/WebP.~~ — approved V-011 v01 plus approved V-012 cutouts.
+- Rigged Rive file with state machine (idle, read, notice, talk, think, sleep, return), poses and acting from the approved sheets.
+- ~~Loading vignette illustration (office door + "come in" note).~~ — approved V-030 v01; retained as an alternate. The entry screen now uses V-034 (decision 2026-07-20).
+- ~~V-034 entry portrait: cartoonish framed portrait of Sowan derived from `visuals/Sowan's real photo.jpeg`, style-matched via the canonical trio, wooden frame with blank plaque, no text or logos anywhere; welcome text renders in DOM. Also reusable (inner crop) on the About card and standard-view About section.~~ — approved v01 with framed and inner responsive sets.
+- OG image (the duck at his desk).
+- Ambience sound files (rain, paper, cup, chair, clock), ≤ 150KB total.

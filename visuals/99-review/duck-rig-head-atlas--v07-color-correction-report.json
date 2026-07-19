@@ -1,0 +1,49 @@
+{
+  "source": "visuals\\03-duck\\rig-parts\\head-atlas\\approved\\duck-rig-head-atlas--v06--approved.png",
+  "authority": "visuals\\03-duck\\rig-parts\\body-props-atlas\\approved\\duck-rig-body-actions--v02--approved.png",
+  "output": "visuals\\03-duck\\rig-parts\\head-atlas\\approved\\duck-rig-head-atlas--v07--approved.png",
+  "qa_sheet": "visuals\\99-review\\contact-sheets\\duck-rig-head-atlas--v07-color-correction-qa.png",
+  "source_sha256": "6ac120026c3813bf21531b62dc83de70a13b3a39fd3ef2c532e7d73fa44b8d69",
+  "authority_sha256": "990be64bfae7fd0676c4a3fa79e2259e71065225c3843fbffd99614f33a80b12",
+  "output_sha256": "4de77220d740037e36897ccd15ce4882b2b29e74fb04e7feb175574c87dc4cd0",
+  "width": 1448,
+  "height": 1086,
+  "mode": "RGBA",
+  "source_nonzero_alpha_pixels": 62979,
+  "output_nonzero_alpha_pixels": 62979,
+  "changed_rgb_pixels": 37135,
+  "anchor_source_pixels": 112,
+  "anchor_exact_target_pixels": 112,
+  "source_anchor": "#FDD8C3",
+  "target_anchor": "#F6DCB5",
+  "shading_lightness_correlation": 0.9999378410266191,
+  "shading_lightness_delta_p95": 1.0,
+  "shading_lightness_delta_max": 3.0,
+  "immutable_cell_checks": {
+    "R1C3_bill": true,
+    "R1C4_bill": true,
+    "R2C4_brows": true,
+    "R3C1_brows": true,
+    "R3C2_brows": true,
+    "R3C3_brows": true,
+    "R3C4_mouth": true
+  },
+  "mask": {
+    "connected_components": 19,
+    "semantic_pixels": 50127,
+    "keep_out_pixels": 9032,
+    "feather_mask_pixels": 37135
+  },
+  "checks": {
+    "size_exact": true,
+    "alpha_byte_identical": true,
+    "rgb_outside_mask_byte_identical": true,
+    "transparent_rgba_byte_identical": true,
+    "changed_support_equals_mask": true,
+    "authority_array_untouched_in_memory": true,
+    "named_anchor_exact": true,
+    "shading_lightness_correlation_gt_0_999": true,
+    "shading_lightness_p95_delta_le_1": true,
+    "bill_brow_mouth_cells_byte_identical": true
+  }
+}
