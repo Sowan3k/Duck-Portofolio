@@ -96,8 +96,12 @@ Tasks:
 2. Project media paths: map each featured project to its approved runtime
    images under `visuals/07-project-media/approved/runtime/` (copied to
    `public/assets/` at Phase 2). Virtual Zara gets **no images** by decision.
-3. Newspaper masthead + headline and sticky-note texts: draft 3 options each,
-   store as data marked `TODO(owner-review)` — **OWNER** picks before Phase 9.
+3. Newspaper masthead + a rotating headline list (5–8 headlines drawn from
+   real facts, per the 2026-07-20 features decision) and sticky-note texts:
+   draft options, store as data marked `TODO(owner-review)` — **OWNER** picks
+   before Phase 9.
+4. Whiteboard roadmap entries carry a `done` flag (living-roadmap feature) —
+   completed items render struck-through with an "updated <month year>" note.
 4. Vitest schema tests: required fields present, no empty strings, URLs valid,
    every project link resolves to a real GitHub repo name.
 
@@ -190,6 +194,16 @@ Tasks:
    returns to the object).
 5. Visited-object memory in localStorage; idle scheduler skeleton (states
    only, real animation in Phase 6; reduced-motion freezes to calm pose).
+6. v1 features from existing content (2026-07-20 decision):
+   - **Time-aware duck**: idle scheduler + dialogue variants keyed to the
+     visitor's local time (late night → sleeping idle + groggy notice lines;
+     morning → coffee-leaning idles). Existing expression states only.
+   - **"Take a card"**: the contact card offers a generated `.vcf` download
+     built from profile.ts (name, email, GitHub, LinkedIn — no phone).
+   - **Rotating newspaper headline**: DOM headline over the newspaper prop,
+     picked per visit from the profile.ts headline list.
+   - **Living whiteboard**: render the `done`-flagged roadmap entries with
+     hand-drawn strikethrough style.
 
 Exit criteria: all nine objects open their content with correct dialogue in
 gray-box; recruiter path: entry → resume PDF in ≤2 interactions; unit tests
@@ -295,6 +309,11 @@ Tasks:
 4. Full accessibility audit: axe on every state (entry, office, each open
    UI), screen-reader walkthrough, keyboard-only full tour including look-
    around list.
+5. v1.1 polish menu (schedule-permitting, in this order; all from existing
+   content, 2026-07-20 decision): standard view's office-entry link becomes
+   the approved door vignette; truthful build-time GitHub stats (license/
+   stars/forks) on storybook pages; print stylesheet for the standard view;
+   "?" keyboard-hints overlay. Skip freely if time is short — none block v1.
 
 Exit criteria: no known jank; axe clean everywhere; budgets still green;
 owner has seen and approved the cursor call.
