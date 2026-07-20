@@ -1,8 +1,10 @@
 ---
 /**
  * index.astro — the standard view (law 5: ships first, the SEO/no-JS surface,
- * a complete portfolio a recruiter can use without ever seeing the office).
- * Phase 3 mounts the office island over this same page and adds the entry link.
+ * a complete portfolio a recruiter can use without ever seeing the office),
+ * with the office island (Phase 3) mounted over it. With JS the office covers
+ * the page (entry → CRT → gray-box office); without JS the overlay is hidden
+ * (`.no-js`) and the standard view is the whole experience.
  */
 import Base from '../layouts/Base.astro';
 import Hero from '../components/standard/Hero.astro';
@@ -15,20 +17,27 @@ import Education from '../components/standard/Education.astro';
 import Roadmap from '../components/standard/Roadmap.astro';
 import Contact from '../components/standard/Contact.astro';
 import Footer from '../components/standard/Footer.astro';
+import Office from '../components/office/Office.tsx';
 ---
 
 <Base>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <Hero />
-  <main id="main">
-    <About />
-    <Experience />
-    <Projects />
-    <Skills />
-    <Awards />
-    <Education />
-    <Roadmap />
-    <Contact />
-  </main>
-  <Footer />
+  {/* The standard view — made inert by the island while the office is open. */}
+  <div id="standard-view">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Hero />
+    <main id="main" tabindex="-1">
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Awards />
+      <Education />
+      <Roadmap />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
+
+  {/* The office. client:load so it never renders without JS (law 5). */}
+  <Office client:load />
 </Base>

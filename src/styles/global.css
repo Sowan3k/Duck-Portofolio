@@ -35,6 +35,17 @@ body {
   border-radius: 2px;
 }
 
+/* The office island is client-rendered over the standard view. Without JS the
+ * <html> keeps its `no-js` class, so the overlay never shows and the standard
+ * view is the whole experience (law 5). An inline head script removes `no-js`. */
+.no-js .office-overlay {
+  display: none !important;
+}
+/* The "visit the office" button does nothing without JS — hide it there. */
+.no-js [data-open-office] {
+  display: none !important;
+}
+
 /* Skip-link target styling for the standard view (Phase 2 uses it). */
 .skip-link {
   position: absolute;

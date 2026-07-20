@@ -1,0 +1,385 @@
+/*
+ * office.css — styles for the office island (entry, gray-box scene, CRT).
+ * Loaded with the island. Colors reference the global @theme tokens.
+ * Gray-box uses flat blocks + dashed hotspots so it never reads as final art.
+ */
+
+.office-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+/* ------------------------------------------------------------------ *
+ * Entry screen
+ * ------------------------------------------------------------------ */
+.entry {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: radial-gradient(
+    120% 120% at 50% 30%,
+    #34281b 0%,
+    var(--color-ink) 70%
+  );
+}
+.entry__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  max-width: 24rem;
+  width: 100%;
+}
+.entry__portrait {
+  width: clamp(180px, 58vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+}
+.entry__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  line-height: 1.1;
+  margin: 0.25rem 0 0;
+  color: var(--color-cream);
+}
+.entry__sub {
+  margin: 0;
+  color: var(--color-duck);
+  font-size: 1rem;
+}
+.entry .entry__enter {
+  margin-top: 0.5rem;
+  background: var(--color-mustard); /* ink-on-mustard 7.6:1 — pops on dark */
+  color: var(--color-ink);
+  font-size: 1.0625rem;
+}
+.entry .entry__enter:hover:not(:disabled) {
+  background: #c99236; /* darker mustard, ink text still AA */
+}
+.entry .entry__enter:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.entry__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-duck);
+  max-width: 22rem;
+}
+.entry__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Controls (shared, light-on-dark)
+ * ------------------------------------------------------------------ */
+.office-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  background: none;
+  border: none;
+  color: var(--color-cream);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.office-link:hover {
+  color: var(--color-mustard);
+}
+.office-toggle {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  background: rgba(245, 240, 228, 0.12);
+  border: 1px solid rgba(245, 240, 228, 0.35);
+  border-radius: 0.5rem;
+  color: var(--color-cream);
+  font: inherit;
+  cursor: pointer;
+}
+.office-toggle:hover {
+  background: rgba(245, 240, 228, 0.22);
+}
+
+/* ------------------------------------------------------------------ *
+ * Scene scaler + gray-box
+ * ------------------------------------------------------------------ */
+.scene-viewport {
+  position: absolute;
+  inset: 0;
+  padding-top: 3.5rem; /* clear the controls bar */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.scene {
+  position: relative;
+  aspect-ratio: 4 / 3; /* master scene 2896×2172 */
+  width: min(100%, calc((100dvh - 3.5rem) * 4 / 3));
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  background: #b7a88f;
+  overflow: hidden;
+}
+
+.gb {
+  position: absolute;
+  inset: 0;
+}
+.gb__wall {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.03) 0,
+      rgba(0, 0, 0, 0.03) 2px,
+      transparent 2px,
+      transparent 44px
+    ),
+    #b0a087;
+}
+.gb__desk {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: var(--color-wood-dark);
+  border-top: 3px solid #4a3524;
+}
+.gb__duck {
+  position: absolute;
+  left: 52%;
+  top: 18%;
+  width: 24%;
+  height: 42%;
+  display: grid;
+  place-items: center;
+  background: var(--color-duck);
+  border: 2px solid var(--color-ink);
+  border-radius: 0.6rem 0.6rem 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2.6vw, 1.3rem);
+}
+
+/* ------------------------------------------------------------------ *
+ * Hotspots
+ * ------------------------------------------------------------------ */
+.hotspots {
+  position: absolute;
+  inset: 0;
+}
+.hotspot {
+  position: absolute;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(46, 125, 79, 0.1);
+  border: 2px dashed rgba(36, 26, 18, 0.5);
+  border-radius: 0.4rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  text-decoration: none;
+}
+.hotspot:hover,
+.hotspot:focus-visible {
+  background: rgba(217, 164, 65, 0.3);
+  border-color: var(--color-suit);
+  border-style: solid;
+}
+.hotspot__label {
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 2.4vw, 1.05rem);
+  line-height: 1.1;
+  background: var(--color-cream);
+  color: var(--color-ink); /* 13.7:1 */
+  padding: 0.1rem 0.5rem;
+  margin-bottom: 0.35rem;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+.hotspot:hover .hotspot__label,
+.hotspot:focus-visible .hotspot__label,
+.hotspots--show-labels .hotspot__label {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Toolbar + look-around
+ * ------------------------------------------------------------------ */
+.office-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  background: rgba(36, 26, 18, 0.9);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+}
+.office-controls__right {
+  display: flex;
+  gap: 0.5rem;
+}
+.look-around {
+  position: absolute;
+  top: 3.5rem;
+  right: 0.75rem;
+  z-index: 600;
+  max-width: min(90vw, 20rem);
+  padding: 0.75rem;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  border: 1px solid var(--color-wood);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.look-around__title {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  color: var(--color-wood-dark);
+}
+.look-around ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+.look-around .office-link {
+  width: 100%;
+  color: var(--color-wood-dark); /* dark on the cream panel */
+  text-align: left;
+}
+.look-around .office-link:hover {
+  color: var(--color-ink);
+}
+
+/* ------------------------------------------------------------------ *
+ * CRT power-on (transform / opacity / filter only, no strobing)
+ * ------------------------------------------------------------------ */
+.crt {
+  position: absolute;
+  inset: 0;
+  z-index: 800;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--color-ink);
+  animation: crt-cover var(--crt-ms, 1350ms) ease-out forwards;
+}
+@keyframes crt-cover {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.crt__beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: center;
+  background: linear-gradient(90deg, transparent, #fff7e6, transparent);
+  opacity: 0;
+  animation: crt-beam var(--crt-ms, 1350ms) ease-out forwards;
+}
+@keyframes crt-beam {
+  0% {
+    transform: translateY(-50%) scaleX(0) scaleY(1);
+    opacity: 0;
+  }
+  14% {
+    transform: translateY(-50%) scaleX(1) scaleY(1);
+    opacity: 1;
+  }
+  48% {
+    transform: translateY(-50%) scaleX(1) scaleY(120);
+    opacity: 0.9;
+  }
+  72% {
+    transform: translateY(-50%) scaleX(1) scaleY(220);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.crt__flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(217, 164, 65, 0.5),
+    rgba(217, 164, 65, 0) 70%
+  );
+  opacity: 0;
+  animation: crt-flash var(--crt-ms, 1350ms) ease-out forwards;
+}
+@keyframes crt-flash {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  62% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.office-overlay[data-view='crt'] .scene-viewport {
+  animation: crt-settle var(--crt-ms, 1350ms) ease-out forwards;
+}
+@keyframes crt-settle {
+  0% {
+    filter: brightness(0.2) saturate(0.6);
+  }
+  60% {
+    filter: brightness(1.4) saturate(1.1);
+  }
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+}
+
+/* Reduced motion: no CRT is rendered (enter → office directly); the global
+ * reduced-motion rule collapses any remaining transition to ~instant. */

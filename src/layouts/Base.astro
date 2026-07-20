@@ -32,9 +32,15 @@ const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
+    <!-- Swap no-js→js before paint: the office overlay only shows with JS, so
+         no-JS visitors keep the standard view (law 5). -->
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />

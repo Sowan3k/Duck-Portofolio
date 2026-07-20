@@ -1,10 +1,12 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 /**
  * The standard view is a complete portfolio a recruiter can use without ever
- * seeing the office (law 5). These tests are its contract: every section
- * renders, the résumé is one tap away, no-JS works, and it's axe-clean.
+ * seeing the office (law 5): the no-JS surface, the SEO surface, and one tap
+ * from the office. With JS the office overlay covers it on load, so these tests
+ * reach it the way a visitor does — via the "Standard view" link — or with JS
+ * disabled (its canonical form).
  */
 
 const SECTIONS = [
@@ -18,15 +20,22 @@ const SECTIONS = [
   'contact',
 ];
 
-test('every section landmark renders', async ({ page }) => {
+/** Land on the page and dismiss the office overlay to reach the standard view. */
+async function openStandardView(page: Page) {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Standard view' }).click();
+  await expect(page.locator('.office-overlay')).toHaveCount(0);
+}
+
+test('every section landmark renders', async ({ page }) => {
+  await openStandardView(page);
   for (const id of SECTIONS) {
     await expect(page.locator(`section#${id}`)).toBeVisible();
   }
 });
 
 test('renders meaningful profile content, not empty section shells', async ({ page }) => {
-  await page.goto('/');
+  await openStandardView(page);
   await expect(
     page.getByRole('heading', { name: 'Noor Mohammad Sowan', level: 1 })
   ).toBeVisible();
@@ -40,8 +49,8 @@ test('renders meaningful profile content, not empty section shells', async ({ pa
 });
 
 test('résumé downloads directly from hero and contact (law 2)', async ({ page }) => {
-  await page.goto('/');
-  const links = page.locator('a[href="/resume.pdf"][download]');
+  await openStandardView(page);
+  const links = page.locator('#standard-view a[href="/resume.pdf"][download]');
   await expect(links).toHaveCount(2);
   // The file is actually served.
   const res = await page.request.get('/resume.pdf');
@@ -50,7 +59,7 @@ test('résumé downloads directly from hero and contact (law 2)', async ({ page 
 });
 
 test('publishes email, GitHub, LinkedIn — and no phone number', async ({ page }) => {
-  await page.goto('/');
+  await openStandardView(page);
   await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
   await expect(page.locator('a[href="https://github.com/Sowan3k"]').first()).toBeVisible();
   await expect(page.locator('a[href*="linkedin.com/in/"]').first()).toBeVisible();
@@ -59,18 +68,23 @@ test('publishes email, GitHub, LinkedIn — and no phone number', async ({ page 
 });
 
 test('Virtual Zara is described-only: confidentiality note, no screenshots', async ({ page }) => {
-  await page.goto('/');
+  await openStandardView(page);
   const zara = page.locator('article', { hasText: 'Virtual Zara' });
   await expect(zara).toContainText('Confidential');
   await expect(zara.locator('img')).toHaveCount(0);
 });
 
-test('skip link is the first focusable element', async ({ page }) => {
+test('skip link is the first focusable element (no-JS standard view)', async ({ browser }) => {
+  // The skip link is the standard view's keyboard entry point; test it in the
+  // canonical no-JS surface where the standard view is the whole page.
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
   await page.goto('/');
   await page.keyboard.press('Tab');
   const focused = page.locator(':focus');
   await expect(focused).toHaveText('Skip to content');
   await expect(focused).toHaveAttribute('href', '#main');
+  await context.close();
 });
 
 test('the page is complete with JavaScript disabled', async ({ browser }, testInfo) => {
@@ -83,6 +97,8 @@ test('the page is complete with JavaScript disabled', async ({ browser }, testIn
   });
   const page = await context.newPage();
   await page.goto('/');
+  // No JS → the office overlay is hidden and the standard view is the page.
+  await expect(page.locator('.office-overlay')).toBeHidden();
   await expect(page.getByRole('heading', { name: 'Noor Mohammad Sowan', level: 1 })).toBeVisible();
   for (const id of SECTIONS) {
     await expect(page.locator(`section#${id}`)).toBeVisible();
@@ -93,11 +109,11 @@ test('the page is complete with JavaScript disabled', async ({ browser }, testIn
 });
 
 test('responsive images use approved formats and loading priorities', async ({ page }) => {
-  await page.goto('/');
-  const images = page.locator('main img, header img');
+  await openStandardView(page);
+  const images = page.locator('#standard-view main img, #standard-view header img');
   await expect(images).toHaveCount(7);
 
-  const hero = page.locator('header picture');
+  const hero = page.locator('#standard-view header picture');
   await expect(hero.locator('source[type="image/avif"]')).toHaveCount(1);
   await expect(hero.locator('source[type="image/webp"]')).toHaveCount(1);
   await expect(hero.locator('img')).toHaveAttribute('loading', 'eager');
@@ -110,7 +126,7 @@ test('responsive images use approved formats and loading priorities', async ({ p
   }
 });
 
-test('SEO artifacts and static no-script baseline are present', async ({ page }) => {
+test('SEO artifacts and server-rendered content are present', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
@@ -120,7 +136,13 @@ test('SEO artifacts and static no-script baseline are present', async ({ page })
     'content',
     /projects, experience, skills, and contact details/
   );
-  await expect(page.locator('script')).toHaveCount(0);
+
+  // The standard view is server-rendered (the SEO baseline) — present in the
+  // raw HTML without executing any script.
+  const html = await (await page.request.get('/')).text();
+  expect(html).toContain('Noor Mohammad Sowan');
+  expect(html).toContain('id="projects"');
+  expect(html).toContain('id="standard-view"');
 
   const robots = await page.request.get('/robots.txt');
   expect(robots.status()).toBe(200);
@@ -143,7 +165,7 @@ test('has no horizontal overflow at the supported viewport edges', async ({ page
     { width: 1920, height: 1080 },
   ]) {
     await page.setViewportSize(viewport);
-    await page.goto('/');
+    await openStandardView(page);
     const dimensions = await page.evaluate(() => ({
       viewport: document.documentElement.clientWidth,
       content: document.documentElement.scrollWidth,
@@ -154,8 +176,8 @@ test('has no horizontal overflow at the supported viewport edges', async ({ page
 
 test('button-style links meet the 44px mobile target', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 851 });
-  await page.goto('/');
-  const buttons = page.locator('a.btn');
+  await openStandardView(page);
+  const buttons = page.locator('#standard-view a.btn');
   for (let index = 0; index < (await buttons.count()); index += 1) {
     const box = await buttons.nth(index).boundingBox();
     expect(box?.height).toBeGreaterThanOrEqual(44);
@@ -163,8 +185,9 @@ test('button-style links meet the 44px mobile target', async ({ page }) => {
 });
 
 test('standard view has no axe-detectable accessibility violations', async ({ page }) => {
-  await page.goto('/');
+  await openStandardView(page);
   const results = await new AxeBuilder({ page })
+    .include('#standard-view')
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     .analyze();
   expect(results.violations).toEqual([]);
