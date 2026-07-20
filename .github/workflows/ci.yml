@@ -4,7 +4,6 @@ name: CI
 # and E2E on every push and PR (phases.md Phase 0 task 7b).
 on:
   push:
-    branches: [main]
   pull_request:
 
 jobs:

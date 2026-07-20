@@ -5,11 +5,11 @@
 @import 'tailwindcss';
 @import './tokens.css';
 
-/* Self-hosted, subset display + sans faces (@fontsource, CLAUDE.md §6). */
-@import '@fontsource/patrick-hand/400.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+/* Self-hosted Latin subsets only (@fontsource, CLAUDE.md §6). */
+@import '@fontsource/patrick-hand/latin-400.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-700.css';
 
 :root {
   color-scheme: light;
