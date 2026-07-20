@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 // Basic scaffold guarantees. Full standard-view coverage is in standard.spec.ts.
 test('home page loads with the display font wired', async ({ page }) => {
@@ -17,4 +18,12 @@ test('404 page preserves the approved art ratio and DOM caption', async ({ page 
   });
   await expect(illustration).toHaveAttribute('width', '480');
   await expect(illustration).toHaveAttribute('height', '600');
+});
+
+test('404 page has no axe-detectable accessibility violations', async ({ page }) => {
+  await page.goto('/missing-page');
+  const results = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
+  expect(results.violations).toEqual([]);
 });
