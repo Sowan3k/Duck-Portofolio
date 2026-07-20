@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   profile,
@@ -24,6 +25,41 @@ function allProfileText(): string {
 
 const HTTPS_URL = /^https:\/\/[^\s]+$/;
 const GITHUB_REPO = /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+$/;
+
+const EXPECTED_PROJECT_REPOS: Record<string, string[]> = {
+  bahasabot: ['https://github.com/Sowan3k/BahasaBot'],
+  'virtual-zara': [],
+  'my-bibi': ['https://github.com/Sowan3k/My-Bibi-App'],
+  'usm-evently': ['https://github.com/Sowan3k/usm_evently'],
+};
+
+const EXPECTED_MEDIA_STEMS: Record<string, string[]> = {
+  bahasabot: ['bahasabot-overview--v01', 'bahasabot-course-builder--v01'],
+  'virtual-zara': [],
+  'my-bibi': ['my-bibi-chat--v01', 'my-bibi-mobile-flow--v01'],
+  'usm-evently': [
+    'usm-evently-overview--v01',
+    'usm-evently-analytics--v01',
+  ],
+};
+
+function expectAllStringsNonEmpty(value: unknown, path = 'content'): void {
+  if (typeof value === 'string') {
+    expect(value.trim(), `${path} must not be empty`).not.toBe('');
+    return;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((item, index) =>
+      expectAllStringsNonEmpty(item, `${path}[${index}]`)
+    );
+    return;
+  }
+  if (value && typeof value === 'object') {
+    for (const [key, item] of Object.entries(value)) {
+      expectAllStringsNonEmpty(item, `${path}.${key}`);
+    }
+  }
+}
 
 describe('identity', () => {
   it('has canonical name, known-as, headline, status, location, summary', () => {
@@ -51,15 +87,25 @@ describe('contact — email, GitHub, LinkedIn only, no phone', () => {
     expect(kinds).toEqual(['email', 'github', 'linkedin']);
   });
 
-  it('has valid hrefs and the correct GitHub handle', () => {
+  it('has valid hrefs and the exact current contact values', () => {
     for (const link of profile.contact) {
       expect(link.label.trim().length).toBeGreaterThan(0);
       expect(link.href.trim().length).toBeGreaterThan(0);
+      expect(() => new URL(link.href)).not.toThrow();
     }
     const github = profile.contact.find((c) => c.kind === 'github');
     expect(github?.href).toBe('https://github.com/Sowan3k');
     const email = profile.contact.find((c) => c.kind === 'email');
-    expect(email?.href.startsWith('mailto:')).toBe(true);
+    expect(email).toMatchObject({
+      label: 'nurmohammadsowan119@gmail.com',
+      href: 'mailto:nurmohammadsowan119@gmail.com',
+    });
+    const linkedin = profile.contact.find((c) => c.kind === 'linkedin');
+    expect(linkedin).toMatchObject({
+      label: 'linkedin.com/in/noor-mohammad-sowan-b3742b37b',
+      href: 'https://www.linkedin.com/in/noor-mohammad-sowan-b3742b37b',
+      swappable: true,
+    });
   });
 
   it('never exposes a phone number anywhere in the profile', () => {
@@ -67,6 +113,16 @@ describe('contact — email, GitHub, LinkedIn only, no phone', () => {
     // The CV phone is +60 14-520 2958; guard against it and any phone-shaped run.
     expect(text).not.toContain('+60');
     expect(text).not.toMatch(/\b\d{2,4}[-\s]\d{3,4}[-\s]\d{3,4}\b/);
+  });
+});
+
+describe('single source of truth', () => {
+  it('Base.astro derives owner identity from profile.ts', () => {
+    const source = readFileSync(resolve(repoRoot, 'src/layouts/Base.astro'), 'utf8');
+    expect(source).toContain("import { profile } from '../content/profile'");
+    expect(source).toContain('profile.knownAs');
+    expect(source).toContain('profile.name');
+    expect(source).not.toContain('Noor Mohammad Sowan');
   });
 });
 
@@ -89,10 +145,12 @@ describe('experience', () => {
     );
     expect(ectrons).toBeDefined();
     // Title never changed (background check sees the letter).
-    expect(ectrons?.role.toLowerCase()).toContain('firmware');
+    expect(ectrons?.role).toBe(
+      'Firmware / Embedded Software Development Engineer (Trainee)'
+    );
     // Mandatory verbatim explanation of the AI-automation reality.
-    expect(ectrons?.context).toContain(
-      'Engineering Support and Services (ESS) department'
+    expect(ectrons?.context).toBe(
+      'Assigned to internal AI automation and workflow projects, Engineering Support and Services (ESS) department.'
     );
     expect(ectrons?.bullets.length).toBeGreaterThan(0);
   });
@@ -133,13 +191,31 @@ describe('projects — exactly four featured, in order', () => {
     }
   });
 
-  it('all project links are valid URLs; repo links are real GitHub repo paths', () => {
+  it('all project links are valid URLs with the verified repository names', () => {
     for (const p of profile.projects) {
       for (const link of p.links) {
         expect(link.href).toMatch(HTTPS_URL);
+        expect(() => new URL(link.href)).not.toThrow();
         if (link.kind === 'repo') expect(link.href).toMatch(GITHUB_REPO);
       }
+      expect(p.links.filter((link) => link.kind === 'repo').map((link) => link.href)).toEqual(
+        EXPECTED_PROJECT_REPOS[p.id]
+      );
     }
+    expect(profile.additionalProjects).toEqual([
+      expect.objectContaining({
+        name: 'Grab Real-Time Demo',
+        href: 'https://github.com/Sowan3k/grab-realtime-demo',
+      }),
+    ]);
+    expect(profile.roadmap.building.href).toBe(
+      'https://github.com/Sowan3k/Wayfinder-'
+    );
+  });
+
+  it('keeps project ids unique', () => {
+    const ids = profile.projects.map((project) => project.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 });
 
@@ -151,6 +227,8 @@ describe('truthfulness flags (LAW 4)', () => {
     expect(b?.status).toBe('Live demo');
     expect(JSON.stringify(b).toLowerCase()).not.toContain('in production');
     expect(JSON.stringify(b).toLowerCase()).not.toContain('production traffic');
+    expect(JSON.stringify(b).toLowerCase()).not.toContain('payment');
+    expect(JSON.stringify(b).toLowerCase()).not.toContain('paying user');
     // Canonical demo URL only; the stale link must never appear.
     expect(JSON.stringify(b)).not.toContain('bahasabot-main3');
     expect(b?.links.some((l) => l.href === 'https://bahasa-bot.vercel.app')).toBe(
@@ -164,15 +242,19 @@ describe('truthfulness flags (LAW 4)', () => {
     expect(z?.media).toHaveLength(0);
     expect(z?.links).toHaveLength(0);
     expect(z?.note?.toLowerCase()).toContain('confidential');
+    expect(z?.note?.toLowerCase()).not.toContain('testimonial');
   });
 
   it('USM Evently never claims live/deployed and marks payments simulated', () => {
     const e = byId('usm-evently');
-    expect(e?.status.toLowerCase()).toContain('not deployed');
-    // "deployed" may only appear inside "not deployed"; no live/deployed claim.
+    expect(e?.status).toBe('Open source (not deployed)');
+    expect(e?.links.every((link) => link.kind === 'repo')).toBe(true);
     const text = JSON.stringify(e).toLowerCase();
-    expect(text).not.toMatch(/"[^"]*\bdeployed live\b[^"]*"/);
-    expect(text).toContain('simulated');
+    expect(text).not.toContain('in production');
+    expect(e?.summary.toLowerCase()).toContain('payments are simulated');
+    expect(e?.bullets.join(' ').toLowerCase()).toContain(
+      'simulated ticketed payments'
+    );
   });
 
   it('My Bibi says encrypted-at-rest, never end-to-end', () => {
@@ -183,9 +265,19 @@ describe('truthfulness flags (LAW 4)', () => {
   });
 
   it('skills exclude C++, CI/CD, pytest, and Jest (not yet true)', () => {
-    const flat = profile.skills.flatMap((t) => t.items).join(' | ');
-    for (const forbidden of ['C++', 'CI/CD', 'pytest', 'Jest']) {
+    const flat = profile.skills.flatMap((t) => t.items).join(' | ').toLowerCase();
+    for (const forbidden of ['c++', 'ci/cd', 'pytest', 'jest']) {
       expect(flat).not.toContain(forbidden);
+    }
+  });
+
+  it('uses exactly the two CV-authorized skill tiers', () => {
+    expect(profile.skills.map((tier) => tier.label)).toEqual([
+      'Primary',
+      'Working knowledge',
+    ]);
+    for (const tier of profile.skills) {
+      expect(tier.items.length).toBeGreaterThan(0);
     }
   });
 });
@@ -206,16 +298,31 @@ describe('awards referential integrity', () => {
       if (p.awardId) expect(ids.has(p.awardId)).toBe(true);
     }
   });
+
+  it('award ids are unique and every award.projectId resolves both ways', () => {
+    const awardIds = profile.awards.map((award) => award.id);
+    expect(new Set(awardIds).size).toBe(awardIds.length);
+    for (const award of profile.awards) {
+      if (!award.projectId) continue;
+      const project = profile.projects.find(({ id }) => id === award.projectId);
+      expect(project, `missing project ${award.projectId}`).toBeDefined();
+      expect(project?.awardId).toBe(award.id);
+    }
+  });
 });
 
 describe('project media maps to real runtime files on disk', () => {
-  it('every media stem has all width/format variants present', () => {
+  it('has the exact approved media roster and all runtime variants', () => {
     for (const p of profile.projects) {
+      expect(p.media.map((media) => media.stem)).toEqual(
+        EXPECTED_MEDIA_STEMS[p.id]
+      );
       for (const media of p.media) {
+        expect(media).toMatchObject({ width: 1440, height: 720 });
         for (const w of PROJECT_MEDIA.widths) {
           for (const fmt of PROJECT_MEDIA.formats) {
             const rel = `${PROJECT_MEDIA.sourceDir}/${media.stem}-${w}w.${fmt}`;
-            expect(existsSync(new URL(rel, `file://${repoRoot}`))).toBe(true);
+            expect(existsSync(resolve(repoRoot, rel)), `missing ${rel}`).toBe(true);
           }
         }
         expect(media.alt.trim().length).toBeGreaterThan(0);
@@ -225,13 +332,34 @@ describe('project media maps to real runtime files on disk', () => {
 });
 
 describe('roadmap (living whiteboard)', () => {
-  it('has a current build target and flagged learning items', () => {
-    expect(profile.roadmap.building.text.toLowerCase()).toContain('wayfinder');
-    expect(profile.roadmap.learning.length).toBeGreaterThanOrEqual(6);
+  it('has the exact current build target and learning roster', () => {
+    expect(profile.roadmap.building).toEqual({
+      text: 'Building Wayfinder — an AI codebase mentor',
+      href: 'https://github.com/Sowan3k/Wayfinder-',
+    });
+    expect(profile.roadmap.learning.map((item) => item.text)).toEqual([
+      'LangGraph',
+      'CrewAI',
+      'MCP',
+      'AWS',
+      'CI/CD',
+      'pytest',
+    ]);
     for (const item of profile.roadmap.learning) {
       expect(item.text.trim().length).toBeGreaterThan(0);
       expect(typeof item.done).toBe('boolean');
+      if (item.done) {
+        expect(item.updated?.trim().length).toBeGreaterThan(0);
+      } else {
+        expect(item.updated).toBeUndefined();
+      }
     }
+  });
+});
+
+describe('required content completeness', () => {
+  it('contains no empty strings across profile or flavor data', () => {
+    expectAllStringsNonEmpty({ profile, newspaper, stickyNotes });
   });
 });
 

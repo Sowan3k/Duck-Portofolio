@@ -11,8 +11,8 @@
  * comments so a future editor cannot soften them by accident:
  *   - BahasaBot is a "Live demo", never "in production"; no payments/paying users.
  *   - USM Evently is open source, NOT deployed; its payments are simulated.
- *   - Virtual Zara is confidential (ECTrons) — described only, never shown; only
- *     what the signed testimonial letter supports.
+ *   - Virtual Zara is confidential (ECTrons) — described only, never shown.
+ *     Ownership language is letter-backed; continued use is Sowan's own claim.
  *   - ECTrons' official title is firmware/embedded but the work was AI
  *     automation; the title is never changed and never left unexplained.
  *   - No ECTrons performance metrics exist — scope only, never invented numbers.
@@ -218,7 +218,7 @@ export const profile: Profile = {
     },
     {
       kind: 'linkedin',
-      label: 'linkedin.com/in/noor-mohammad-sowan',
+      label: 'linkedin.com/in/noor-mohammad-sowan-b3742b37b',
       // CV follow-up: a custom LinkedIn URL replaces this in place when set.
       href: 'https://www.linkedin.com/in/noor-mohammad-sowan-b3742b37b',
       swappable: true,
@@ -311,7 +311,7 @@ export const profile: Profile = {
       media: [
         {
           stem: 'bahasabot-overview--v01',
-          alt: 'BahasaBot main interface showing the AI language tutor.',
+          alt: 'BahasaBot landing page, course-generator preview, and sign-in screen.',
           width: 1440,
           height: 720,
         },
@@ -330,10 +330,10 @@ export const profile: Profile = {
       tagline: 'Internal AI automation agent (ECTrons)',
       status: 'In use at ECTrons after the internship',
       confidential: true,
-      // CV + owner decision: confidential internship work. Describe only what
-      // the signed testimonial letter supports — no screenshots, no UI
-      // recreation, no invented interface, ever.
-      note: 'Confidential internship work at ECTrons — described only, with no screenshots or interface recreation. Scope reflects the signed testimonial letter.',
+      // CV + owner decision: confidential internship work. The master CV
+      // distinguishes letter-backed scope from Sowan's continued-use claim.
+      // No screenshots, UI recreation, or invented interface, ever.
+      note: 'Confidential internship work at ECTrons — described only, with no screenshots or interface recreation.',
       summary:
         'An internal AI automation agent built on modular n8n workflows for automated document generation and resume-screening support, with multimodal input across text, voice, and document parsing. It remained in use at the company after the internship ended.',
       bullets: [
@@ -561,9 +561,9 @@ export const newspaper: {
     'BahasaBot Takes Silver Among 249 at PIXEL 2026',
     'Virtual Zara Reportedly Still On Duty at ECTrons',
     'My Bibi Runs Entirely On Your Own Hardware, Says Local Engineer',
-    'USM Evently: Real Features, Simulated Tickets',
+    'USM Evently: Real Features, Simulated Payments',
     'Graduate Engineer Spotted Building "Wayfinder", an AI Codebase Mentor',
-    'Thirty Evaluators, One Language Tutor: BahasaBot Under Review',
+    'Thirty People, One Language Tutor: BahasaBot Under Review',
     "Photographer's Work Passes 131k Views on Pexels",
     'Final Exams: Completed. Graduation: August.',
   ],

@@ -5,6 +5,7 @@
  * is a clean SEO surface (CLAUDE.md §6, law 5). Global styles + fonts load here.
  */
 import '../styles/global.css';
+import { profile } from '../content/profile';
 
 interface Props {
   title?: string;
@@ -16,8 +17,8 @@ interface Props {
 }
 
 const {
-  title = "Swan's Office — Sowan's Portfolio",
-  description = "A portfolio you don't scroll — you visit. Swan the duck hosts Noor Mohammad Sowan's work from his animated office.",
+  title = `Swan's Office — ${profile.knownAs}'s Portfolio`,
+  description = `A portfolio you don't scroll — you visit. Swan the duck hosts ${profile.name}'s work from his animated office.`,
   path = Astro.url.pathname,
   index = true,
 } = Astro.props;
