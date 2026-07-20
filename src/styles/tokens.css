@@ -1,0 +1,42 @@
+/*
+ * tokens.css — the single source of design tokens for Swan's Office.
+ *
+ * Palette values are the art_style.md §4 targets, pasted here so DOM text and
+ * UI colors match the painted art (CLAUDE.md law 3, §8 contrast floor). These
+ * are the ONLY place colors and type are defined; components reference the
+ * generated Tailwind utilities (bg-cream, text-ink, font-display, …), never
+ * raw hex.
+ *
+ * Tailwind v4 reads this @theme block to generate the utility classes.
+ */
+@theme {
+  /* --- palette (art_style.md §4) --- */
+  --color-ink: #241a12; /* warm near-black outline; never pure black */
+  --color-cream: #efe6d0; /* cream / warm paper */
+  --color-wood-dark: #6b4a2f; /* wood, darker grain */
+  --color-wood: #8c6844; /* wood, lighter grain */
+  --color-mustard: #d9a441; /* mustard / warm yellow accent */
+  --color-green: #2e7d4f; /* banker's-lamp green */
+  --color-greyblue: #7b93a6; /* rainy window grey-blue */
+  --color-duck: #f5f0e4; /* duck body warm white */
+  --color-bill: #e8963c; /* bill and feet warm orange */
+  --color-suit: #4a3524; /* suit deep brown */
+
+  /* A near-black-on-cream pairing clears the 4.5:1 contrast floor. */
+
+  /* --- type families (CLAUDE.md §6: display for scene/props, sans for content) --- */
+  --font-display: 'Patrick Hand', ui-rounded, 'Segoe Print', cursive;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+
+  /* --- type scale (modular, ~1.25 major-third) --- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.1875rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.4375rem;
+}

@@ -1,0 +1,61 @@
+/*
+ * global.css — the one stylesheet imported by Base.astro.
+ * Order matters: Tailwind first, then our @theme tokens so they register.
+ */
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Self-hosted, subset display + sans faces (@fontsource, CLAUDE.md §6). */
+@import '@fontsource/patrick-hand/400.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Visible focus everywhere — never removed (CLAUDE.md law 7, §8). */
+:focus-visible {
+  outline: 3px solid var(--color-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip-link target styling for the standard view (Phase 2 uses it). */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+.skip-link:focus {
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

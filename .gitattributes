@@ -1,0 +1,13 @@
+# Normalize line endings to LF in the repo (CI runs on Linux); Windows working
+# copies still check out CRLF where the platform wants it.
+* text=auto eol=lf
+
+# Binary assets — never touch.
+*.png binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.pdf binary
+*.riv binary
+*.woff binary
+*.woff2 binary

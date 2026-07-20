@@ -1,0 +1,66 @@
+---
+/**
+ * Base.astro — the document shell for every page.
+ * Full meta (title, description, canonical, OG, favicons) so the standard view
+ * is a clean SEO surface (CLAUDE.md §6, law 5). Global styles + fonts load here.
+ */
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path (from site root) for the canonical URL; defaults to the current path. */
+  path?: string;
+  /** Set false on utility pages (e.g. 404) to discourage indexing. */
+  index?: boolean;
+}
+
+const {
+  title = "Swan's Office — Sowan's Portfolio",
+  description = "A portfolio you don't scroll — you visit. Swan the duck hosts Sowan Nur Mohammad's work from his animated office.",
+  path = Astro.url.pathname,
+  index = true,
+} = Astro.props;
+
+const canonical = new URL(path, Astro.site).href;
+const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {!index && <meta name="robots" content="noindex, follow" />}
+    <meta name="theme-color" content="#2e7d4f" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicons (approved V-033 set) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Swan's Office" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Swan the duck reading a newspaper at his desk in a warm, lamplit office." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

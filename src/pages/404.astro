@@ -1,0 +1,46 @@
+---
+/**
+ * 404.astro — the duck, alone. Caption renders in the DOM (law 3), not baked
+ * into the art. Uses the approved V-032 illustration (AVIF → WebP).
+ */
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="This page flew south — Swan's Office"
+  description="Page not found."
+  index={false}
+>
+  <main class="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center px-6 py-12 text-center">
+    <picture>
+      <source
+        type="image/avif"
+        srcset="/assets/404/swan-404--v01-400w.avif 400w, /assets/404/swan-404--v01-800w.avif 800w, /assets/404/swan-404--v01-1600w.avif 1600w"
+        sizes="(max-width: 480px) 90vw, 480px"
+      />
+      <source
+        type="image/webp"
+        srcset="/assets/404/swan-404--v01-400w.webp 400w, /assets/404/swan-404--v01-800w.webp 800w, /assets/404/swan-404--v01-1600w.webp 1600w"
+        sizes="(max-width: 480px) 90vw, 480px"
+      />
+      <img
+        src="/assets/404/swan-404--v01-800w.webp"
+        alt="Swan the duck standing alone, looking a little lost."
+        width="480"
+        height="480"
+        class="h-auto w-full max-w-[480px]"
+      />
+    </picture>
+
+    <h1 class="font-display text-4xl text-green mt-6">This page flew south.</h1>
+    <p class="font-sans text-lg text-ink mt-2">
+      There's nothing here, but Swan's still at his desk.
+    </p>
+    <a
+      href="/"
+      class="font-sans text-base text-green underline underline-offset-4 mt-6 inline-block"
+    >
+      Back to the office
+    </a>
+  </main>
+</Base>

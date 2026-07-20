@@ -1,7 +1,7 @@
 # STATUS — Swan's Office
 
-Updated: 2026-07-20 (V-034 v04 owner approval and responsive delivery)
-Current phase: Ready for development — pre-development visual gate complete
+Updated: 2026-07-20 (Phase 0 scaffold complete)
+Current phase: Phase 0 complete → ready for Phase 1 (content / profile.ts)
 
 ## Done (cumulative, one line per item)
 - Visual-production workspace, complete asset manifest, gated generation plan, and V-001 master-scene prompt created under `visuals/`.
@@ -37,17 +37,18 @@ Current phase: Ready for development — pre-development visual gate complete
 - V-040 authentic project media v01 approved by owner and promoted byte-identically: six privacy-safe 1440×720 masters and 36 responsive AVIF/WebP files for BahasaBot, My Bibi, and USM Evently; Virtual Zara remains deliberately screenshot-free.
 - V-060 final runtime pack v01 completed: 108 responsive AVIF/WebP files derived directly from 18 approved PNG authorities passed independent visual and mechanical QA with zero failing files or report mismatches.
 - Final largest-breakpoint scene packs passed the compressed-art gate: AVIF is 508,051 bytes and WebP is 695,540 bytes. The nine selected WebP files must be consumed byte-identically during development because only 4,460 bytes of budget headroom remain.
+- **Phase 0 (Scaffold) complete.** Astro 5.18.2 (static) + React 19 island support + Tailwind v4 (`@tailwindcss/vite`) + TypeScript strict, Node ≥20/npm, built around the existing `visuals/`/`art/` trees (untouched). Design tokens live once in `src/styles/tokens.css` (`@theme`): the ten art_style.md §4 palette colors + a modular type scale. Fonts self-hosted via `@fontsource` (Patrick Hand display + Inter sans). `Base.astro` carries full meta (title/description/canonical/robots/OG+Twitter/favicons); OG image, favicon set, and 404 art copied byte-identically into `public/`. Placeholder `index.astro` (token/font proof page) + complete `404.astro` ("This page flew south." over V-032 art, DOM caption). Vitest (11 token tests) + Playwright (4 E2E, mobile+desktop) green; GitHub Actions CI runs typecheck+test+build+E2E on push/PR. `npm run build` and `astro check` both clean; built pages ship zero JS (no island hydrated yet); build output stays gitignored.
 
 ## In progress
-- None. The pre-development visual gate is closed.
+- None. Phase 0 scaffold is closed; Phase 1 (profile.ts) is the next unit of work.
 
 ## Blocked (what + what's needed to unblock)
 - No required visual media is blocked. Authentic PIXEL/education imagery remains an optional future owner-supplied enhancement; v1 uses approved blank V-025/V-026 surfaces plus DOM text.
 
 ## Next 3 actions
-1. Begin development only when the owner explicitly starts that phase.
-2. Copy approved visual exports into the application's public asset tree without re-encoding the selected WebP production stack.
-3. Build the Rive state machine, DOM/SVG overlays, ambient motion, and final audio encoding/integration during development.
+1. Phase 1: build `src/content/profile.ts` from `visuals/07-project-media/resume-source/Sowan_Master_CV.md` (local-only content authority), respecting every truthfulness flag verbatim (law 4); add Vitest schema tests.
+2. Phase 2: standard-view `.astro` sections + copy the approved runtime project media into `public/assets/` byte-identically; ship-early deploy once it passes.
+3. Continue copying approved visual exports into `public/` per phase without re-encoding the selected WebP production stack.
 
 ## Decisions log (date — decision — why)
 - 2026-07-18 — Visual production will be completed before development work begins in this conversation — direct owner instruction; source workspace and approval gates live under `visuals/`.
@@ -74,6 +75,8 @@ Current phase: Ready for development — pre-development visual gate complete
 - 2026-07-20 — Cursor effects decided: three third-party cursor components (RetroDvdTv, GSAP MagneticCursor, inverted-cursor) evaluated and rejected — magnetic translation would drag hotspots off the painted objects they anchor to, blend-mode inversion produces cold digital color over the warm art (never-list), one hides the native cursor behind a laggy follower (precision/a11y harm), and GSAP+vecteur would duplicate Motion inside the 180KB budget. Instead, polish phase builds a tiny in-house effect: warm amber glow trailing the visible native cursor + hover label-lean (elastic timing feel only), ~1KB, no deps, desktop-only, disabled under reduced motion, cut without mercy if it competes with the duck.
 - 2026-07-20 — Content roster locked (owner delegated the call, quality-first): featured storybook = exactly four entries — BahasaBot, Virtual Zara (described-only), My Bibi, USM Evently. The Grab real-time demo stays off the storybook (coursework demo; four strong pages beat five uneven ones) and lives only as a GitHub-profile link. Wayfinder goes on the whiteboard as the "currently building" item alongside the CV master's learning roadmap, and graduates to the storybook only when it has captures, a license, and a README worth linking. Contact publishes email, GitHub, and LinkedIn only — no phone number on a public site. Awards card ships with the approved blank plaque + DOM text; real PIXEL certificate imagery is optional and can be added later without rework. `public/resume.pdf` is treated as final unless the owner replaces it.
 - 2026-07-20 — Virtual Zara ships as a described-only project entry (owner decision): it was confidential internship work at ECTrons, so no screenshots, UI recreations, or mockups may be shown — the storybook entry uses text (scope facts from `Sowan_Master_CV.md`: five integrated systems, three domains, three input modes, in use after the internship) and may use a generic in-style illustration that depicts no actual UI. Law 4 applies: describe only what the testimonial letter and CV master file support.
+- 2026-07-20 — Phase 0 font pairing locked: **Patrick Hand** (warm hand-written display, scene labels/props) + **Inter** (clean content sans), both self-hosted/subset via `@fontsource` (CLAUDE.md §6). Patrick Hand chosen over looser scripts (Caveat/Gochi) because scene labels must clear the 4.5:1 contrast/legibility floor at 44px targets; Inter for its subsetting and body legibility. Swappable in `tokens.css` if the art review wants a warmer sans later.
+- 2026-07-20 — Phase 0 stays on **Astro 5.18.2** (latest 5.x), NOT the audit's suggested Astro 7. `npm audit` flags XSS/SSRF/esbuild advisories whose only fix is Astro 7 (a breaking major). The stack is locked to Astro 5 (CLAUDE.md §6, "do not relitigate"); the flagged surfaces are SSR/dev-server features we don't expose in static output (define:vars XSS, server-island replay, prerendered-error SSRF, Windows dev-server file read). Revisit only if a patched 5.x lands or we adopt an affected feature.
 - 2026-07-20 — Entry screen redesigned (owner decision): the entry/loading cover becomes a framed cartoon portrait of Sowan with DOM welcome text and a "press Enter / tap to come in" affordance; entering plays a 1.35s warm CRT power-on transition (cream/amber phosphor bloom, no strobing — a cold digital glitch is rejected per art_style.md §8), collapsing to a ≤ 0.15s crossfade under `prefers-reduced-motion`. The standard-view link stays on the entry screen (law 5) and the résumé seven-second path is unaffected. New asset V-034 generates the portrait from the owner photo `visuals/00-references/owner/Sowan's real photo.jpeg` with the canonical trio attached; the photo's clothing brand logo must not be reproduced. Approved V-030 door vignette v01 is retained as an approved alternate, not deleted. CLAUDE.md §8 updated accordingly; vision documents untouched.
 
 ## TODO(owner) — actions outside the repo (gap review 2026-07-20)
