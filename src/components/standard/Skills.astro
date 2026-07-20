@@ -1,0 +1,25 @@
+---
+/**
+ * Skills.astro — two tiers of chips (CV: "Primary" and "Working knowledge").
+ * The absence of C++, CI/CD, pytest, and Jest is deliberate (not yet true).
+ */
+import { profile } from '../../content/profile';
+import Section from './Section.astro';
+---
+
+<Section id="skills" title="Skills & technologies" eyebrow="My toolbox">
+  <div class="space-y-6">
+    {
+      profile.skills.map((tier) => (
+        <div>
+          <h3 class="font-sans text-base font-semibold text-ink">{tier.label}</h3>
+          <ul class="mt-2 flex flex-wrap gap-2 list-none p-0">
+            {tier.items.map((item) => (
+              <li class="chip">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Section>

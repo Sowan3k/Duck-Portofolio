@@ -1,0 +1,51 @@
+---
+/**
+ * Roadmap.astro — the living whiteboard. "Currently building" headline plus the
+ * learning roadmap. Done items render struck-through with their `updated` note
+ * (all start not-done; nothing is invented as finished — law 4).
+ */
+import { profile } from '../../content/profile';
+import Section from './Section.astro';
+
+const { building, learning } = profile.roadmap;
+---
+
+<Section id="roadmap" title="On the whiteboard" eyebrow="What's next">
+  <div class="card">
+    <p class="font-sans text-sm font-semibold uppercase tracking-wide text-wood-dark">
+      Currently building
+    </p>
+    <p class="mt-1 font-display text-2xl text-green">
+      {
+        building.href ? (
+          <a class="prose-link" href={building.href} rel="noopener" target="_blank">
+            {building.text}
+          </a>
+        ) : (
+          building.text
+        )
+      }
+    </p>
+
+    <p class="mt-6 font-sans text-sm font-semibold uppercase tracking-wide text-wood-dark">
+      Learning roadmap
+    </p>
+    <ul class="mt-2 flex flex-wrap gap-2 list-none p-0">
+      {
+        learning.map((item) => (
+          <li
+            class:list={[
+              'chip',
+              item.done && 'line-through opacity-70',
+            ]}
+          >
+            {item.text}
+            {item.done && item.updated && (
+              <span class="ml-1 no-underline">({item.updated})</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Section>

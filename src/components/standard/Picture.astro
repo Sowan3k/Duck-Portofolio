@@ -1,0 +1,58 @@
+---
+/**
+ * Picture.astro — responsive <picture> for the approved runtime images.
+ * Emits AVIF → WebP sources with width variants and a WebP <img> fallback.
+ * Filenames follow the runtime convention `{dir}/{stem}-{w}w.{ext}`.
+ * Images below the fold pass loading="lazy" (the default); the hero portrait
+ * passes loading="eager" + fetchpriority="high".
+ */
+interface Props {
+  stem: string;
+  alt: string;
+  widths: number[];
+  /** The `sizes` attribute — how wide the image renders at each breakpoint. */
+  sizes: string;
+  /** Intrinsic dimensions of the largest variant (sets aspect ratio, no CLS). */
+  width: number;
+  height: number;
+  dir?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'auto';
+  class?: string;
+}
+
+const {
+  stem,
+  alt,
+  widths,
+  sizes,
+  width,
+  height,
+  dir = '/assets/projects',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  class: className,
+} = Astro.props;
+
+const srcset = (ext: string) =>
+  widths.map((w) => `${dir}/${stem}-${w}w.${ext} ${w}w`).join(', ');
+
+// Fallback <img> uses a mid variant so no-AVIF/WebP-srcset browsers stay light.
+const fallbackWidth = widths[Math.floor(widths.length / 2)] ?? widths[0] ?? width;
+const fallbackSrc = `${dir}/${stem}-${fallbackWidth}w.webp`;
+---
+
+<picture>
+  <source type="image/avif" srcset={srcset('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={srcset('webp')} sizes={sizes} />
+  <img
+    src={fallbackSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    fetchpriority={fetchpriority}
+    class={className}
+  />
+</picture>

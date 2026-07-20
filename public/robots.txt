@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://swans-office.pages.dev/sitemap-index.xml

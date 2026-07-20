@@ -6,6 +6,10 @@
  */
 import '../styles/global.css';
 import { profile } from '../content/profile';
+// Preload the two above-the-fold font files (bundled, hashed URLs) so the real
+// faces are painted first — eliminates the font-swap reflow (CLS < 0.05, §8).
+import interLatin400 from '@fontsource/inter/files/inter-latin-400-normal.woff2';
+import patrickHandLatin400 from '@fontsource/patrick-hand/files/patrick-hand-latin-400-normal.woff2';
 
 interface Props {
   title?: string;
@@ -21,7 +25,7 @@ const {
   description = `A portfolio you don't scroll — you visit. Swan the duck hosts ${profile.name}'s work from his animated office.`,
   path = Astro.url.pathname,
   index = true,
-} = Astro.props;
+}: Props = Astro.props;
 
 const canonical = new URL(path, Astro.site).href;
 const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
@@ -38,6 +42,10 @@ const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
     {!index && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#2e7d4f" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Font preload — real faces paint first, no swap reflow (CLS). -->
+    <link rel="preload" href={interLatin400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={patrickHandLatin400} as="font" type="font/woff2" crossorigin />
 
     <!-- Favicons (approved V-033 set) -->
     <link rel="icon" href="/favicon.ico" sizes="any" />

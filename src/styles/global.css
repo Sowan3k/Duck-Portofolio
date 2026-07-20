@@ -49,6 +49,94 @@ body {
   left: 0;
 }
 
+/* ------------------------------------------------------------------ *
+ * Component skins for the standard view. Colors are chosen against the
+ * cream page so every text pair clears WCAG AA 4.5:1 (verified):
+ *   ink/cream 13.7 · wood-dark/cream 6.4 · suit/cream 9.3 · ink/mustard 7.6.
+ * Banker's green is used only for large headings (4.06, large-text AA).
+ * Layout (margins/grid) stays in Tailwind utilities; these own the "skin".
+ * ------------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease, transform 0.15s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+/* Primary CTA (résumé): deep-brown on cream text — 9.3:1. */
+.btn--primary {
+  background: var(--color-suit);
+  color: var(--color-cream);
+}
+.btn--primary:hover {
+  background: var(--color-ink);
+}
+/* Ghost: ink text on cream with a warm wood border. */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-wood);
+}
+.btn--ghost:hover {
+  background: var(--color-duck);
+  border-color: var(--color-wood-dark);
+}
+
+/* Skill / tech pills. */
+.chip {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  background: var(--color-duck);
+  border: 1px solid var(--color-wood);
+  color: var(--color-ink);
+}
+
+/* Content panel that layers subtly over the cream page. */
+.card {
+  background: var(--color-duck);
+  border: 1px solid var(--color-wood);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* Small status badge — ink on mustard (7.6:1). */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-mustard);
+  color: var(--color-ink);
+}
+.badge--muted {
+  background: var(--color-duck);
+  border: 1px solid var(--color-wood);
+}
+
+/* Inline text links — wood-dark (6.4:1), green on hover. */
+.prose-link {
+  color: var(--color-wood-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-link:hover {
+  color: var(--color-green);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

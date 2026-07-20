@@ -1,0 +1,21 @@
+---
+/**
+ * Footer.astro — closing identity band. The link into the interactive office is
+ * added in Phase 3 (law 5: the office is always one tap from the standard view);
+ * until the office exists there is no dead link here.
+ */
+import { profile } from '../../content/profile';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-wood/40 bg-cream">
+  <div
+    class="mx-auto flex max-w-4xl flex-col gap-2 px-6 py-10 font-sans text-sm text-wood-dark sm:flex-row sm:items-center sm:justify-between"
+  >
+    <p>© {year} {profile.name}</p>
+    <p class="font-display text-base text-wood-dark">
+      Swan's Office — a portfolio you don't scroll, you visit.
+    </p>
+  </div>
+</footer>

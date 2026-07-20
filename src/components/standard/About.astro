@@ -1,0 +1,37 @@
+---
+/**
+ * About.astro — the professional pitch (summary), interests, and leadership.
+ */
+import { profile } from '../../content/profile';
+import Section from './Section.astro';
+---
+
+<Section id="about" title="About" eyebrow="Who you're talking to">
+  <p class="max-w-prose font-sans text-lg leading-relaxed text-ink">
+    {profile.summary}
+  </p>
+
+  <p class="mt-4 max-w-prose font-sans text-base leading-relaxed text-wood-dark">
+    Outside the terminal: {profile.interests}
+  </p>
+
+  {
+    profile.leadership.length > 0 && (
+      <div class="mt-6">
+        <h3 class="font-sans text-base font-semibold text-ink">
+          Leadership & activities
+        </h3>
+        <ul class="mt-2 space-y-1 font-sans text-base text-ink">
+          {profile.leadership.map((item) => (
+            <li class="flex flex-wrap gap-x-2">
+              <span>{item.text}</span>
+              {item.period && (
+                <span class="text-wood-dark">— {item.period}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</Section>

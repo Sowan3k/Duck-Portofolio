@@ -1,54 +1,34 @@
 ---
 /**
- * index.astro — Phase 0 placeholder / token + font proof page.
- * Phase 2 replaces this with the real standard view (the SEO baseline, law 5).
- * For now it renders the palette and both type families so the scaffold's
- * tokens and self-hosted fonts are verifiable on a built page.
+ * index.astro — the standard view (law 5: ships first, the SEO/no-JS surface,
+ * a complete portfolio a recruiter can use without ever seeing the office).
+ * Phase 3 mounts the office island over this same page and adds the entry link.
  */
 import Base from '../layouts/Base.astro';
-
-const swatches = [
-  { name: 'ink', token: 'bg-ink', text: 'text-cream' },
-  { name: 'cream', token: 'bg-cream', text: 'text-ink' },
-  { name: 'wood-dark', token: 'bg-wood-dark', text: 'text-cream' },
-  { name: 'wood', token: 'bg-wood', text: 'text-cream' },
-  { name: 'mustard', token: 'bg-mustard', text: 'text-ink' },
-  { name: 'green', token: 'bg-green', text: 'text-cream' },
-  { name: 'greyblue', token: 'bg-greyblue', text: 'text-ink' },
-  { name: 'duck', token: 'bg-duck', text: 'text-ink' },
-  { name: 'bill', token: 'bg-bill', text: 'text-ink' },
-  { name: 'suit', token: 'bg-suit', text: 'text-cream' },
-];
+import Hero from '../components/standard/Hero.astro';
+import About from '../components/standard/About.astro';
+import Experience from '../components/standard/Experience.astro';
+import Projects from '../components/standard/Projects.astro';
+import Skills from '../components/standard/Skills.astro';
+import Awards from '../components/standard/Awards.astro';
+import Education from '../components/standard/Education.astro';
+import Roadmap from '../components/standard/Roadmap.astro';
+import Contact from '../components/standard/Contact.astro';
+import Footer from '../components/standard/Footer.astro';
 ---
 
-<Base title="Swan's Office — scaffold" description="Phase 0 scaffold: token and font proof page.">
-  <main class="mx-auto max-w-3xl px-6 py-12">
-    <h1 class="font-display text-5xl text-green">Swan's Office</h1>
-    <p class="font-sans text-lg text-ink">
-      Phase 0 scaffold is live. This page exists only to prove tokens and fonts
-      render; Phase 2 replaces it with the standard view.
-    </p>
-
-    <h2 class="font-display text-3xl text-wood-dark mt-10">Display face — Patrick Hand</h2>
-    <p class="font-display text-2xl text-ink">
-      The duck lowers his newspaper and looks at you.
-    </p>
-
-    <h2 class="font-display text-3xl text-wood-dark mt-10">Content face — Inter</h2>
-    <p class="font-sans text-base text-ink">
-      Clean, legible body copy at 400, and <strong class="font-semibold">600</strong>
-      and <strong class="font-bold">700</strong> weights for emphasis.
-    </p>
-
-    <h2 class="font-display text-3xl text-wood-dark mt-10">Palette</h2>
-    <ul class="grid grid-cols-2 gap-3 sm:grid-cols-5 list-none p-0">
-      {
-        swatches.map((s) => (
-          <li class={`${s.token} ${s.text} rounded-md p-4 text-center font-sans text-sm`}>
-            {s.name}
-          </li>
-        ))
-      }
-    </ul>
+<Base>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Hero />
+  <main id="main">
+    <About />
+    <Experience />
+    <Projects />
+    <Skills />
+    <Awards />
+    <Education />
+    <Roadmap />
+    <Contact />
   </main>
+  <Footer />
 </Base>

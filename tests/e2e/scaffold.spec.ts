@@ -1,10 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-// First E2E: the built site serves its two pages. Real per-object and
-// standard-view flows arrive in Phases 2–4.
-test('home page renders and loads the display font', async ({ page }) => {
+// Basic scaffold guarantees. Full standard-view coverage is in standard.spec.ts.
+test('home page loads with the display font wired', async ({ page }) => {
   await page.goto('/');
-  const heading = page.getByRole('heading', { name: "Swan's Office", level: 1 });
+  const heading = page.getByRole('heading', { name: 'Noor Mohammad Sowan', level: 1 });
   await expect(heading).toBeVisible();
   await expect(heading).toHaveCSS('font-family', /Patrick Hand/);
 });
