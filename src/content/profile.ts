@@ -433,7 +433,7 @@ export const profile: Profile = {
       media: [
         {
           stem: 'usm-evently-overview--v01',
-          alt: 'USM Evently home page showing the campus events browser.',
+          alt: 'USM Evently home page hero inviting students to discover campus events.',
           width: 1440,
           height: 720,
         },

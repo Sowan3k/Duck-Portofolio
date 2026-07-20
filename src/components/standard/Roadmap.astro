@@ -20,6 +20,7 @@ const { building, learning } = profile.roadmap;
         building.href ? (
           <a class="prose-link" href={building.href} rel="noopener" target="_blank">
             {building.text}
+            <span class="sr-only"> (opens in a new tab)</span>
           </a>
         ) : (
           building.text

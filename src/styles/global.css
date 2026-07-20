@@ -60,6 +60,8 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
+  max-width: 100%;
   gap: 0.5rem;
   padding: 0.625rem 1.125rem;
   border-radius: 0.5rem;
@@ -69,6 +71,9 @@ body {
   border: 2px solid transparent;
   transition: background-color 0.15s ease, border-color 0.15s ease,
     color 0.15s ease, transform 0.15s ease;
+}
+.btn > span {
+  overflow-wrap: anywhere;
 }
 .btn:active {
   transform: translateY(1px);
@@ -134,7 +139,7 @@ body {
   text-underline-offset: 2px;
 }
 .prose-link:hover {
-  color: var(--color-green);
+  color: var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

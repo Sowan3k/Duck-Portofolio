@@ -22,17 +22,17 @@ import ContactLinks from './ContactLinks.astro';
       </h1>
       <!-- The origin joke is the brand (bible §3) — flavor, not a fact claim. -->
       <p class="mt-3 max-w-prose font-display text-2xl text-green">
-        People keep calling me “Swan.” I decided to embrace it. 🦆
+        People keep calling me “Swan.” I decided to embrace it. <span aria-hidden="true">🦆</span>
       </p>
 
       <dl class="mt-5 flex flex-wrap gap-x-6 gap-y-1 font-sans text-sm text-wood-dark">
         <div class="flex gap-1">
           <dt class="sr-only">Location</dt>
-          <dd>📍 {profile.location}</dd>
+          <dd><span aria-hidden="true">📍</span> {profile.location}</dd>
         </div>
         <div class="flex gap-1">
           <dt class="sr-only">Status</dt>
-          <dd>🎓 {profile.status}</dd>
+          <dd><span aria-hidden="true">🎓</span> {profile.status}</dd>
         </div>
       </dl>
 

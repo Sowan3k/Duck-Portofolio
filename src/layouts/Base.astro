@@ -22,7 +22,7 @@ interface Props {
 
 const {
   title = `Swan's Office — ${profile.knownAs}'s Portfolio`,
-  description = `A portfolio you don't scroll — you visit. Swan the duck hosts ${profile.name}'s work from his animated office.`,
+  description = `${profile.name} — ${profile.headline}. Explore projects, experience, skills, and contact details.`,
   path = Astro.url.pathname,
   index = true,
 }: Props = Astro.props;

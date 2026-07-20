@@ -25,6 +25,20 @@ test('every section landmark renders', async ({ page }) => {
   }
 });
 
+test('renders meaningful profile content, not empty section shells', async ({ page }) => {
+  await page.goto('/');
+  await expect(
+    page.getByRole('heading', { name: 'Noor Mohammad Sowan', level: 1 })
+  ).toBeVisible();
+  await expect(page.locator('#experience li.card')).toHaveCount(2);
+  await expect(page.locator('#projects article')).toHaveCount(4);
+  await expect(page.locator('#projects')).toContainText(
+    'A real-time operations dashboard (CSE443 coursework)'
+  );
+  await expect(page.locator('#skills .chip')).not.toHaveCount(0);
+  await expect(page.locator('footer')).toContainText('Noor Mohammad Sowan');
+});
+
 test('résumé downloads directly from hero and contact (law 2)', async ({ page }) => {
   await page.goto('/');
   const links = page.locator('a[href="/resume.pdf"][download]');
@@ -59,8 +73,14 @@ test('skip link is the first focusable element', async ({ page }) => {
   await expect(focused).toHaveAttribute('href', '#main');
 });
 
-test('the page is complete with JavaScript disabled', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
+test('the page is complete with JavaScript disabled', async ({ browser }, testInfo) => {
+  const mobile = testInfo.project.name === 'mobile';
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: mobile ? { width: 390, height: 851 } : { width: 1280, height: 720 },
+    isMobile: mobile,
+    hasTouch: mobile,
+  });
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Noor Mohammad Sowan', level: 1 })).toBeVisible();
@@ -68,7 +88,78 @@ test('the page is complete with JavaScript disabled', async ({ browser }) => {
     await expect(page.locator(`section#${id}`)).toBeVisible();
   }
   await expect(page.locator('a[href="/resume.pdf"][download]').first()).toBeVisible();
+  await expect(page.locator('#projects article')).toHaveCount(4);
   await context.close();
+});
+
+test('responsive images use approved formats and loading priorities', async ({ page }) => {
+  await page.goto('/');
+  const images = page.locator('main img, header img');
+  await expect(images).toHaveCount(7);
+
+  const hero = page.locator('header picture');
+  await expect(hero.locator('source[type="image/avif"]')).toHaveCount(1);
+  await expect(hero.locator('source[type="image/webp"]')).toHaveCount(1);
+  await expect(hero.locator('img')).toHaveAttribute('loading', 'eager');
+  await expect(hero.locator('img')).toHaveAttribute('fetchpriority', 'high');
+
+  const projectImages = page.locator('#projects img');
+  await expect(projectImages).toHaveCount(6);
+  for (let index = 0; index < 6; index += 1) {
+    await expect(projectImages.nth(index)).toHaveAttribute('loading', 'lazy');
+  }
+});
+
+test('SEO artifacts and static no-script baseline are present', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://swans-office.pages.dev/'
+  );
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+    'content',
+    /projects, experience, skills, and contact details/
+  );
+  await expect(page.locator('script')).toHaveCount(0);
+
+  const robots = await page.request.get('/robots.txt');
+  expect(robots.status()).toBe(200);
+  expect(await robots.text()).toContain('/sitemap-index.xml');
+  const sitemap = await page.request.get('/sitemap-index.xml');
+  expect(sitemap.status()).toBe(200);
+  expect(await sitemap.text()).toContain(
+    'https://swans-office.pages.dev/sitemap-0.xml'
+  );
+  const routes = await page.request.get('/sitemap-0.xml');
+  expect(routes.status()).toBe(200);
+  expect(await routes.text()).toContain(
+    '<loc>https://swans-office.pages.dev/</loc>'
+  );
+});
+
+test('has no horizontal overflow at the supported viewport edges', async ({ page }) => {
+  for (const viewport of [
+    { width: 360, height: 800 },
+    { width: 1920, height: 1080 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    const dimensions = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      content: document.documentElement.scrollWidth,
+    }));
+    expect(dimensions.content).toBeLessThanOrEqual(dimensions.viewport);
+  }
+});
+
+test('button-style links meet the 44px mobile target', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 851 });
+  await page.goto('/');
+  const buttons = page.locator('a.btn');
+  for (let index = 0; index < (await buttons.count()); index += 1) {
+    const box = await buttons.nth(index).boundingBox();
+    expect(box?.height).toBeGreaterThanOrEqual(44);
+  }
 });
 
 test('standard view has no axe-detectable accessibility violations', async ({ page }) => {

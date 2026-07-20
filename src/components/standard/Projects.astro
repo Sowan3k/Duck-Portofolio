@@ -5,7 +5,7 @@
  * confidentiality callout and NO screenshots or interface (owner decision, law 4).
  * Grab is surfaced as a GitHub link below, not as a featured entry.
  */
-import { profile } from '../../content/profile';
+import { profile, PROJECT_MEDIA } from '../../content/profile';
 import Section from './Section.astro';
 import Picture from './Picture.astro';
 
@@ -37,7 +37,8 @@ const awardById = new Map(profile.awards.map((a) => [a.id, a]));
                     <Picture
                       stem={m.stem}
                       alt={m.alt}
-                      widths={[360, 720, 1440]}
+                      widths={PROJECT_MEDIA.widths}
+                      dir={PROJECT_MEDIA.publicDir}
                       sizes="(max-width: 640px) 90vw, 400px"
                       width={m.width}
                       height={m.height}
@@ -67,11 +68,11 @@ const awardById = new Map(profile.awards.map((a) => [a.id, a]));
               ))}
             </ul>
 
-            <div class="mt-4 flex flex-wrap gap-2" aria-label={`${project.name} technologies`}>
+            <ul class="mt-4 flex flex-wrap gap-2 list-none p-0" aria-label={`${project.name} technologies`}>
               {project.stack.map((tech) => (
-                <span class="chip">{tech}</span>
+                <li class="chip">{tech}</li>
               ))}
-            </div>
+            </ul>
 
             {project.links.length > 0 && (
               <div class="mt-5 flex flex-wrap gap-3">
@@ -99,18 +100,20 @@ const awardById = new Map(profile.awards.map((a) => [a.id, a]));
 
   {
     profile.additionalProjects.length > 0 && (
-      <p class="mt-8 font-sans text-base text-wood-dark">
-        More on GitHub —{' '}
-        {profile.additionalProjects.map((p, i) => (
-          <>
-            {i > 0 && ', '}
-            <a class="prose-link" href={p.href} rel="noopener" target="_blank">
-              {p.name}
-            </a>
-          </>
-        ))}
-        .
-      </p>
+      <div class="mt-8">
+        <h3 class="font-sans text-lg font-semibold text-ink">More on GitHub</h3>
+        <ul class="mt-3 space-y-3 list-none p-0">
+          {profile.additionalProjects.map((project) => (
+            <li class="font-sans text-base text-wood-dark">
+              <a class="prose-link font-semibold" href={project.href} rel="noopener" target="_blank">
+                {project.name}
+                <span class="sr-only"> (opens in a new tab)</span>
+              </a>
+              <p class="mt-1 max-w-prose text-ink">{project.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     )
   }
 </Section>
