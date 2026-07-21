@@ -35,15 +35,21 @@ body {
   border-radius: 2px;
 }
 
-/* The office island is client-rendered over the standard view. Without JS the
- * <html> keeps its `no-js` class, so the overlay never shows and the standard
- * view is the whole experience (law 5). An inline head script removes `no-js`. */
-.no-js .office-overlay {
-  display: none !important;
+/* The office overlay is server-rendered so the entry screen paints immediately
+ * and "covers the fetch" (early LCP). It can never trap the visitor:
+ *   - no JS at all → a <noscript> style hides it and the standard view is the
+ *     whole page (law 5);
+ *   - JS present but the island fails to hydrate → a head-script timeout adds
+ *     `office-timeout` and reveals the standard view.
+ * The "visit office" button only appears once the island is genuinely ready. */
+html.office-timeout .office-overlay {
+  display: none;
 }
-/* The "visit the office" button does nothing without JS — hide it there. */
-.no-js [data-open-office] {
-  display: none !important;
+[data-open-office] {
+  display: none;
+}
+html.office-ready [data-open-office] {
+  display: inline-flex;
 }
 
 /* Skip-link target styling for the standard view (Phase 2 uses it). */

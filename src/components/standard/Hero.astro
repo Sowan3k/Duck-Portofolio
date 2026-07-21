@@ -17,7 +17,11 @@ import ContactLinks from './ContactLinks.astro';
       <p class="font-sans text-sm font-semibold uppercase tracking-wide text-wood-dark">
         {profile.headline}
       </p>
-      <h1 class="font-display text-4xl leading-tight text-ink sm:text-5xl">
+      <h1
+        id="page-top"
+        tabindex="-1"
+        class="font-display text-4xl leading-tight text-ink sm:text-5xl outline-none"
+      >
         {profile.name}
       </h1>
       <!-- The origin joke is the brand (bible §3) — flavor, not a fact claim. -->
@@ -74,8 +78,7 @@ import ContactLinks from './ContactLinks.astro';
           sizes="(max-width: 640px) 10rem, (max-width: 768px) 13rem, 16rem"
           width={1200}
           height={1500}
-          loading="eager"
-          fetchpriority="high"
+          loading="lazy"
           class="block h-auto w-full"
         />
       </div>

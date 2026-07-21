@@ -32,15 +32,9 @@ const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!-- Swap no-js→js before paint: the office overlay only shows with JS, so
-         no-JS visitors keep the standard view (law 5). -->
-    <script is:inline>
-      document.documentElement.classList.remove('no-js');
-      document.documentElement.classList.add('js');
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -75,6 +69,23 @@ const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="Swan the duck reading a newspaper at his desk in a warm, lamplit office." />
+
+    {/* No-JS: hide the office overlay so the standard view is the whole page. */}
+    <noscript><link rel="stylesheet" href="/office-nojs.css" /></noscript>
+    {/* Hydration-failure safety net: if the island never signals ready, reveal
+        the standard view so a JS error can't trap the visitor. The window is
+        generous (10s) so a slow-but-working hydration is never misread as a
+        failure — this only catches a genuine "JS never ran" case. */}
+    <script is:inline>
+      window.setTimeout(function () {
+        if (!document.documentElement.classList.contains('office-ready')) {
+          document.documentElement.classList.add('office-timeout');
+        }
+      }, 10000);
+    </script>
+
+    {/* Per-page head extras (e.g. the office entry-portrait preload). */}
+    <slot name="head" />
   </head>
   <body>
     <slot />

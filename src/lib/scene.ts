@@ -60,13 +60,14 @@ export const SCENE_ASPECT = 4 / 3;
  */
 export const hotspots: Hotspot[] = [
   {
-    id: 'nameplate',
+    // CLAUDE.md §4: Desk / Duck → About Me. The hotspot sits on the duck.
+    id: 'desk-duck',
     contentId: 'about',
     label: 'About me',
-    ariaLabel: 'About Sowan — open the introduction',
-    rect: { xPct: 8, yPct: 77, wPct: 17, hPct: 12 },
+    ariaLabel: 'About Sowan — talk to the duck',
+    rect: { xPct: 53, yPct: 33, wPct: 20, hPct: 26 },
     z: 40,
-    band: 'foreground',
+    band: 'midground',
     reaction: 'talk',
   },
   {
@@ -114,7 +115,7 @@ export const hotspots: Hotspot[] = [
     contentId: 'education',
     label: 'Education',
     ariaLabel: 'Education — open the framed certificate',
-    rect: { xPct: 56, yPct: 22, wPct: 9, hPct: 8 },
+    rect: { xPct: 56, yPct: 19, wPct: 9, hPct: 9 },
     z: 10,
     band: 'background',
     reaction: 'think',

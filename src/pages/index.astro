@@ -21,6 +21,17 @@ import Office from '../components/office/Office.tsx';
 ---
 
 <Base>
+  {/* The entry portrait is the LCP (server-rendered, covers the fetch) — preload
+      it so it paints as early as possible. */}
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href="/assets/entry/entry-portrait-sowan--v04-400w.avif"
+    type="image/avif"
+    fetchpriority="high"
+  />
+
   {/* The standard view — made inert by the island while the office is open. */}
   <div id="standard-view">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -38,6 +49,8 @@ import Office from '../components/office/Office.tsx';
     <Footer />
   </div>
 
-  {/* The office. client:load so it never renders without JS (law 5). */}
-  <Office client:load />
+  {/* The office. client:idle so React hydrates AFTER first paint — the
+      server-rendered entry portrait (the LCP) isn't blocked by React's render
+      work. No-JS still shows the standard view (overlay hidden via noscript). */}
+  <Office client:idle />
 </Base>

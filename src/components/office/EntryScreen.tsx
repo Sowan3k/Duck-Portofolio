@@ -37,12 +37,12 @@ export default function EntryScreen({
           <source
             type="image/avif"
             srcSet={`${SRC}-400w.avif 400w, ${SRC}-800w.avif 800w, ${SRC}-1600w.avif 1600w`}
-            sizes="(max-width: 640px) 62vw, 300px"
+            sizes="(max-width: 640px) 40vw, 200px"
           />
           <source
             type="image/webp"
             srcSet={`${SRC}-400w.webp 400w, ${SRC}-800w.webp 800w, ${SRC}-1600w.webp 1600w`}
-            sizes="(max-width: 640px) 62vw, 300px"
+            sizes="(max-width: 640px) 40vw, 200px"
           />
           <img
             src={`${SRC}-800w.webp`}

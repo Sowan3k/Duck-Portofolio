@@ -23,6 +23,8 @@ const SECTIONS = [
 /** Land on the page and dismiss the office overlay to reach the standard view. */
 async function openStandardView(page: Page) {
   await page.goto('/');
+  // The office hydrates on idle; wait for it before driving its controls.
+  await page.locator('html.office-ready').waitFor();
   await page.getByRole('button', { name: 'Standard view' }).click();
   await expect(page.locator('.office-overlay')).toHaveCount(0);
 }
@@ -116,8 +118,9 @@ test('responsive images use approved formats and loading priorities', async ({ p
   const hero = page.locator('#standard-view header picture');
   await expect(hero.locator('source[type="image/avif"]')).toHaveCount(1);
   await expect(hero.locator('source[type="image/webp"]')).toHaveCount(1);
-  await expect(hero.locator('img')).toHaveAttribute('loading', 'eager');
-  await expect(hero.locator('img')).toHaveAttribute('fetchpriority', 'high');
+  // The hero is lazy (not eager/high-priority): it sits under the office entry
+  // on load, so only the entry portrait gets high priority (keeps LCP low).
+  await expect(hero.locator('img')).toHaveAttribute('loading', 'lazy');
 
   const projectImages = page.locator('#projects img');
   await expect(projectImages).toHaveCount(6);

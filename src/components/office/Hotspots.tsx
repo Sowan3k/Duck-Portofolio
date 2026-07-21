@@ -3,18 +3,21 @@ import type { Hotspot } from '../../lib/scene';
 
 /**
  * Hotspots — one focusable, labelled control per interactive object (law 7),
- * absolutely positioned by scene-relative %. The résumé folder is a real
- * <a download> so it downloads the PDF with no gate (law 2). Every control is
- * ≥44px (enforced in CSS) with its label revealed on hover/focus/first-visit.
+ * absolutely positioned by scene-relative %, z-ordered by depth band. The
+ * résumé folder is a real <a download> (law 2). Every control is ≥44px with its
+ * label revealed on hover/focus, during the first-visit/look-around flash, or —
+ * on touch — when it is the first-tapped (selected) object (CLAUDE.md §4).
  */
 interface Props {
   hotspots: Hotspot[];
-  /** First-visit label flash: reveal every label regardless of hover/focus. */
+  /** Reveal every label (first-visit flash or Look Around). */
   showLabels: boolean;
+  /** The touch-selected object, whose label shows even without a flash. */
+  selectedId?: string | null;
   onActivate: (hotspot: Hotspot) => void;
 }
 
-export default function Hotspots({ hotspots, showLabels, onActivate }: Props) {
+export default function Hotspots({ hotspots, showLabels, selectedId, onActivate }: Props) {
   return (
     <div className={`hotspots${showLabels ? ' hotspots--show-labels' : ''}`}>
       {hotspots.map((h) => {
@@ -25,12 +28,14 @@ export default function Hotspots({ hotspots, showLabels, onActivate }: Props) {
           height: `${h.rect.hPct}%`,
           zIndex: h.z,
         };
+        const selected = selectedId === h.id;
+        const className = `hotspot hotspot--${h.band}${selected ? ' hotspot--selected' : ''}`;
 
         if (h.download) {
           return (
             <a
               key={h.id}
-              className="hotspot hotspot--download"
+              className={`${className} hotspot--download`}
               style={style}
               href="/resume.pdf"
               download
@@ -46,7 +51,7 @@ export default function Hotspots({ hotspots, showLabels, onActivate }: Props) {
           <button
             key={h.id}
             type="button"
-            className="hotspot"
+            className={className}
             style={style}
             data-object={h.id}
             aria-label={h.ariaLabel}

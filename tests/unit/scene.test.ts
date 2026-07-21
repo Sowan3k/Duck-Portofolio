@@ -19,11 +19,27 @@ const CONTENT_IDS: SceneContentId[] = [
   'resume',
 ];
 
+// The exact object roster (CLAUDE.md §4). Desk/Duck → About is the duck itself.
+const OBJECT_IDS = [
+  'desk-duck',
+  'computer',
+  'filing-cabinet',
+  'bookshelf',
+  'trophy-shelf',
+  'graduation-frame',
+  'resume-folder',
+  'telephone',
+  'whiteboard',
+];
+
 describe('scene hotspots', () => {
-  it('has the nine interactive objects (CLAUDE.md §4), ids unique', () => {
-    expect(hotspots).toHaveLength(9);
-    const ids = hotspots.map((h) => h.id);
-    expect(new Set(ids).size).toBe(9);
+  it('is exactly the locked nine-object roster (CLAUDE.md §4)', () => {
+    expect(hotspots.map((h) => h.id).sort()).toEqual([...OBJECT_IDS].sort());
+  });
+
+  it('maps Desk/Duck → About Me (CLAUDE.md §4, not the nameplate)', () => {
+    const about = hotspots.find((h) => h.contentId === 'about');
+    expect(about?.id).toBe('desk-duck');
   });
 
   it('covers exactly the nine content targets, one each', () => {

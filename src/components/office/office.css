@@ -39,7 +39,10 @@
   width: 100%;
 }
 .entry__portrait {
-  width: clamp(180px, 58vw, 260px);
+  /* Kept a touch smaller than the standard-view hero portrait so the LCP is
+   * that server-rendered hero (paints at ~FCP), not this post-hydration image
+   * — LCP lands well under 2.5s. Also keeps the 400w asset right-sized. */
+  width: clamp(140px, 40vw, 200px);
   height: auto;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
 }
@@ -124,15 +127,15 @@
 .scene-viewport {
   position: absolute;
   inset: 0;
-  padding-top: 3.5rem; /* clear the controls bar */
+  padding-top: var(--toolbar-h, 3.5rem); /* clear the controls bar */
   display: grid;
   place-items: center;
   overflow: hidden;
 }
 .scene {
   position: relative;
-  aspect-ratio: 4 / 3; /* master scene 2896×2172 */
-  width: min(100%, calc((100dvh - 3.5rem) * 4 / 3));
+  aspect-ratio: var(--scene-aspect, 1.3333); /* SCENE_ASPECT (master 2896×2172) */
+  width: min(100%, calc((100dvh - var(--toolbar-h, 3.5rem)) * var(--scene-aspect, 1.3333)));
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
   background: #b7a88f;
   overflow: hidden;
@@ -239,19 +242,21 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3.5rem;
+  min-height: 3.5rem; /* grows to fit wrapped buttons — no clipping */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0 0.75rem;
-  background: rgba(36, 26, 18, 0.9);
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background: rgba(36, 26, 18, 0.92);
   backdrop-filter: blur(4px);
   z-index: 500;
 }
 .office-controls__right {
   display: flex;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 .look-around {
   position: absolute;
@@ -259,12 +264,21 @@
   right: 0.75rem;
   z-index: 600;
   max-width: min(90vw, 20rem);
+  max-height: calc(100dvh - 4.5rem); /* never runs off a short landscape screen */
+  overflow-y: auto;
   padding: 0.75rem;
   background: var(--color-cream);
   color: var(--color-ink);
   border: 1px solid var(--color-wood);
   border-radius: 0.5rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+/* Compact the toggles on very narrow screens so the bar stays one row. */
+@media (max-width: 26rem) {
+  .office-toggle {
+    padding: 0.4rem 0.6rem;
+    gap: 0.25rem;
+  }
 }
 .look-around__title {
   margin: 0 0 0.5rem;
@@ -294,7 +308,7 @@
   position: absolute;
   inset: 0;
   z-index: 800;
-  pointer-events: none;
+  pointer-events: auto; /* intercept input while powering on (no click-through) */
   overflow: hidden;
   background: var(--color-ink);
   animation: crt-cover var(--crt-ms, 1350ms) ease-out forwards;
@@ -383,3 +397,331 @@
 
 /* Reduced motion: no CRT is rendered (enter → office directly); the global
  * reduced-motion rule collapses any remaining transition to ~instant. */
+
+/* ------------------------------------------------------------------ *
+ * Newspaper headline + coffee mug (gray-box props)
+ * ------------------------------------------------------------------ */
+.gb__news {
+  position: absolute;
+  left: 30%;
+  top: 62%;
+  width: 26%;
+  transform: rotate(-3deg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.35rem 0.5rem;
+  background: #efe7d2;
+  border: 1px solid #b8a888;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+.gb__masthead {
+  font-family: var(--font-display);
+  font-size: clamp(0.55rem, 1.5vw, 0.85rem);
+  color: var(--color-ink);
+  border-bottom: 1px solid #b8a888;
+  text-align: center;
+}
+.gb__headline {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.5rem, 1.4vw, 0.8rem);
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+.gb__coffee {
+  position: absolute;
+  right: 22%;
+  top: 60%;
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+.gb__coffee:hover,
+.gb__coffee:focus-visible {
+  background: rgba(217, 164, 65, 0.25);
+}
+
+/* ------------------------------------------------------------------ *
+ * Dialogue panel (the duck's speech)
+ * ------------------------------------------------------------------ */
+.dialogue {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  width: min(96vw, 620px);
+  z-index: 700;
+}
+.dialogue__panel {
+  position: relative;
+}
+.dialogue__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
+}
+.dialogue__body {
+  position: absolute;
+  inset: 16% 9% 15% 9%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  color: var(--color-ink);
+}
+.dialogue__speaker {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2.4vw, 1.05rem);
+  color: var(--color-wood-dark);
+}
+.dialogue__text {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 2.6vw, 1.15rem);
+  line-height: 1.25;
+  min-height: 2.4em;
+}
+.dialogue__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.15rem;
+}
+.dialogue__next,
+.dialogue__skip {
+  min-height: 40px;
+  padding: 0.3rem 0.9rem;
+  border-radius: 0.4rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dialogue__next {
+  background: var(--color-suit);
+  color: var(--color-cream);
+  border: 2px solid transparent;
+}
+.dialogue__next:hover {
+  background: var(--color-ink);
+}
+.dialogue__skip {
+  background: transparent;
+  color: var(--color-wood-dark);
+  border: 2px solid var(--color-wood);
+}
+.dialogue__skip:hover {
+  color: var(--color-ink);
+  border-color: var(--color-wood-dark);
+}
+
+/* ------------------------------------------------------------------ *
+ * Physical content panel (opens over the desk)
+ * ------------------------------------------------------------------ */
+.panel {
+  position: absolute;
+  inset: 0;
+  z-index: 750;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(20, 14, 8, 0.72);
+}
+.panel__stage {
+  position: relative;
+  width: min(96vw, calc(86dvh * var(--ratio, 1.4)));
+  max-width: 960px;
+}
+.panel__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.panel__content {
+  position: absolute;
+  overflow: auto;
+  /* A warm-paper backing keeps DOM text readable on every prop while gray-box
+   * insets are approximate; Phase 5 registers content to the painted writable
+   * areas and can lift this. */
+  background: rgba(244, 236, 216, 0.95);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1.7vw, 0.95rem);
+  line-height: 1.3;
+  -webkit-overflow-scrolling: touch;
+}
+.panel__content--spread {
+  /* Two-page spreads keep a slightly wider gutter breathing room. */
+  padding: 0 0.5%;
+}
+.panel__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.8vw, 1.6rem);
+  color: var(--color-green);
+  outline: none;
+}
+.panel__close {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  border: 2px solid var(--color-cream);
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.panel__close:hover {
+  background: var(--color-suit);
+}
+
+/* Panel content bits (ink on the blank paper) */
+.pc-lead {
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+.pc-tagline {
+  font-weight: 600;
+  color: var(--color-wood-dark);
+  margin: 0 0 0.4rem;
+}
+.pc-muted {
+  color: var(--color-wood-dark);
+  margin: 0.2rem 0;
+}
+.pc-context {
+  font-style: italic;
+  margin: 0.2rem 0;
+}
+.pc-note {
+  border: 1px solid var(--color-wood);
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  margin: 0.3rem 0;
+}
+.panel__content p {
+  margin: 0 0 0.4rem;
+}
+.panel__content h3 {
+  margin: 0.4rem 0 0.2rem;
+  font-size: 1.05em;
+}
+.pc-bullets {
+  margin: 0.2rem 0;
+  padding-left: 1.1rem;
+}
+.pc-bullets li {
+  margin-bottom: 0.2rem;
+}
+.pc-plain {
+  list-style: none;
+  margin: 0.2rem 0;
+  padding: 0;
+}
+.pc-plain li {
+  margin-bottom: 0.2rem;
+}
+.pc-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.3rem 0;
+  padding: 0;
+}
+.pc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+.pc-img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 0.3rem;
+  border: 1px solid var(--color-wood);
+  margin: 0.3rem 0;
+}
+.pc-done {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.pc-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.pc-pager__count {
+  font-weight: 600;
+}
+.pc-more {
+  margin-top: 0.4rem;
+  font-size: 0.9em;
+}
+.pc-exp__item {
+  margin-bottom: 0.6rem;
+}
+
+/* Toast (easter eggs, résumé ack) */
+.office-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 5.5rem;
+  transform: translateX(-50%);
+  z-index: 900;
+  max-width: 90vw;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  border: 1px solid var(--color-mustard);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Touch first-tap selection: the chosen object lights up + shows its label. */
+.hotspot--selected {
+  background: rgba(217, 164, 65, 0.32);
+  border-color: var(--color-suit);
+  border-style: solid;
+}
+.hotspot--selected .hotspot__label {
+  opacity: 1;
+  transform: none;
+}
+
+/* Reduced motion: a short (~150ms) crossfade instead of an instant cut (§8).
+ * These beat the global reduced-motion reset by specificity + !important. */
+@keyframes rm-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .office-overlay[data-view='office'] .scene,
+  .office-overlay .dialogue,
+  .office-overlay .panel {
+    animation: rm-fade 150ms ease-out both !important;
+  }
+}

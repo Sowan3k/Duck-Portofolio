@@ -1,0 +1,3 @@
+/* Loaded only when JavaScript is disabled (via <noscript>): hide the office
+   overlay so the standard view is the whole page (law 5). */
+.office-overlay{display:none !important}
