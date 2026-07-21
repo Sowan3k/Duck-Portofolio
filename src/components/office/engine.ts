@@ -75,6 +75,43 @@ export type DuckState =
   | 'sleep'
   | 'return';
 
+/* ================================================================== *
+ * The Rive contract (Phase 6)
+ *
+ * The single source of truth for every name the .riv file must use - the
+ * rigging guide (rive-rigging-guide.md) and the runtime both read from here,
+ * so the rig and the code cannot drift apart. The rig is driven by exactly
+ * ONE number input: set `pose` to a RIVE_POSE value and the state machine
+ * crossfades to that pose's animation. Blinking lives inside the rig's own
+ * open-eye animations (a nested loop), so no second input is needed.
+ * ================================================================== */
+
+/** Everything the duck can be asked to do (interaction states + idle variants). */
+export type DuckPose = DuckState | 'sip' | 'lookWindow' | 'lookClock';
+
+export const RIVE = {
+  /** Where Duck.tsx looks for the exported rig (HEAD-checked; absent = static). */
+  src: '/assets/duck/swan.riv',
+  artboard: 'Swan',
+  stateMachine: 'SwanMachine',
+  /** The one number input driving the whole machine. */
+  input: 'pose',
+} as const;
+
+/** `pose` input values - the rig's transitions test for exactly these. */
+export const RIVE_POSE: Record<DuckPose, number> = {
+  idle: 0,
+  read: 1,
+  notice: 2,
+  talk: 3,
+  think: 4,
+  sleep: 5,
+  return: 6,
+  sip: 7,
+  lookWindow: 8,
+  lookClock: 9,
+} as const;
+
 export type InteractionPhase =
   | 'idle'
   | 'noticing'

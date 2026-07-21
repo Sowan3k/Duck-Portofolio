@@ -23,6 +23,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/inter": "^5.1.0",
     "@fontsource/patrick-hand": "^5.1.0",
+    "@rive-app/react-canvas": "^4.29.5",
     "astro": "^5.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

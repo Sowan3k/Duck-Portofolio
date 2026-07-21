@@ -1,0 +1,392 @@
+{
+  "canvas": {
+    "head": {
+      "file": "visuals/03-duck/rig-parts/head-atlas/approved/duck-rig-head-atlas--v07--approved.png",
+      "width": 1448,
+      "height": 1086,
+      "cell": [
+        362,
+        362
+      ]
+    },
+    "body": {
+      "file": "visuals/03-duck/rig-parts/body-props-atlas/approved/duck-rig-body-actions--v02--approved.png",
+      "width": 1448,
+      "height": 1086,
+      "cell": [
+        362,
+        362
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "head-reference-full",
+      "atlas": "head",
+      "cell": [
+        1,
+        1
+      ],
+      "atlasOffset": [
+        132,
+        64
+      ],
+      "size": [
+        177,
+        230
+      ]
+    },
+    {
+      "name": "head-blank",
+      "atlas": "head",
+      "cell": [
+        1,
+        2
+      ],
+      "atlasOffset": [
+        502,
+        64
+      ],
+      "size": [
+        133,
+        237
+      ]
+    },
+    {
+      "name": "bill-closed",
+      "atlas": "head",
+      "cell": [
+        1,
+        3
+      ],
+      "atlasOffset": [
+        833,
+        155
+      ],
+      "size": [
+        133,
+        55
+      ]
+    },
+    {
+      "name": "bill-smile",
+      "atlas": "head",
+      "cell": [
+        1,
+        4
+      ],
+      "atlasOffset": [
+        1172,
+        158
+      ],
+      "size": [
+        132,
+        54
+      ]
+    },
+    {
+      "name": "eyes-open",
+      "atlas": "head",
+      "cell": [
+        2,
+        1
+      ],
+      "atlasOffset": [
+        170,
+        461
+      ],
+      "size": [
+        78,
+        52
+      ]
+    },
+    {
+      "name": "eyes-half",
+      "atlas": "head",
+      "cell": [
+        2,
+        2
+      ],
+      "atlasOffset": [
+        505,
+        460
+      ],
+      "size": [
+        91,
+        57
+      ]
+    },
+    {
+      "name": "eyes-closed",
+      "atlas": "head",
+      "cell": [
+        2,
+        3
+      ],
+      "atlasOffset": [
+        844,
+        457
+      ],
+      "size": [
+        98,
+        61
+      ]
+    },
+    {
+      "name": "brows-raised",
+      "atlas": "head",
+      "cell": [
+        2,
+        4
+      ],
+      "atlasOffset": [
+        1192,
+        484
+      ],
+      "size": [
+        88,
+        18
+      ]
+    },
+    {
+      "name": "brows-neutral",
+      "atlas": "head",
+      "cell": [
+        3,
+        1
+      ],
+      "atlasOffset": [
+        158,
+        795
+      ],
+      "size": [
+        84,
+        18
+      ]
+    },
+    {
+      "name": "brows-skeptic",
+      "atlas": "head",
+      "cell": [
+        3,
+        2
+      ],
+      "atlasOffset": [
+        489,
+        801
+      ],
+      "size": [
+        91,
+        18
+      ]
+    },
+    {
+      "name": "brows-think",
+      "atlas": "head",
+      "cell": [
+        3,
+        3
+      ],
+      "atlasOffset": [
+        843,
+        795
+      ],
+      "size": [
+        79,
+        19
+      ]
+    },
+    {
+      "name": "bill-open-talk",
+      "atlas": "head",
+      "cell": [
+        3,
+        4
+      ],
+      "atlasOffset": [
+        1187,
+        780
+      ],
+      "size": [
+        88,
+        74
+      ]
+    },
+    {
+      "name": "body-idle-desk",
+      "atlas": "body",
+      "cell": [
+        1,
+        1
+      ],
+      "atlasOffset": [
+        86,
+        46
+      ],
+      "size": [
+        276,
+        316
+      ]
+    },
+    {
+      "name": "body-read-paper-up",
+      "atlas": "body",
+      "cell": [
+        1,
+        2
+      ],
+      "atlasOffset": [
+        396,
+        49
+      ],
+      "size": [
+        328,
+        313
+      ]
+    },
+    {
+      "name": "body-read-paper-low",
+      "atlas": "body",
+      "cell": [
+        1,
+        3
+      ],
+      "atlasOffset": [
+        750,
+        51
+      ],
+      "size": [
+        300,
+        311
+      ]
+    },
+    {
+      "name": "body-hand-raised",
+      "atlas": "body",
+      "cell": [
+        1,
+        4
+      ],
+      "atlasOffset": [
+        1086,
+        54
+      ],
+      "size": [
+        312,
+        308
+      ]
+    },
+    {
+      "name": "body-gesture-open",
+      "atlas": "body",
+      "cell": [
+        2,
+        1
+      ],
+      "atlasOffset": [
+        21,
+        362
+      ],
+      "size": [
+        341,
+        362
+      ]
+    },
+    {
+      "name": "body-sip-coffee",
+      "atlas": "body",
+      "cell": [
+        2,
+        2
+      ],
+      "atlasOffset": [
+        415,
+        362
+      ],
+      "size": [
+        309,
+        362
+      ]
+    },
+    {
+      "name": "body-hold-pipe",
+      "atlas": "body",
+      "cell": [
+        2,
+        3
+      ],
+      "atlasOffset": [
+        748,
+        362
+      ],
+      "size": [
+        338,
+        362
+      ]
+    },
+    {
+      "name": "body-shrug-welcome",
+      "atlas": "body",
+      "cell": [
+        2,
+        4
+      ],
+      "atlasOffset": [
+        1086,
+        362
+      ],
+      "size": [
+        311,
+        362
+      ]
+    },
+    {
+      "name": "prop-newspaper-open",
+      "atlas": "body",
+      "cell": [
+        3,
+        1
+      ],
+      "atlasOffset": [
+        86,
+        724
+      ],
+      "size": [
+        276,
+        295
+      ]
+    },
+    {
+      "name": "prop-mug",
+      "atlas": "body",
+      "cell": [
+        3,
+        2
+      ],
+      "atlasOffset": [
+        362,
+        724
+      ],
+      "size": [
+        357,
+        272
+      ]
+    },
+    {
+      "name": "prop-pipe",
+      "atlas": "body",
+      "cell": [
+        3,
+        3
+      ],
+      "atlasOffset": [
+        748,
+        724
+      ],
+      "size": [
+        284,
+        253
+      ]
+    }
+  ]
+}

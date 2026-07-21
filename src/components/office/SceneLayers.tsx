@@ -6,6 +6,8 @@ import {
   layerSizes,
   type SceneLayer,
 } from '../../lib/sceneLayers';
+import Duck from './Duck';
+import type { DuckPose } from './engine';
 
 /**
  * SceneLayers - the painted office (Phase 5), replacing the Phase-3 gray-box.
@@ -14,8 +16,9 @@ import {
  * decorative: it's `aria-hidden`, and the focusable Hotspots layer (with the
  * accessible names) sits above it.
  *
- * Swan (index 3) is the calm static pose; Phase 6 mounts the Rive duck in this
- * same slot and keeps this image as the pre-Rive / reduced-motion fallback.
+ * Swan (index 3) renders through Duck (Phase 6): the calm static pose paints
+ * immediately and the Rive rig mounts over it in the same slot once the .riv
+ * exists; reduced motion keeps the static pose permanently.
  */
 function layerStyle(layer: SceneLayer, z: number): CSSProperties {
   if (layer.place.kind === 'full') {
@@ -52,12 +55,22 @@ function LayerImg({ layer, z }: { layer: SceneLayer; z: number }) {
   );
 }
 
-export default function SceneLayers() {
+interface Props {
+  duckPose: DuckPose;
+  reduced: boolean;
+  headline: string;
+}
+
+export default function SceneLayers({ duckPose, reduced, headline }: Props) {
   return (
     <div className="scene-art" aria-hidden="true">
-      {sceneLayers.map((layer, i) => (
-        <LayerImg key={layer.id} layer={layer} z={i} />
-      ))}
+      {sceneLayers.map((layer, i) =>
+        layer.id === 'swan' ? (
+          <Duck key={layer.id} pose={duckPose} reduced={reduced} headline={headline} z={i} />
+        ) : (
+          <LayerImg key={layer.id} layer={layer} z={i} />
+        )
+      )}
     </div>
   );
 }

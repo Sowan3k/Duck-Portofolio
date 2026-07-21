@@ -7,8 +7,10 @@ import {
   STORAGE_KEYS,
   type OfficeView,
 } from './engine';
-import { originIntro, easterEggs, pickLines, type LineSet } from '../../lib/dialogue';
+import { originIntro, easterEggs, pickLines, timeOfDay, type LineSet } from '../../lib/dialogue';
+import { newspaper } from '../../content/profile';
 import { useInteraction } from './useInteraction';
+import { useIdleScheduler } from './useIdleScheduler';
 import EntryScreen from './EntryScreen';
 import Hotspots from './Hotspots';
 import Dialogue from './Dialogue';
@@ -59,6 +61,14 @@ export default function Office() {
   const [toast, setToast] = useState<string | null>(null);
   const [rotateHint, setRotateHint] = useState(false);
 
+  // The time-aware duck (2026-07-20 decision): local time flavors the idle
+  // pool; the rotating newspaper headline is picked once per visit and shows
+  // over the paper while the rigged Swan reads (law 3 - DOM text).
+  const [tod] = useState(() => timeOfDay(new Date().getHours()));
+  const [headline] = useState(
+    () => newspaper.headlines[Math.floor(Math.random() * newspaper.headlines.length)] ?? ''
+  );
+
   const visitedRef = useRef<Set<string>>(new Set());
   const visitCountRef = useRef(0);
   const returnFocusRef = useRef<string | null>(null);
@@ -77,6 +87,11 @@ export default function Office() {
     introActive || interaction.phase === 'noticing' || interaction.phase === 'talking';
   const panelOpen = interaction.phase === 'open';
   const busy = introActive || interaction.phase !== 'idle';
+
+  // Swan's idle life (bible §7) runs whenever the office is at rest; any
+  // interaction pose takes priority the moment the visitor does anything.
+  const idleBehaviour = useIdleScheduler(view === 'office' && !busy, reduced, tod);
+  const duckPose = interaction.duck !== 'idle' ? interaction.duck : idleBehaviour;
 
   const showToast = useCallback((message: string) => {
     setToast(message);
@@ -467,9 +482,9 @@ export default function Office() {
                   role="group"
                   aria-roledescription="office scene"
                   aria-label="Swan's office"
-                  data-duck={interaction.duck}
+                  data-duck={duckPose}
                 >
-                  <SceneLayers />
+                  <SceneLayers duckPose={duckPose} reduced={reduced} headline={headline} />
                   <Ambient reduced={reduced} />
                   {activeGlow && (
                     <div

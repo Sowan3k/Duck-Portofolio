@@ -372,6 +372,47 @@
   -webkit-user-drag: none;
 }
 
+/* ------------------------------------------------------------------ *
+ * The duck slot (Phase 6): static pose first, Rive canvas over it.
+ * ------------------------------------------------------------------ */
+.scene-duck picture,
+.scene-duck__static {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.scene-duck__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Once the rig reports loaded, the static pose yields (kept mounted as the
+ * instant fallback if the canvas ever dies). */
+.scene-duck[data-live='true'] .scene-duck__static {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+/* Rotating newspaper headline - DOM text over the rigged paper (law 3).
+ * TODO(rig): register this box to the rigged newspaper once the .riv lands. */
+.duck-headline {
+  position: absolute;
+  left: 12%;
+  top: 46%;
+  width: 56%;
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+.duck-headline__text {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.5rem, 1.2vw, 0.85rem);
+  line-height: 1.15;
+  color: var(--color-ink);
+  text-align: center;
+}
+
 /* Fixture activation glow (V-013): a warm pulse on the active object. */
 .fixture-glow {
   position: absolute;
