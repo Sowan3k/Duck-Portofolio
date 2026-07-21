@@ -2,10 +2,10 @@
  * scene.ts — the nine interactive objects of Swan's Office (CLAUDE.md §4 table).
  *
  * Hotspot geometry is in scene-relative percentages so one coordinate system
- * survives responsive scaling (§8). Coordinates are ESTIMATED from the master
- * scene (visuals/00-references/canonical/ref-01-master-scene.png) for the
- * gray-box; Phase 5 refines them to the painted objects. Do not add or remove
- * objects without an owner decision (§4).
+ * survives responsive scaling (§8). Phase 5 registered these to the painted
+ * objects: the four liftable props come straight from their approved object-mask
+ * bounding boxes; Swan and the wall fixtures were read off the master scene /
+ * clean plate. Do not add or remove objects without an owner decision (§4).
  */
 
 /** Section content an object opens; 'resume' is a direct download, not a panel. */
@@ -55,98 +55,109 @@ export const SCENE_ASPECT = 4 / 3;
 
 /**
  * The nine objects, ordered to match the CLAUDE.md §4 mapping table. Rects are
- * gray-box estimates read off the master scene; z/band mirror the final art's
- * layer structure so Phase 5 is a swap, not a re-layout.
+ * registered to the painted art (Phase 5); z/band mirror the scene's layer
+ * structure. Where fixtures overlap (monitor in front of the cabinet), the
+ * nearer object carries the higher z so clicks resolve to it.
  */
 export const hotspots: Hotspot[] = [
   {
-    // CLAUDE.md §4: Desk / Duck → About Me. The hotspot sits on the duck.
+    // CLAUDE.md §4: Desk / Duck → About Me. The hotspot sits on Swan's face/torso
+    // (Swan is placed at ~48–77% x, 19–65% y); this targets the clear centre.
     id: 'desk-duck',
     contentId: 'about',
     label: 'About me',
     ariaLabel: 'About Sowan — talk to the duck',
-    rect: { xPct: 53, yPct: 33, wPct: 20, hPct: 26 },
+    rect: { xPct: 53, yPct: 32, wPct: 18, hPct: 27 },
     z: 40,
     band: 'midground',
     reaction: 'talk',
   },
   {
+    // The monitor on the desk, foreground — sits in front of the filing cabinet.
     id: 'computer',
     contentId: 'projects',
     label: 'Projects',
     ariaLabel: 'Projects — open the storybook',
-    rect: { xPct: 15, yPct: 43, wPct: 16, hPct: 19 },
+    rect: { xPct: 16, yPct: 44, wPct: 17, hPct: 19 },
     z: 30,
     band: 'foreground',
     reaction: 'notice',
   },
   {
+    // The metal filing cabinet's visible upper drawers (above the monitor).
     id: 'filing-cabinet',
     contentId: 'experience',
     label: 'Experience',
     ariaLabel: 'Work experience — open the paper folder',
-    rect: { xPct: 19, yPct: 22, wPct: 10, hPct: 22 },
+    rect: { xPct: 17, yPct: 24, wPct: 13, hPct: 20 },
     z: 20,
     band: 'midground',
     reaction: 'think',
   },
   {
+    // The rust-red skills book in the bookshelf (the liftable cutout's slot).
     id: 'bookshelf',
     contentId: 'skills',
     label: 'Skills',
     ariaLabel: 'Skills and technologies — open the book',
-    rect: { xPct: 32, yPct: 5, wPct: 18, hPct: 33 },
+    rect: { xPct: 33.5, yPct: 27, wPct: 8, hPct: 16 },
     z: 10,
     band: 'background',
     reaction: 'notice',
   },
   {
+    // The gold trophy + silver plaque on the wall shelf, top centre.
     id: 'trophy-shelf',
     contentId: 'awards',
     label: 'Awards',
     ariaLabel: 'Awards — open the trophy detail',
-    rect: { xPct: 53, yPct: 4, wPct: 12, hPct: 12 },
+    rect: { xPct: 54, yPct: 3, wPct: 13, hPct: 15 },
     z: 10,
     band: 'background',
     reaction: 'talk',
   },
   {
+    // The small framed certificate on the wall (partly occluded by the chair —
+    // this targets its clear upper-left, above Swan's shoulder; §4 fixture note).
     id: 'graduation-frame',
     contentId: 'education',
     label: 'Education',
     ariaLabel: 'Education — open the framed certificate',
-    rect: { xPct: 56, yPct: 19, wPct: 9, hPct: 9 },
+    rect: { xPct: 52, yPct: 21, wPct: 9, hPct: 9 },
     z: 10,
     band: 'background',
     reaction: 'think',
   },
   {
+    // The manila résumé folder on the desk (from its object mask).
     id: 'resume-folder',
     contentId: 'resume',
     label: 'Résumé (PDF)',
     ariaLabel: 'Download résumé PDF',
-    rect: { xPct: 45, yPct: 73, wPct: 18, hPct: 18 },
+    rect: { xPct: 48, yPct: 73, wPct: 23, hPct: 18 },
     z: 40,
     band: 'foreground',
     reaction: 'notice',
     download: true,
   },
   {
+    // The telephone, bottom-right of the desk.
     id: 'telephone',
     contentId: 'contact',
     label: 'Contact',
     ariaLabel: 'Contact — open the business card',
-    rect: { xPct: 80, yPct: 62, wPct: 18, hPct: 16 },
+    rect: { xPct: 75, yPct: 61, wPct: 15, hPct: 16 },
     z: 40,
     band: 'foreground',
     reaction: 'talk',
   },
   {
+    // The whiteboard on the right wall (its clear upper-right, above the chair).
     id: 'whiteboard',
     contentId: 'roadmap',
     label: 'Roadmap',
-    ariaLabel: "Current goals and roadmap — open the whiteboard",
-    rect: { xPct: 76, yPct: 5, wPct: 23, hPct: 24 },
+    ariaLabel: 'Current goals and roadmap — open the whiteboard',
+    rect: { xPct: 77, yPct: 5, wPct: 22, hPct: 27 },
     z: 10,
     band: 'background',
     reaction: 'think',

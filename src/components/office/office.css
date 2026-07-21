@@ -122,7 +122,16 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Scene scaler + gray-box
+ * Scene scaler + painted layer stack
+ *
+ * The office sits inside a warm vintage CRT monitor chassis (owner call,
+ * 2026-07-21): the bezel fills the letterbox with purpose and the power-on
+ * becomes literal — the screen itself turns on. All CSS, warm tones only
+ * (art_style.md: never a cold digital look).
+ *
+ * z-stack inside .monitor__screen:
+ *   .scene (1 painted art · 2 ambient · 3 fixture glow · 4 coffee · 5 hotspots)
+ *   → 6 glass sheen · 7 CRT beam/flash
  * ------------------------------------------------------------------ */
 .scene-viewport {
   position: absolute;
@@ -131,55 +140,287 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  /* A dim warm room around the monitor (matches the entry screen's light). */
+  background: radial-gradient(
+    120% 120% at 50% 32%,
+    #382b1d 0%,
+    rgba(36, 26, 18, 0) 72%
+  );
 }
+/* Portrait: the tall empty space becomes a room — warm light around the
+ * monitor, floor falling into shadow below it; the monitor sits just above
+ * true centre (optical centre). */
+@media (orientation: portrait) {
+  .scene-viewport {
+    padding-bottom: 6vh;
+    background:
+      radial-gradient(130% 90% at 50% 40%, #3a2c1e 0%, rgba(36, 26, 18, 0) 68%),
+      linear-gradient(180deg, #2a2015 0%, #241a12 55%, #191209 88%, #140e08 100%);
+  }
+}
+
+.monitor-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Portrait (phones/tablets upright): the monitor stands on a foot over a soft
+ * floor shadow, so the tall empty space reads as a dim room around a real
+ * appliance — never a floating frame in a void. */
+.monitor__stand {
+  display: none;
+}
+@media (orientation: portrait) {
+  .monitor__stand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .monitor__neck {
+    width: clamp(44px, 13vw, 96px);
+    height: clamp(16px, 3.5vh, 36px);
+    background: linear-gradient(180deg, #a8956f, #8d7a57);
+    border-radius: 0 0 8px 8px;
+  }
+  .monitor__foot {
+    width: clamp(130px, 44vw, 280px);
+    height: clamp(10px, 2vh, 18px);
+    margin-top: -2px;
+    background: linear-gradient(180deg, #b3a184, #7d6b4c);
+    border-radius: 50% / 60% 60% 40% 40%;
+  }
+  .monitor-wrap::after {
+    content: '';
+    width: min(72vw, 420px);
+    height: clamp(14px, 3vh, 26px);
+    margin-top: 4px;
+    border-radius: 50%;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.5), transparent 72%);
+    filter: blur(2px);
+  }
+}
+
+/* The chassis — a warm vintage tabletop TV (reference: classic Trinitron-era
+ * sets): cream/putty plastic, side speaker grilles flanking the tube, a dark
+ * inset screen surround, blank brand plate + control cluster on the chin.
+ * All CSS, no text, no trademark — the plate stays blank like the props. */
+.monitor {
+  --bezel: clamp(10px, 2vmin, 26px);
+  --chin: clamp(28px, 5vmin, 56px);
+  --spk: clamp(26px, 5.5vmin, 78px);
+  --surround: clamp(5px, 1vmin, 12px);
+  --gaps: calc(var(--bezel) * 1.4); /* two body gaps (speaker ↔ screen) */
+  position: relative;
+  padding: var(--bezel) var(--bezel) calc(var(--bezel) * 0.5);
+  background: linear-gradient(180deg, #d3c2a2 0%, #c2b08e 45%, #a8956f 100%);
+  border-radius: clamp(14px, 2.6vmin, 30px);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 250, 238, 0.55),
+    inset 0 -3px 6px rgba(70, 55, 35, 0.45),
+    0 26px 70px rgba(0, 0, 0, 0.6),
+    0 8px 20px rgba(0, 0, 0, 0.45);
+}
+.monitor__body {
+  display: flex;
+  align-items: stretch;
+  gap: calc(var(--bezel) * 0.7);
+}
+/* Side speaker grilles — diagonal-slot texture in shadowed putty. */
+.monitor__speaker {
+  width: var(--spk);
+  border-radius: clamp(4px, 0.8vmin, 8px);
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(58, 45, 30, 0.34) 0,
+      rgba(58, 45, 30, 0.34) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    linear-gradient(180deg, #c0ad8c, #a8956f);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+}
+/* Dark tube surround the glass sits in. */
+.monitor__screenwrap {
+  padding: var(--surround);
+  background: #17110b;
+  border-radius: clamp(12px, 2.4vmin, 30px);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.06);
+}
+.monitor__screen {
+  position: relative;
+  overflow: hidden;
+  /* Barrel-glass read: elliptical corners + a deep soft falloff at the edges
+   * (the tube's curved edge), like the reference's curved-screen mask. */
+  border-radius: clamp(10px, 2vmin, 26px) / clamp(12px, 2.4vmin, 30px);
+  background: #100b07; /* dark warm glass before the tube warms up */
+  box-shadow:
+    inset 0 0 clamp(14px, 3vmin, 34px) rgba(0, 0, 0, 0.8),
+    inset 0 0 4px 2px rgba(0, 0, 0, 0.9);
+}
+/* Subtle curved-glass sheen + corner falloff over the picture. Kept faint so
+ * it never fights the art or the label contrast. */
+.monitor__glass {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(130% 90% at 28% 10%, rgba(255, 244, 224, 0.06), transparent 44%),
+    radial-gradient(145% 125% at 50% 50%, transparent 62%, rgba(0, 0, 0, 0.2) 100%);
+  box-shadow: inset 0 0 clamp(12px, 2.6vmin, 30px) rgba(0, 0, 0, 0.55);
+}
+.monitor__chin {
+  height: var(--chin);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 clamp(10px, 2.2vmin, 24px);
+}
+/* Blank embossed brand plate, centred (label-free: law 3 + original-art only). */
+.monitor__badge {
+  grid-column: 2;
+  width: clamp(40px, 8vmin, 88px);
+  height: clamp(6px, 1.2vmin, 11px);
+  border-radius: 3px;
+  background: linear-gradient(180deg, #b9a680, #9c8a66);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.35),
+    0 1px 1px rgba(255, 255, 255, 0.25);
+}
+/* Control cluster: two function buttons, the power LED, the power knob. */
+.monitor__controls {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 1vmin, 10px);
+}
+.monitor__btn {
+  width: clamp(7px, 1.2vmin, 12px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #a8956f;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.monitor__power {
+  width: clamp(11px, 1.9vmin, 17px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c9b795, #8d7a57);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.55),
+    0 1px 1px rgba(255, 255, 255, 0.2);
+}
+.monitor__led {
+  width: clamp(6px, 1.1vmin, 10px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #7d6b4c; /* unlit */
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+.monitor__led[data-on='true'] {
+  background: var(--color-mustard);
+  box-shadow: 0 0 10px rgba(217, 164, 65, 0.9);
+}
+/* Portrait: the speakers fold away (width is precious); the set keeps its
+ * surround, chin, and stand. */
+@media (orientation: portrait) {
+  .monitor {
+    --spk: 0px;
+    --gaps: 0px;
+  }
+  .monitor__speaker {
+    display: none;
+  }
+}
+
 .scene {
   position: relative;
   aspect-ratio: var(--scene-aspect, 1.3333); /* SCENE_ASPECT (master 2896×2172) */
-  width: min(100%, calc((100dvh - var(--toolbar-h, 3.5rem)) * var(--scene-aspect, 1.3333)));
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
-  background: #b7a88f;
+  /* Fit inside the chassis: viewport minus toolbar, bezel, speakers, surround,
+   * chin, breathing room. */
+  width: min(
+    100vw - 2 * var(--bezel) - var(--gaps) - 2 * var(--spk) - 2 * var(--surround) -
+      0.75rem,
+    calc(
+      (
+          100dvh - var(--toolbar-h, 3.5rem) - 2 * var(--bezel) -
+            2 * var(--surround) - var(--chin) - 1rem
+        ) *
+        var(--scene-aspect, 1.3333)
+    )
+  );
+  background: #b7a88f; /* warm hold while the painted layers decode */
   overflow: hidden;
 }
 
-.gb {
+/* The painted office (SceneLayers): full-frame depth layers + registered
+ * cutouts. It owns its own stacking context so per-image z stays scoped. */
+.scene-art {
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
-.gb__wall {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.03) 0,
-      rgba(0, 0, 0, 0.03) 2px,
-      transparent 2px,
-      transparent 44px
-    ),
-    #b0a087;
+.scene-layer {
+  user-select: none;
+  -webkit-user-drag: none;
 }
-.gb__desk {
+
+/* Fixture activation glow (V-013): a warm pulse on the active object. */
+.fixture-glow {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 34%;
-  background: var(--color-wood-dark);
-  border-top: 3px solid #4a3524;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 12%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(217, 164, 65, 0.42),
+    rgba(217, 164, 65, 0) 72%
+  );
+  mix-blend-mode: screen;
+  animation: fixture-glow-pulse 1.4s ease-in-out infinite;
 }
-.gb__duck {
+@keyframes fixture-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+.fixture-glow[data-reduced='true'] {
+  animation: none;
+  opacity: 0.8;
+}
+
+/* The coffee mug easter-egg hit area (invisible over the painted mug). */
+.scene-coffee {
   position: absolute;
-  left: 52%;
-  top: 18%;
-  width: 24%;
-  height: 42%;
-  display: grid;
-  place-items: center;
-  background: var(--color-duck);
-  border: 2px solid var(--color-ink);
-  border-radius: 0.6rem 0.6rem 0 0;
-  color: var(--color-ink);
-  font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2.6vw, 1.3rem);
+  left: 61.5%;
+  top: 65%;
+  width: 8.5%;
+  height: 13%;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: 4;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.scene-coffee:hover,
+.scene-coffee:focus-visible {
+  background: rgba(217, 164, 65, 0.18);
 }
 
 /* ------------------------------------------------------------------ *
@@ -188,6 +429,7 @@
 .hotspots {
   position: absolute;
   inset: 0;
+  z-index: 5;
 }
 .hotspot {
   position: absolute;
@@ -198,18 +440,26 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background: rgba(46, 125, 79, 0.1);
-  border: 2px dashed rgba(36, 26, 18, 0.5);
-  border-radius: 0.4rem;
+  /* Invisible at rest — the painted office reads as an office, not a form.
+   * A soft warm outline appears only on hover / focus / first-tap / look-around
+   * (CLAUDE.md §4). */
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 0.6rem;
   color: var(--color-ink);
   cursor: pointer;
   text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 .hotspot:hover,
-.hotspot:focus-visible {
-  background: rgba(217, 164, 65, 0.3);
+.hotspot:focus-visible,
+.hotspot--selected,
+.hotspots--show-labels .hotspot {
+  background: rgba(217, 164, 65, 0.14);
   border-color: var(--color-suit);
-  border-style: solid;
+  box-shadow: 0 0 0 1px rgba(217, 164, 65, 0.35),
+    0 3px 12px rgba(217, 164, 65, 0.28);
 }
 .hotspot__label {
   font-family: var(--font-display);
@@ -303,54 +553,82 @@
 
 /* ------------------------------------------------------------------ *
  * CRT power-on (transform / opacity / filter only, no strobing)
+ *
+ * The screen content behaves like a real tube warming up:
+ *   1. dark glass → a hot horizontal beam line sweeps out from the centre;
+ *   2. the raster unfolds vertically from that line, slightly overscanning
+ *      (scaleY overshoot, clipped by the screen — like a real CRT settling);
+ *   3. the picture arrives overbright and washed out, blooms warm, then
+ *      settles to true brightness. Monotonic settle — a bloom, never a strobe.
+ * Input during all of this is blocked by the scene-viewport being inert.
  * ------------------------------------------------------------------ */
+.office-overlay[data-view='crt'] .scene {
+  transform-origin: 50% 50%;
+  animation: crt-unfold var(--crt-ms, 1350ms) cubic-bezier(0.25, 0.8, 0.35, 1) forwards;
+}
+@keyframes crt-unfold {
+  0% {
+    transform: scaleY(0.004);
+    filter: brightness(2.8) saturate(0.4);
+  }
+  18% {
+    /* Holds as a hairline while the beam sweeps across. */
+    transform: scaleY(0.004);
+    filter: brightness(2.8) saturate(0.4);
+  }
+  44% {
+    /* Raster unfolds past full height — overscan, clipped by the screen. */
+    transform: scaleY(1.05);
+    filter: brightness(1.6) saturate(0.9);
+  }
+  58% {
+    transform: scaleY(1);
+    filter: brightness(1.22) saturate(1.03);
+  }
+  100% {
+    transform: scaleY(1);
+    filter: brightness(1) saturate(1);
+  }
+}
 .crt {
   position: absolute;
   inset: 0;
-  z-index: 800;
-  pointer-events: auto; /* intercept input while powering on (no click-through) */
+  z-index: 7;
+  pointer-events: none; /* input is blocked by inert, not by this overlay */
   overflow: hidden;
-  background: var(--color-ink);
-  animation: crt-cover var(--crt-ms, 1350ms) ease-out forwards;
-}
-@keyframes crt-cover {
-  0% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 .crt__beam {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 5%;
+  right: 5%;
   top: 50%;
-  height: 4px;
+  height: 2px;
   transform: translateY(-50%) scaleX(0);
   transform-origin: center;
-  background: linear-gradient(90deg, transparent, #fff7e6, transparent);
+  background: linear-gradient(90deg, transparent, #fff3dc 16%, #ffe9c0 84%, transparent);
+  border-radius: 2px;
+  filter: blur(0.4px);
   opacity: 0;
-  animation: crt-beam var(--crt-ms, 1350ms) ease-out forwards;
+  animation: crt-beam var(--crt-ms, 1350ms) linear forwards;
 }
 @keyframes crt-beam {
   0% {
-    transform: translateY(-50%) scaleX(0) scaleY(1);
+    transform: translateY(-50%) scaleX(0);
     opacity: 0;
   }
-  14% {
-    transform: translateY(-50%) scaleX(1) scaleY(1);
+  5% {
     opacity: 1;
   }
-  48% {
-    transform: translateY(-50%) scaleX(1) scaleY(120);
-    opacity: 0.9;
+  16% {
+    /* Beam reaches full width just as the raster starts to unfold behind it. */
+    transform: translateY(-50%) scaleX(1);
+    opacity: 1;
   }
-  72% {
-    transform: translateY(-50%) scaleX(1) scaleY(220);
+  30% {
+    opacity: 0.7;
+  }
+  48% {
+    transform: translateY(-50%) scaleX(1);
     opacity: 0;
   }
   100% {
@@ -362,91 +640,31 @@
   inset: 0;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(217, 164, 65, 0.5),
-    rgba(217, 164, 65, 0) 70%
+    rgba(255, 214, 150, 0.4),
+    rgba(255, 214, 150, 0) 66%
   );
   opacity: 0;
   animation: crt-flash var(--crt-ms, 1350ms) ease-out forwards;
 }
 @keyframes crt-flash {
   0%,
-  45% {
+  32% {
     opacity: 0;
   }
-  62% {
-    opacity: 0.85;
+  50% {
+    /* Phosphor bloom as the picture arrives — single warm swell. */
+    opacity: 0.8;
+  }
+  74% {
+    opacity: 0.22;
   }
   100% {
     opacity: 0;
-  }
-}
-.office-overlay[data-view='crt'] .scene-viewport {
-  animation: crt-settle var(--crt-ms, 1350ms) ease-out forwards;
-}
-@keyframes crt-settle {
-  0% {
-    filter: brightness(0.2) saturate(0.6);
-  }
-  60% {
-    filter: brightness(1.4) saturate(1.1);
-  }
-  100% {
-    filter: brightness(1) saturate(1);
   }
 }
 
 /* Reduced motion: no CRT is rendered (enter → office directly); the global
  * reduced-motion rule collapses any remaining transition to ~instant. */
-
-/* ------------------------------------------------------------------ *
- * Newspaper headline + coffee mug (gray-box props)
- * ------------------------------------------------------------------ */
-.gb__news {
-  position: absolute;
-  left: 30%;
-  top: 62%;
-  width: 26%;
-  transform: rotate(-3deg);
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  padding: 0.35rem 0.5rem;
-  background: #efe7d2;
-  border: 1px solid #b8a888;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-}
-.gb__masthead {
-  font-family: var(--font-display);
-  font-size: clamp(0.55rem, 1.5vw, 0.85rem);
-  color: var(--color-ink);
-  border-bottom: 1px solid #b8a888;
-  text-align: center;
-}
-.gb__headline {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(0.5rem, 1.4vw, 0.8rem);
-  line-height: 1.15;
-  color: var(--color-ink);
-}
-.gb__coffee {
-  position: absolute;
-  right: 22%;
-  top: 60%;
-  min-width: 44px;
-  min-height: 44px;
-  display: grid;
-  place-items: center;
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.4rem;
-}
-.gb__coffee:hover,
-.gb__coffee:focus-visible {
-  background: rgba(217, 164, 65, 0.25);
-}
 
 /* ------------------------------------------------------------------ *
  * Dialogue panel (the duck's speech)
@@ -678,6 +896,46 @@
 }
 .pc-exp__item {
   margin-bottom: 0.6rem;
+}
+
+/* Rotate hint — one gentle portrait-only nudge toward the bigger screen. */
+.rotate-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 92vw;
+  padding: 0.4rem 0.5rem 0.4rem 0.9rem;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  border: 1px solid var(--color-wood);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.rotate-hint__dismiss {
+  min-height: 44px;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-suit);
+  color: var(--color-cream);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rotate-hint__dismiss:hover {
+  background: var(--color-ink);
+}
+/* Never shown in landscape, whatever the JS state. */
+@media (orientation: landscape) {
+  .rotate-hint {
+    display: none;
+  }
 }
 
 /* Toast (easter eggs, résumé ack) */

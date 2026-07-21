@@ -7,19 +7,24 @@ import {
   STORAGE_KEYS,
   type OfficeView,
 } from './engine';
-import {
-  originIntro,
-  easterEggs,
-  timeOfDay,
-  pickLines,
-  type LineSet,
-} from '../../lib/dialogue';
-import { newspaper } from '../../content/profile';
+import { originIntro, easterEggs, pickLines, type LineSet } from '../../lib/dialogue';
 import { useInteraction } from './useInteraction';
 import EntryScreen from './EntryScreen';
 import Hotspots from './Hotspots';
 import Dialogue from './Dialogue';
+import SceneLayers from './SceneLayers';
+import Ambient from '../ambient/Ambient';
+import { sceneLayers, layerSrcSet, layerSizes } from '../../lib/sceneLayers';
 import './office.css';
+
+/** The heavy painted layers worth preloading behind the entry screen. */
+const PRELOAD_LAYER_IDS = new Set([
+  'background-wall',
+  'midground-furniture',
+  'desk-surface',
+  'desk-occluders',
+  'swan',
+]);
 
 // The physical-UI panels (and all the profile content rendering) are only
 // needed once an object opens — code-split so the initial island stays small
@@ -33,47 +38,11 @@ const ContentPanel = lazy(() => import('./ui/ContentPanel'));
  * dialogue → content opens as a physical panel → close → the duck returns. The
  * résumé folder downloads the PDF directly (law 2). Plus the v1 flourishes:
  * origin-story intro, repeat-visit memory, time-aware idle, rotating newspaper
- * headline, and the three easter eggs (bible §16).
+ * and the three easter eggs (bible §16). Phase 5 swaps the gray-box for the
+ * painted layer stack (SceneLayers) plus ambient life (Ambient). The rotating
+ * newspaper headline and the time-aware idle pose return in Phase 6, when the
+ * Rive duck brings the reading pose and the newspaper prop with it.
  */
-const DUCK_IDLE_LABEL: Record<string, string> = {
-  night: '😴 Swan',
-  morning: '☕ Swan',
-  day: '🦆 Swan',
-  evening: '🦆 Swan',
-};
-
-function GrayBoxLayers({
-  headline,
-  duckLabel,
-  onCoffee,
-}: {
-  headline: string;
-  duckLabel: string;
-  onCoffee: () => void;
-}) {
-  return (
-    <div className="gb">
-      <div className="gb__wall" aria-hidden="true" />
-      <div className="gb__desk" aria-hidden="true" />
-      <div className="gb__news" aria-hidden="true">
-        <span className="gb__masthead">{newspaper.masthead}</span>
-        <span className="gb__headline">{headline}</span>
-      </div>
-      <div className="gb__duck" aria-hidden="true">
-        <span>{duckLabel}</span>
-      </div>
-      <button
-        type="button"
-        className="gb__coffee"
-        onClick={onCoffee}
-        aria-label="Swan's coffee mug"
-      >
-        <span aria-hidden="true">☕</span>
-      </button>
-    </div>
-  );
-}
-
 export default function Office() {
   const [view, setView] = useState<OfficeView>('entry');
   const [soundOn, setSoundOn] = useState(true);
@@ -88,10 +57,7 @@ export default function Office() {
   const { state: interaction, dispatch } = useInteraction(reduced);
   const [introIndex, setIntroIndex] = useState<number | null>(null);
   const [toast, setToast] = useState<string | null>(null);
-  const [tod] = useState(() => timeOfDay(new Date().getHours()));
-  const [headline] = useState(
-    () => newspaper.headlines[Math.floor(Math.random() * newspaper.headlines.length)] ?? ''
-  );
+  const [rotateHint, setRotateHint] = useState(false);
 
   const visitedRef = useRef<Set<string>>(new Set());
   const visitCountRef = useRef(0);
@@ -101,6 +67,7 @@ export default function Office() {
   const crtTimer = useRef<number | null>(null);
   const flashTimer = useRef<number | null>(null);
   const toastTimer = useRef<number | null>(null);
+  const rotateTimer = useRef<number | null>(null);
   const coffeeCount = useRef(0);
   const spamCount = useRef(0);
   const hireBuffer = useRef('');
@@ -142,11 +109,41 @@ export default function Office() {
     return () => {
       rm.removeEventListener('change', onRm);
       touch.removeEventListener('change', onTouch);
-      for (const t of [crtTimer, flashTimer, toastTimer]) {
+      for (const t of [crtTimer, flashTimer, toastTimer, rotateTimer]) {
         if (t.current) window.clearTimeout(t.current);
       }
     };
   }, []);
+
+  // Cover the fetch (§8): while the visitor reads the entry screen, warm the
+  // browser cache with the heavy painted layers so the office is ready when
+  // they come in. Injected a beat AFTER hydration so the fetches never contend
+  // with the entry portrait's LCP window (measured: immediate preloads pushed
+  // LCP from ~1.7s toward the 2.5s gate under throttle). AVIF only
+  // (byte-identical to the gated pack); the rare no-AVIF browser simply
+  // fetches WebP on enter, behind the 1.35s CRT.
+  useEffect(() => {
+    if (!ready) return;
+    const links: HTMLLinkElement[] = [];
+    const inject = window.setTimeout(() => {
+      for (const l of sceneLayers) {
+        if (!PRELOAD_LAYER_IDS.has(l.id)) continue;
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.type = 'image/avif';
+        link.setAttribute('imagesrcset', layerSrcSet(l, 'avif'));
+        link.setAttribute('imagesizes', layerSizes(l));
+        link.setAttribute('fetchpriority', 'low');
+        document.head.appendChild(link);
+        links.push(link);
+      }
+    }, 2500);
+    return () => {
+      window.clearTimeout(inject);
+      links.forEach((l) => l.remove());
+    };
+  }, [ready]);
 
   // The standard view underneath is inert while the overlay covers it.
   useEffect(() => {
@@ -156,6 +153,37 @@ export default function Office() {
       if (std) std.inert = false;
     };
   }, [view]);
+
+  // Rotate hint: a touch visitor holding portrait gets one gentle nudge that
+  // landscape gives the bigger screen. Shows once per visitor, after the office
+  // is quiet (intro finished); leaves on dismiss, rotation, or a timeout.
+  useEffect(() => {
+    if (view !== 'office' || busy || !coarse) return;
+    const portrait = window.matchMedia('(orientation: portrait)');
+    if (!portrait.matches) return;
+    try {
+      if (localStorage.getItem(STORAGE_KEYS.rotateHint)) return;
+    } catch {
+      /* storage blocked — still show once this session */
+    }
+    const show = window.setTimeout(() => {
+      setRotateHint(true);
+      try {
+        localStorage.setItem(STORAGE_KEYS.rotateHint, '1');
+      } catch {
+        /* session-only */
+      }
+      rotateTimer.current = window.setTimeout(() => setRotateHint(false), 9000);
+    }, 1200);
+    const onFlip = () => {
+      if (!portrait.matches) setRotateHint(false);
+    };
+    portrait.addEventListener('change', onFlip);
+    return () => {
+      window.clearTimeout(show);
+      portrait.removeEventListener('change', onFlip);
+    };
+  }, [view, busy, coarse]);
 
   const flashOnFirstVisit = useCallback(() => {
     try {
@@ -377,6 +405,17 @@ export default function Office() {
   // mid-interaction, so nothing behind can be tabbed or clicked (§5, fix).
   const sceneLocked = busy || view === 'crt';
 
+  // Fixture activation overlay (V-013): a warm glow on the object being handled,
+  // since the wall fixtures highlight rather than physically lift.
+  const glowActive =
+    interaction.phase === 'noticing' ||
+    interaction.phase === 'talking' ||
+    interaction.phase === 'opening' ||
+    interaction.phase === 'open';
+  const activeGlow = glowActive
+    ? hotspots.find((h) => h.id === interaction.objectId) ?? null
+    : null;
+
   const overlayStyle = {
     ['--crt-ms' as string]: `${CRT_POWER_ON_MS}ms`,
     ['--scene-aspect' as string]: String(SCENE_ASPECT),
@@ -411,24 +450,80 @@ export default function Office() {
       {(view === 'crt' || view === 'office') && (
         <>
           <div className="scene-viewport" inert={sceneLocked}>
-            <div
-              className="scene"
-              role="group"
-              aria-roledescription="office scene"
-              aria-label="Swan's office (gray-box preview)"
-              data-duck={interaction.duck}
-            >
-              <GrayBoxLayers
-                headline={headline}
-                duckLabel={DUCK_IDLE_LABEL[tod] ?? '🦆 Swan'}
-                onCoffee={onCoffee}
-              />
-              <Hotspots
-                hotspots={hotspots}
-                showLabels={flashLabels || lookAround}
-                selectedId={selectedId}
-                onActivate={activate}
-              />
+            {/* The office lives inside a warm vintage CRT monitor — the chassis
+                fills the letterbox and makes the power-on literal: you switch
+                the monitor on and the office is inside (owner call, 2026-07-21).
+                On portrait screens the monitor gains a stand + floor shadow so
+                the empty space reads as a room, not a void. Chassis parts are
+                decorative; the scene keeps the aria group. */}
+            <div className="monitor-wrap">
+            <div className="monitor">
+              <div className="monitor__body">
+              <span className="monitor__speaker monitor__speaker--left" aria-hidden="true" />
+              <div className="monitor__screenwrap">
+              <div className="monitor__screen">
+                <div
+                  className="scene"
+                  role="group"
+                  aria-roledescription="office scene"
+                  aria-label="Swan's office"
+                  data-duck={interaction.duck}
+                >
+                  <SceneLayers />
+                  <Ambient reduced={reduced} />
+                  {activeGlow && (
+                    <div
+                      className="fixture-glow"
+                      aria-hidden="true"
+                      data-reduced={reduced ? 'true' : 'false'}
+                      style={{
+                        left: `${activeGlow.rect.xPct}%`,
+                        top: `${activeGlow.rect.yPct}%`,
+                        width: `${activeGlow.rect.wPct}%`,
+                        height: `${activeGlow.rect.hPct}%`,
+                      }}
+                    />
+                  )}
+                  {/* The coffee mug — an invisible hit area over the painted mug
+                      for the caffeine easter egg (bible §16). */}
+                  <button
+                    type="button"
+                    className="scene-coffee"
+                    onClick={onCoffee}
+                    aria-label="Swan's coffee mug"
+                  />
+                  <Hotspots
+                    hotspots={hotspots}
+                    showLabels={flashLabels || lookAround}
+                    selectedId={selectedId}
+                    onActivate={activate}
+                  />
+                </div>
+                <div className="monitor__glass" aria-hidden="true" />
+                {view === 'crt' && !reduced && (
+                  <div className="crt" aria-hidden="true">
+                    <span className="crt__beam" />
+                    <span className="crt__flash" />
+                  </div>
+                )}
+              </div>
+              </div>
+              <span className="monitor__speaker monitor__speaker--right" aria-hidden="true" />
+              </div>
+              <div className="monitor__chin" aria-hidden="true">
+                <span className="monitor__badge" />
+                <span className="monitor__controls">
+                  <span className="monitor__btn" />
+                  <span className="monitor__btn" />
+                  <span className="monitor__led" data-on={view === 'office'} />
+                  <span className="monitor__power" />
+                </span>
+              </div>
+            </div>
+            <div className="monitor__stand" aria-hidden="true">
+              <span className="monitor__neck" />
+              <span className="monitor__foot" />
+            </div>
             </div>
           </div>
 
@@ -498,16 +593,23 @@ export default function Office() {
             </Suspense>
           )}
 
-          {toast && (
-            <div className="office-toast" role="status" aria-live="polite">
-              {toast}
+          {rotateHint && (
+            <div className="rotate-hint" role="status">
+              <span aria-hidden="true">📺</span>
+              <span>Turn your phone sideways for the big screen.</span>
+              <button
+                type="button"
+                className="rotate-hint__dismiss"
+                onClick={() => setRotateHint(false)}
+              >
+                Got it
+              </button>
             </div>
           )}
 
-          {view === 'crt' && !reduced && (
-            <div className="crt" aria-hidden="true">
-              <span className="crt__beam" />
-              <span className="crt__flash" />
+          {toast && (
+            <div className="office-toast" role="status" aria-live="polite">
+              {toast}
             </div>
           )}
         </>

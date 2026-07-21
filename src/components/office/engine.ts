@@ -26,6 +26,8 @@ export const STORAGE_KEYS = {
   visitedObjects: 'swans-office:visited-objects',
   /** Whether the origin-story intro has played (once per visitor, bible §3). */
   introSeen: 'swans-office:intro-seen',
+  /** Whether the portrait rotate-your-phone hint has been shown (once). */
+  rotateHint: 'swans-office:rotate-hint',
 } as const;
 
 /**

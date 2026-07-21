@@ -1,0 +1,171 @@
+/*
+ * ambient.css — the office's ambient loops (Phase 5 task 4).
+ * Hard rule: transform/opacity only, so every loop holds 60fps on a mid-range
+ * phone. Nothing here is interactive; the whole layer is aria-hidden.
+ */
+
+.ambient-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* above the painted scene (.scene-art = 1), below hotspots (5) */
+  pointer-events: none;
+}
+.ambient-slot {
+  position: absolute;
+}
+.ambient-slot--clip {
+  overflow: hidden;
+}
+.ambient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------ *
+ * Wall clock — real local time. Only the hands; the face is painted.
+ * ------------------------------------------------------------------ */
+.ambient-clock__hour,
+.ambient-clock__minute {
+  stroke: var(--color-ink);
+  stroke-linecap: round;
+}
+.ambient-clock__hour {
+  stroke-width: 3.4;
+}
+.ambient-clock__minute {
+  stroke-width: 2.2;
+}
+.ambient-clock__second {
+  stroke: var(--color-suit);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.ambient-clock__hub {
+  fill: var(--color-ink);
+}
+.ambient-clock__second--sweep {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: ambient-clock-sweep 60s linear infinite;
+}
+@keyframes ambient-clock-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Coffee steam — wisps rising and fading off the mug.
+ * ------------------------------------------------------------------ */
+.ambient-steam__wisp {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 34%;
+  height: 78%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 90%,
+    rgba(255, 250, 240, 0.5),
+    rgba(255, 250, 240, 0) 70%
+  );
+  filter: blur(2px);
+  opacity: 0;
+  transform: translate(-50%, 0) scale(0.6);
+  animation: ambient-steam 4.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 1.3s);
+}
+@keyframes ambient-steam {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10%) scale(0.55) translateX(0);
+  }
+  35% {
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -95%) scale(1.15) translateX(8%);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Window rain — faint moving streaks over the (already rainy) window.
+ * ------------------------------------------------------------------ */
+.ambient-rain__sheet {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: -110%;
+  bottom: -110%;
+  background-repeat: repeat;
+}
+.ambient-rain__sheet--far {
+  background-image: repeating-linear-gradient(
+    76deg,
+    rgba(210, 224, 235, 0) 0,
+    rgba(210, 224, 235, 0) 7px,
+    rgba(210, 224, 235, 0.16) 7px,
+    rgba(210, 224, 235, 0.16) 8px
+  );
+  animation: ambient-rain-fall 0.9s linear infinite;
+}
+.ambient-rain__sheet--near {
+  background-image: repeating-linear-gradient(
+    74deg,
+    rgba(224, 234, 243, 0) 0,
+    rgba(224, 234, 243, 0) 11px,
+    rgba(224, 234, 243, 0.2) 11px,
+    rgba(224, 234, 243, 0.2) 12.5px
+  );
+  animation: ambient-rain-fall 0.6s linear infinite;
+}
+@keyframes ambient-rain-fall {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(11%);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Banker's-lamp glow — a warm pool that gently breathes.
+ * ------------------------------------------------------------------ */
+.ambient-lamp {
+  background: radial-gradient(
+    ellipse at 42% 38%,
+    rgba(255, 201, 122, 0.32),
+    rgba(255, 201, 122, 0) 68%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  animation: ambient-lamp-breathe 6s ease-in-out infinite;
+}
+@keyframes ambient-lamp-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion: the lamp keeps a steady glow; the clock face is set from the
+ * real time and simply doesn't sweep. (Rain/steam aren't rendered at all then.)
+ * The global reduced-motion reset already halts the keyframes; this pins the
+ * lamp to a calm, non-flashing opacity. */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-lamp {
+    opacity: 0.82;
+  }
+}

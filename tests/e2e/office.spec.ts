@@ -2,7 +2,7 @@ import { test, expect, type Page, type TestInfo } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 /**
- * The office island: entry → CRT → gray-box office → the duck's dialogue →
+ * The office island: entry → CRT → painted office → the duck's dialogue →
  * content opens as a physical panel → close → return (CLAUDE.md §5). Also covers
  * the review fixes: CRT input lockout, focus return, mobile first-tap, look-
  * around labels, reduced motion, the JS-failure fallback, and the easter eggs.
@@ -47,11 +47,23 @@ test('the office is server-rendered and marked ready after hydration', async ({ 
   await expect(page.locator('html')).toHaveClass(/office-ready/);
 });
 
-test('coming in reveals the gray-box office with all nine objects', async ({ page }) => {
+test('coming in reveals the painted office with all nine objects', async ({ page }) => {
   await comeIn(page);
   await expect(page.locator('.hotspot')).toHaveCount(9);
   await expect(page.locator('a.hotspot[href="/resume.pdf"][download]')).toHaveCount(1);
   await expect(page.locator('[data-object="desk-duck"]')).toHaveCount(1); // Desk/Duck → About
+});
+
+test('the painted scene renders its nine layers and the live clock (Phase 5)', async ({ page }) => {
+  await comeIn(page);
+  // Nine painted layers (four depth + Swan + four props) over the clean plate.
+  await expect(page.locator('.scene-art img')).toHaveCount(9);
+  // The background wall actually decodes (real art, not gray-box).
+  await expect(
+    page.locator('.scene-layer--background-wall').first()
+  ).toHaveJSProperty('complete', true);
+  // Ambient life: the real-time wall clock draws its hands.
+  await expect(page.locator('.ambient-clock')).toBeVisible();
 });
 
 test('the CRT transition does not accept input (critical fix)', async ({ browser }) => {
@@ -130,6 +142,24 @@ test('touch first tap selects and labels; second tap opens', async ({ browser })
   await expect(page.locator('.dialogue')).toHaveCount(0);
   await el.click();
   await expect(page.locator('.dialogue')).toBeVisible({ timeout: 3000 }); // second tap opens
+  await context.close();
+});
+
+test('portrait touch visitors get the rotate hint once, dismissible', async ({ browser }) => {
+  const context = await browser.newContext({ hasTouch: true, isMobile: true, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await comeIn(page);
+  const hint = page.locator('.rotate-hint');
+  await expect(hint).toBeVisible({ timeout: 4000 });
+  await expect(hint).toContainText(/sideways/i);
+  await hint.getByRole('button', { name: /got it/i }).click();
+  await expect(hint).toHaveCount(0);
+  // Once per visitor: a reload doesn't nag again.
+  await page.reload();
+  await page.getByRole('button', { name: /come in/i }).click();
+  await expect(page.locator('.office-overlay[data-view="office"]')).toBeVisible({ timeout: 4000 });
+  await page.waitForTimeout(1800);
+  await expect(page.locator('.rotate-hint')).toHaveCount(0);
   await context.close();
 });
 
