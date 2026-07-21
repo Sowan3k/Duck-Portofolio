@@ -812,28 +812,34 @@
 .panel__content {
   position: absolute;
   overflow: auto;
-  /* A warm-paper backing keeps DOM text readable on every prop while gray-box
-   * insets are approximate; Phase 5 registers content to the painted writable
-   * areas and can lift this. */
-  background: rgba(244, 236, 216, 0.95);
-  border-radius: 0.5rem;
-  padding: 0.55rem 0.8rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  /* A clean opaque page resting on the opened prop: it sits within the prop's
+   * flat centre (see panels.ts insets) so the prop frames it, upright and fully
+   * readable, lifted off the art by a soft shadow (owner review 2026-07-22). */
+  background: #f4ecd8;
+  border: 1px solid rgba(120, 92, 58, 0.28);
+  border-radius: 0.4rem;
+  padding: 0.7rem 0.95rem;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.12),
+    0 10px 26px rgba(20, 14, 8, 0.28);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: clamp(0.72rem, 1.7vw, 0.95rem);
-  line-height: 1.3;
+  font-size: clamp(0.8rem, 1.7vw, 0.98rem);
+  line-height: 1.35;
   -webkit-overflow-scrolling: touch;
+  /* A hint of the writable-paper tone so the sheet reads as paper, not a chip. */
+  scrollbar-width: thin;
 }
 .panel__content--spread {
-  /* Two-page spreads keep a slightly wider gutter breathing room. */
-  padding: 0 0.5%;
+  padding: 0.7rem 0.95rem;
 }
 .panel__title {
   margin: 0 0 0.4rem;
   font-family: var(--font-display);
   font-size: clamp(1.05rem, 2.8vw, 1.6rem);
-  color: var(--color-green);
+  /* A shade darker than brand green so the title clears AA 4.5:1 as normal
+   * text on the solid sheet (5.1:1) at the small mobile title size. */
+  color: #297046;
   outline: none;
 }
 .panel__close {
