@@ -35,6 +35,18 @@ export default function ContentPanel({ contentId, onClose, reduced }: Props) {
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose]);
 
+  // The prop art is the stage's background (not a sibling <img>) so the DOM text
+  // writes directly onto the painted paper - no card (owner review 2026-07-22).
+  // Largest tier for crispness; loads on demand when the panel opens. AVIF with
+  // a WebP fallback via image-set (older engines take the plain WebP url).
+  const wLarge = art.widths[art.widths.length - 1];
+  const stageStyle = {
+    ['--ratio' as string]: String(art.ratio),
+    ['--art-avif' as string]: `url("${UI_DIR}/${art.stem}-${wLarge}w.avif")`,
+    ['--art-webp' as string]: `url("${UI_DIR}/${art.stem}-${wLarge}w.webp")`,
+    aspectRatio: String(art.ratio),
+  };
+
   const contentStyle = {
     top: `${art.inset[0]}%`,
     right: `${art.inset[1]}%`,
@@ -51,28 +63,7 @@ export default function ContentPanel({ contentId, onClose, reduced }: Props) {
       aria-modal="true"
       aria-label={art.title}
     >
-      <div
-        className="panel__stage"
-        style={{ ['--ratio' as string]: String(art.ratio), aspectRatio: String(art.ratio) }}
-      >
-        <picture>
-          <source
-            type="image/avif"
-            srcSet={art.widths.map((w) => `${UI_DIR}/${art.stem}-${w}w.avif ${w}w`).join(', ')}
-            sizes="(max-width: 900px) 96vw, 900px"
-          />
-          <source
-            type="image/webp"
-            srcSet={art.widths.map((w) => `${UI_DIR}/${art.stem}-${w}w.webp ${w}w`).join(', ')}
-            sizes="(max-width: 900px) 96vw, 900px"
-          />
-          <img
-            src={`${UI_DIR}/${art.stem}-${art.widths[1]}w.webp`}
-            alt=""
-            className="panel__art"
-          />
-        </picture>
-
+      <div className="panel__stage" style={stageStyle}>
         <div className={`panel__content${art.spread ? ' panel__content--spread' : ''}`} style={contentStyle}>
           <h2 ref={headingRef} tabIndex={-1} className="panel__title">
             {art.title}

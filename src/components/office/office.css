@@ -803,31 +803,36 @@
   position: relative;
   width: min(96vw, calc(86dvh * var(--ratio, 1.4)));
   max-width: 960px;
-}
-.panel__art {
-  display: block;
-  width: 100%;
-  height: 100%;
+  /* The prop art is the stage background so DOM text writes onto the painted
+   * paper. Fallback plain WebP for engines without image-set(type()). */
+  background-image: var(--art-webp);
+  background-image: image-set(
+    var(--art-avif) type('image/avif'),
+    var(--art-webp) type('image/webp')
+  );
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .panel__content {
   position: absolute;
   overflow: auto;
-  /* A clean opaque page resting on the opened prop: it sits within the prop's
-   * flat centre (see panels.ts insets) so the prop frames it, upright and fully
-   * readable, lifted off the art by a soft shadow (owner review 2026-07-22). */
-  background: #f4ecd8;
-  border: 1px solid rgba(120, 92, 58, 0.28);
-  border-radius: 0.4rem;
+  /* No card - the text writes directly onto the prop's own paper (owner review
+   * 2026-07-22), sitting within its flat centre (see panels.ts insets). A tight
+   * paper-toned halo keeps every glyph crisp on the aged-paper texture (and the
+   * measured ink/green on cream both clear AA), so it reads like ink on the
+   * page, not a floating card. */
+  background: transparent;
   padding: 0.7rem 0.95rem;
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.12),
-    0 10px 26px rgba(20, 14, 8, 0.28);
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: clamp(0.8rem, 1.7vw, 0.98rem);
   line-height: 1.35;
+  text-shadow:
+    0 0 2px rgba(247, 240, 224, 0.95),
+    0 0 5px rgba(247, 240, 224, 0.85),
+    0 1px 1px rgba(247, 240, 224, 0.9);
   -webkit-overflow-scrolling: touch;
-  /* A hint of the writable-paper tone so the sheet reads as paper, not a chip. */
   scrollbar-width: thin;
 }
 .panel__content--spread {
