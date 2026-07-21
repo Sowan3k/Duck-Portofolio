@@ -816,7 +816,9 @@
 }
 .panel__content {
   position: absolute;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   /* No card - the text writes directly onto the prop's own paper (owner review
    * 2026-07-22), sitting within its flat centre (see panels.ts insets). A tight
    * paper-toned halo keeps every glyph crisp on the aged-paper texture (and the
@@ -832,11 +834,57 @@
     0 0 2px rgba(247, 240, 224, 0.95),
     0 0 5px rgba(247, 240, 224, 0.85),
     0 1px 1px rgba(247, 240, 224, 0.9);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
 }
 .panel__content--spread {
   padding: 0.7rem 0.95rem;
+}
+/* On phones the props are small (a wide book can only be ~96vw), so tighten
+ * the type and margins to fit a few more lines before the graceful scroll. */
+@media (max-width: 640px) {
+  .panel__content {
+    font-size: 0.72rem;
+    line-height: 1.28;
+    padding: 0.4rem 0.55rem;
+  }
+  .panel__title {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .pc-img {
+    max-height: 80px;
+  }
+}
+/* Only the body scrolls; the title above it stays fixed. The body's top and
+ * bottom fade into the page so clipped content reads as "more below", never a
+ * hard cut (owner review 2026-07-22). */
+.panel__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 92, 58, 0.5) transparent;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 7px,
+    #000 calc(100% - 16px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 7px,
+    #000 calc(100% - 16px),
+    transparent 100%
+  );
+}
+/* When nothing overflows, drop the mask so the first/last lines aren't dimmed. */
+.panel__body:not([data-scrollable='true']) {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 .panel__title {
   margin: 0 0 0.4rem;
@@ -927,11 +975,15 @@
 }
 .pc-img {
   display: block;
-  width: 100%;
-  max-width: 320px;
+  width: auto;
+  max-width: 100%;
+  /* A thumbnail, not a hero - keeps a project spread short enough to read
+   * without heavy scrolling inside the small book page (owner review). */
+  max-height: clamp(84px, 15vh, 130px);
   height: auto;
   border-radius: 0.3rem;
   border: 1px solid var(--color-wood);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   margin: 0.3rem 0;
 }
 .pc-done {
