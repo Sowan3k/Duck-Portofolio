@@ -1,26 +1,32 @@
 /**
- * warm-cursor.ts — the standard view's in-house cursor effect (owner decision
- * 2026-07-21, superseding the Phase-8 wait; the 2026-07-20 rejection of
- * GSAP MagneticCursor stands on its merits — no deps, no blend-mode inversion,
- * native cursor always visible).
+ * warm-cursor.ts — the static pages' cursor effect (owner decisions 2026-07-21).
  *
- * A warm amber glow trails the pointer with a little velocity squash; over a
- * standard-view link/button it softens into a rounded "hug" around the control
- * (the same warm-outline language as the office hotspots) and the control leans
- * a few px toward the pointer, springing back on leave.
+ * Faithful zero-dependency port of the requested MagneticCursor look: a solid
+ * white dot in `mix-blend-mode: exclusion` (the inverting "bubble") with a
+ * contrast-boosting backdrop filter, liquid velocity squash-stretch (rotates
+ * into the motion direction, stretches long and thin with speed), a thin
+ * vertical bar over text, and a morph that wraps links/buttons with the
+ * element leaning toward the pointer and springing back elastically.
  *
- * Desktop only (hover + fine pointer), fully disabled under
- * prefers-reduced-motion, paused while the office overlay covers the page.
- * Pure rAF + transforms on one fixed element — no dependencies.
+ * The GSAP/vecteur dependencies of the original are replaced with one rAF
+ * loop and lerp easing — same motion grammar, ~2KB instead of ~30KB.
+ *
+ * Static pages only: desktop (hover + fine pointer), fully disabled under
+ * prefers-reduced-motion, auto-paused while the office overlay covers the
+ * page — the painted office never sees it.
  */
 
-const AMBER = '217, 164, 65';
-const SIZE = 30; // free-glow diameter (px)
-const LERP = 0.18;
-const HUG_LERP = 0.3;
-const HUG_PAD = 7; // px around the hugged control
-const LEAN_FACTOR = 0.12;
-const LEAN_MAX = 4; // px
+const SIZE = 40; // dot diameter, per the requested demo
+const LERP = 0.1; // positional easing, per the original
+const HUG_LERP = 0.28; // morph-to-element easing (≈ power3.out 0.3s)
+const HUG_PAD = 18; // hoverPadding 12 × (1 + magneticFactor 0.55)
+const SPEED_MULT = 0.02; // liquid stretch per px/frame, per the original
+const MAX_SX = 1; // stretch up to 2× long
+const MAX_SY = 0.3; // thin down to 0.7×
+const LEAN_FACTOR = 0.3;
+const LEAN_MAX = 18; // px — visible magnetism without wrecking layout
+
+const TEXT_TAGS = new Set(['P', 'SPAN', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'LI', 'DT', 'DD']);
 
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -35,6 +41,7 @@ interface Box {
 let el: HTMLDivElement | null = null;
 let raf = 0;
 let hugged: HTMLElement | null = null;
+let overText = false;
 let inertObserver: MutationObserver | null = null;
 let cleanup: (() => void) | null = null;
 
@@ -42,19 +49,20 @@ const pos = { x: -100, y: -100 };
 const target = { x: -100, y: -100 };
 const prev = { x: -100, y: -100 };
 const box: Box = { x: -100, y: -100, w: SIZE, h: SIZE };
+const scale = { x: 1, y: 1 };
+let radius = SIZE / 2;
+let radiusTarget = `${SIZE / 2}px`;
 let seen = false;
 let paused = false;
 
-function freeStyle(cursor: HTMLDivElement): void {
-  cursor.style.background = `radial-gradient(circle, rgba(${AMBER}, 0.5), rgba(${AMBER}, 0) 70%)`;
-  cursor.style.boxShadow = 'none';
-  cursor.style.borderRadius = '50%';
+function dotStyle(cursor: HTMLDivElement): void {
+  cursor.style.background = 'white';
+  radiusTarget = '50%';
 }
 
-function hugStyle(cursor: HTMLDivElement, of: HTMLElement): void {
-  cursor.style.background = `rgba(${AMBER}, 0.16)`;
-  cursor.style.boxShadow = `0 0 0 1px rgba(${AMBER}, 0.4), 0 3px 14px rgba(${AMBER}, 0.3)`;
-  cursor.style.borderRadius = window.getComputedStyle(of).borderRadius;
+function hugStyle(of: HTMLElement): void {
+  // The wrap keeps the inverting white fill; only the shape morphs.
+  radiusTarget = window.getComputedStyle(of).borderRadius || '8px';
 }
 
 function loop(): void {
@@ -73,6 +81,9 @@ function loop(): void {
     box.y += (t.y - box.y) * HUG_LERP;
     box.w += (t.w - box.w) * HUG_LERP;
     box.h += (t.h - box.h) * HUG_LERP;
+    scale.x += (1 - scale.x) * HUG_LERP;
+    scale.y += (1 - scale.y) * HUG_LERP;
+    el.style.borderRadius = radiusTarget;
     el.style.transform = `translate(${box.x}px, ${box.y}px)`;
     el.style.width = `${box.w}px`;
     el.style.height = `${box.h}px`;
@@ -90,30 +101,51 @@ function loop(): void {
   prev.x = pos.x;
   prev.y = pos.y;
   const speed = Math.hypot(dx, dy);
-  const stretch = Math.min(speed * 0.012, 0.3);
-  const angle = speed > 0.5 ? Math.atan2(dy, dx) * (180 / Math.PI) : 0;
-  box.x += (pos.x - SIZE / 2 - box.x) * 1;
-  box.y += (pos.y - SIZE / 2 - box.y) * 1;
+
+  // Liquid: stretch into the motion direction; a thin bar over text.
+  let sxT: number;
+  let syT: number;
+  let angle = 0;
+  if (overText && speed < 2) {
+    sxT = 0.5;
+    syT = 1.5;
+  } else {
+    sxT = 1 + Math.min(speed * SPEED_MULT, MAX_SX);
+    syT = 1 - Math.min(speed * SPEED_MULT, MAX_SY);
+    angle = speed > 0.5 ? Math.atan2(dy, dx) * (180 / Math.PI) : 0;
+  }
+  scale.x += (sxT - scale.x) * 0.2;
+  scale.y += (syT - scale.y) * 0.2;
   box.w += (SIZE - box.w) * HUG_LERP;
   box.h += (SIZE - box.h) * HUG_LERP;
+  radius += (Math.min(box.w, box.h) / 2 - radius) * HUG_LERP;
+  el.style.borderRadius = '50%';
   el.style.width = `${box.w}px`;
   el.style.height = `${box.h}px`;
   el.style.transform =
     `translate(${pos.x - box.w / 2}px, ${pos.y - box.h / 2}px)` +
-    (speed > 0.5 ? ` rotate(${angle}deg) scale(${1 + stretch}, ${1 - stretch * 0.6})` : '');
+    (angle ? ` rotate(${angle}deg)` : '') +
+    ` scale(${scale.x}, ${scale.y})` +
+    (angle ? ` rotate(${-angle}deg)` : '');
 }
 
 function releaseHug(): void {
   if (!hugged || !el) return;
-  // Spring the control home with a slightly overshooting ease.
-  hugged.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  hugged.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
   hugged.style.transform = '';
   const releasing = hugged;
   window.setTimeout(() => {
     if (releasing !== hugged) releasing.style.transition = '';
-  }, 500);
+  }, 650);
   hugged = null;
-  freeStyle(el);
+  dotStyle(el);
+}
+
+/** Static pages only: wrap any control that is NOT inside the office overlay. */
+function hugTarget(from: Element | null): HTMLElement | null {
+  const t = from?.closest?.('a, button, [data-magnetic]') as HTMLElement | null;
+  if (!t || t.closest('.office-overlay')) return null;
+  return t;
 }
 
 function onPointerMove(e: PointerEvent): void {
@@ -128,21 +160,20 @@ function onPointerMove(e: PointerEvent): void {
     box.y = e.clientY - SIZE / 2;
   }
   el.style.opacity = paused ? '0' : '1';
+
+  const t = e.target as HTMLElement | null;
+  overText =
+    !!t &&
+    (TEXT_TAGS.has(t.tagName) || window.getComputedStyle(t).cursor === 'text') &&
+    !hugTarget(t);
+
   if (hugged) {
-    // Magnetic lean: the control tips a few px toward the pointer.
     const r = hugged.getBoundingClientRect();
     const lx = Math.max(-LEAN_MAX, Math.min(LEAN_MAX, (e.clientX - (r.left + r.width / 2)) * LEAN_FACTOR));
     const ly = Math.max(-LEAN_MAX, Math.min(LEAN_MAX, (e.clientY - (r.top + r.height / 2)) * LEAN_FACTOR));
     hugged.style.transition = 'transform 0.15s ease-out';
     hugged.style.transform = `translate(${lx}px, ${ly}px)`;
   }
-}
-
-/** Static pages only: hug any control that is NOT inside the office overlay. */
-function hugTarget(from: Element | null): HTMLElement | null {
-  const t = from?.closest?.('a, button, [data-magnetic]') as HTMLElement | null;
-  if (!t || t.closest('.office-overlay')) return null;
-  return t;
 }
 
 function onPointerOver(e: PointerEvent): void {
@@ -152,7 +183,7 @@ function onPointerOver(e: PointerEvent): void {
   releaseHug();
   if (t) {
     hugged = t;
-    hugStyle(el, t);
+    hugStyle(t);
   }
 }
 
@@ -174,7 +205,7 @@ function watchOffice(): void {
   if (!std) return;
   const sync = () => {
     paused = std.inert;
-    if (el) el.style.opacity = paused ? '0' : el.style.opacity;
+    if (el && paused) el.style.opacity = '0';
     if (paused) releaseHug();
   };
   sync();
@@ -187,7 +218,7 @@ function start(): void {
   el = document.createElement('div');
   el.className = 'warm-cursor';
   el.setAttribute('aria-hidden', 'true');
-  freeStyle(el);
+  dotStyle(el);
   document.body.appendChild(el);
   window.addEventListener('pointermove', onPointerMove, { passive: true });
   window.addEventListener('pointerover', onPointerOver, { passive: true });

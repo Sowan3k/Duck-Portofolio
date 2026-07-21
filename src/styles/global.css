@@ -52,19 +52,24 @@ html.office-ready [data-open-office] {
   display: inline-flex;
 }
 
-/* Warm cursor glow (static pages only — src/scripts/warm-cursor.ts). The
- * native cursor stays visible; this is a trailing amber glow, never a
- * replacement. Sits UNDER the office overlay (z 1000) so it can never appear
- * over the painted office. */
+/* Liquid cursor (static pages only — src/scripts/warm-cursor.ts): the solid
+ * inverting dot from the requested MagneticCursor look — white fill in
+ * exclusion blend with a contrast-boosting backdrop, liquid squash-stretch in
+ * JS. Sits UNDER the office overlay (z 1000) so it can never appear over the
+ * painted office; the script also pauses itself there. */
 .warm-cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   z-index: 950;
   pointer-events: none;
   opacity: 0;
+  mix-blend-mode: exclusion;
+  backdrop-filter: contrast(1.5);
+  -webkit-backdrop-filter: contrast(1.5);
   will-change: transform, width, height;
 }
 

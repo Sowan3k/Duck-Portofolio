@@ -33,7 +33,10 @@ const RECTS = {
   clock: { left: 68.6, top: 2.8, width: 7.0, height: 9.33 },
   lamp: { left: 7, top: 35, width: 22, height: 30 },
   steam: { left: 62, top: 48, width: 7, height: 18 },
-  rain: { left: 3.5, top: 13, width: 13, height: 25 },
+  // The window's two glass panes, measured off the clean plate — the rain
+  // never touches the wooden frame, centre rail, sill, or the lamp below.
+  rainUpper: { left: 1.1, top: 8.2, width: 12.2, height: 16.0 },
+  rainLower: { left: 1.2, top: 26.2, width: 12.2, height: 7.3 },
 } as const;
 
 function rectStyle(r: { left: number; top: number; width: number; height: number }): CSSProperties {
@@ -51,7 +54,10 @@ export default function Ambient({ reduced }: { reduced: boolean }) {
       </div>
       {!reduced && (
         <>
-          <div className="ambient-slot ambient-slot--clip" style={rectStyle(RECTS.rain)}>
+          <div className="ambient-slot ambient-slot--clip" style={rectStyle(RECTS.rainUpper)}>
+            <Rain />
+          </div>
+          <div className="ambient-slot ambient-slot--clip" style={rectStyle(RECTS.rainLower)}>
             <Rain />
           </div>
           <div className="ambient-slot" style={rectStyle(RECTS.steam)}>

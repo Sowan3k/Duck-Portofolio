@@ -456,10 +456,16 @@
 .hotspot:focus-visible,
 .hotspot--selected,
 .hotspots--show-labels .hotspot {
-  background: rgba(217, 164, 65, 0.14);
-  border-color: var(--color-suit);
-  box-shadow: 0 0 0 1px rgba(217, 164, 65, 0.35),
-    0 3px 12px rgba(217, 164, 65, 0.28);
+  /* A pool of warm light settling on the object — pure elliptical falloff,
+   * no rim, no box shape (§4 "soft warm outline"). The hand-written label
+   * carries the crisp anchor; the light stays organic. */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(217, 164, 65, 0.26) 0%,
+    rgba(217, 164, 65, 0.1) 55%,
+    transparent 82%
+  );
+  border-radius: 50%;
 }
 .hotspot__label {
   font-family: var(--font-display);
@@ -955,11 +961,15 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
-/* Touch first-tap selection: the chosen object lights up + shows its label. */
+/* Touch first-tap selection: the chosen object lights up + shows its label
+ * (same soft light pool as hover, a touch stronger so it's unmissable). */
 .hotspot--selected {
-  background: rgba(217, 164, 65, 0.32);
-  border-color: var(--color-suit);
-  border-style: solid;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(217, 164, 65, 0.34) 0%,
+    rgba(217, 164, 65, 0.14) 55%,
+    transparent 82%
+  );
 }
 .hotspot--selected .hotspot__label {
   opacity: 1;

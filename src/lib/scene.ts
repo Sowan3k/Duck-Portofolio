@@ -95,12 +95,15 @@ export const hotspots: Hotspot[] = [
     reaction: 'think',
   },
   {
-    // The rust-red skills book in the bookshelf (the liftable cutout's slot).
+    // The whole bookcase (CLAUDE.md §4: Bookshelf → Skills; the rust-red book
+    // is just the prop that lifts). Owner call 2026-07-21: the entire shelf is
+    // the object, not the one small book. The computer (z30) wins clicks where
+    // the two overlap at the shelf's lower-left.
     id: 'bookshelf',
     contentId: 'skills',
     label: 'Skills',
     ariaLabel: 'Skills and technologies — open the book',
-    rect: { xPct: 33.5, yPct: 27, wPct: 8, hPct: 16 },
+    rect: { xPct: 25, yPct: 4, wPct: 24, hPct: 56 },
     z: 10,
     band: 'background',
     reaction: 'notice',
