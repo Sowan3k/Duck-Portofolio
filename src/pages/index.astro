@@ -53,4 +53,10 @@ import Office from '../components/office/Office.tsx';
       server-rendered entry portrait (the LCP) isn't blocked by React's render
       work. No-JS still shows the standard view (overlay hidden via noscript). */}
   <Office client:idle />
+
+  {/* Warm cursor glow — static pages only; pauses itself while the office
+      overlay is up (owner decision 2026-07-21). */}
+  <script>
+    import '../scripts/warm-cursor';
+  </script>
 </Base>
