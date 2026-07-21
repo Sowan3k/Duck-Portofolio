@@ -1,9 +1,9 @@
 /**
- * profile.ts — ALL of Sowan's facts, typed, in one file (CLAUDE.md §6, §11).
+ * profile.ts - ALL of Sowan's facts, typed, in one file (CLAUDE.md §6, §11).
  *
  * This is the single source of truth for every factual claim on the site.
  * Dialogue references it; components render it; nothing duplicates it. LAW 4:
- * the duck never lies — no award, date, metric, employer, or capability may
+ * the duck never lies - no award, date, metric, employer, or capability may
  * appear anywhere unless it traces to a field here, and every field here traces
  * to the master CV (visuals/07-project-media/resume-source/Sowan_Master_CV.md).
  *
@@ -11,11 +11,11 @@
  * comments so a future editor cannot soften them by accident:
  *   - BahasaBot is a "Live demo", never "in production"; no payments/paying users.
  *   - USM Evently is open source, NOT deployed; its payments are simulated.
- *   - Virtual Zara is confidential (ECTrons) — described only, never shown.
+ *   - Virtual Zara is confidential (ECTrons) - described only, never shown.
  *     Ownership language is letter-backed; continued use is Sowan's own claim.
  *   - ECTrons' official title is firmware/embedded but the work was AI
  *     automation; the title is never changed and never left unexplained.
- *   - No ECTrons performance metrics exist — scope only, never invented numbers.
+ *   - No ECTrons performance metrics exist - scope only, never invented numbers.
  */
 
 /* ------------------------------------------------------------------ *
@@ -38,7 +38,7 @@ export interface EducationEntry {
   degree: string;
   location: string;
   period: string;
-  /** Completion clarity — never a bare date range that reads as unfinished. */
+  /** Completion clarity - never a bare date range that reads as unfinished. */
   status: string;
   finalYearProject?: string;
   supervisor?: string;
@@ -46,7 +46,7 @@ export interface EducationEntry {
 }
 
 export interface ExperienceEntry {
-  /** Official title — never changed (a background check sees the letter). */
+  /** Official title - never changed (a background check sees the letter). */
   role: string;
   organization: string;
   location: string;
@@ -79,7 +79,7 @@ export interface Award {
   year: number;
   /** One-line description safe to print anywhere. */
   detail: string;
-  /** Discrete real numbers on file — never rounded, never invented. */
+  /** Discrete real numbers on file - never rounded, never invented. */
   facts: string[];
   /** id of the project this award belongs to, if any. */
   projectId?: string;
@@ -119,7 +119,7 @@ export interface RoadmapItem {
 export interface Roadmap {
   /** The one thing currently being built (whiteboard headline). */
   building: { text: string; href?: string };
-  /** Learning roadmap — skills-gap items, none on any CV until real. */
+  /** Learning roadmap - skills-gap items, none on any CV until real. */
   learning: RoadmapItem[];
 }
 
@@ -137,7 +137,7 @@ export interface Profile {
   headline: string;
   /** Graduation clarity line for the hero. */
   status: string;
-  /** Where he actually is — updated the day it changes (CV rule). */
+  /** Where he actually is - updated the day it changes (CV rule). */
   location: string;
   summary: string;
   contact: ContactLink[];
@@ -157,7 +157,7 @@ export interface Profile {
 /**
  * Flavor text (newspaper, sticky notes) is owner-approved content, not
  * automatic. It ships populated but flagged so Phase 9 owner review is
- * unmistakable — this is the ONLY content allowed to carry a pending marker
+ * unmistakable - this is the ONLY content allowed to carry a pending marker
  * past Phase 1 (phases.md Phase 1 exit criteria).
  */
 export type ReviewStatus = 'pending-owner-review' | 'approved';
@@ -197,14 +197,14 @@ const pixelSilver: Award = {
 export const profile: Profile = {
   name: 'Noor Mohammad Sowan',
   knownAs: 'Sowan',
-  headline: 'Software Engineer — AI & Full-Stack Systems',
+  headline: 'Software Engineer - AI & Full-Stack Systems',
   // CV: make completion status unmistakable; never a bare date range.
   status: 'Final exams completed July 2026; graduating August 2026.',
   location: 'Penang, Malaysia',
   summary:
     'Graduate software engineer specializing in AI-enabled workflow automation and full-stack applications. Independently built BahasaBot, a RAG-based language learning platform awarded Silver among 249 competing final-year students at PIXEL 2026, and Virtual Zara, an internal AI automation agent in use at ECTrons. Experienced in retrieval pipelines, async backends, vector databases, authentication, and Docker deployment.',
 
-  // CV decision: publish email, GitHub, LinkedIn only — no phone number.
+  // CV decision: publish email, GitHub, LinkedIn only - no phone number.
   contact: [
     {
       kind: 'email',
@@ -235,7 +235,7 @@ export const profile: Profile = {
       finalYearProject: 'BahasaBot',
       supervisor: 'Assoc. Prof. Dr. Tan Tien Ping',
       examiner: 'Dr. Nur Hana Samsudin',
-      // CV: do NOT repeat the PIXEL award here — it lives in the summary and
+      // CV: do NOT repeat the PIXEL award here - it lives in the summary and
       // the BahasaBot header. Twice is the maximum.
     },
   ],
@@ -246,7 +246,7 @@ export const profile: Profile = {
       organization: 'ECTrons Sdn. Bhd.',
       location: 'Bayan Lepas, Penang',
       period: '24 March 2025 – 5 September 2025 (24 weeks)',
-      // CV title-mismatch rule (MANDATORY, verbatim — the letter names ESS):
+      // CV title-mismatch rule (MANDATORY, verbatim - the letter names ESS):
       context:
         'Assigned to internal AI automation and workflow projects, Engineering Support and Services (ESS) department.',
       bullets: [
@@ -303,7 +303,7 @@ export const profile: Profile = {
         'SSE',
       ],
       links: [
-        // CV flag: canonical demo is bahasa-bot.vercel.app — the old
+        // CV flag: canonical demo is bahasa-bot.vercel.app - the old
         // bahasabot-main3 link is stale and must never be used.
         { label: 'Live demo', href: 'https://bahasa-bot.vercel.app', kind: 'demo' },
         { label: 'GitHub', href: 'https://github.com/Sowan3k/BahasaBot', kind: 'repo' },
@@ -333,7 +333,7 @@ export const profile: Profile = {
       // CV + owner decision: confidential internship work. The master CV
       // distinguishes letter-backed scope from Sowan's continued-use claim.
       // No screenshots, UI recreation, or invented interface, ever.
-      note: 'Confidential internship work at ECTrons — described only, with no screenshots or interface recreation.',
+      note: 'Confidential internship work at ECTrons - described only, with no screenshots or interface recreation.',
       summary:
         'An internal AI automation agent built on modular n8n workflows for automated document generation and resume-screening support, with multimodal input across text, voice, and document parsing. It remained in use at the company after the internship ended.',
       bullets: [
@@ -349,7 +349,7 @@ export const profile: Profile = {
         'Microsoft Graph',
         'Telegram Bot API',
       ],
-      links: [], // Confidential — no public repo or demo.
+      links: [], // Confidential - no public repo or demo.
       media: [], // Owner decision: Virtual Zara gets NO images.
     },
     {
@@ -358,11 +358,11 @@ export const profile: Profile = {
       tagline: 'Self-hosted private chat & journal app',
       status: 'Open source (MIT)',
       summary:
-        'A full-stack self-hosted chat and journal application that runs entirely on the user’s own hardware — no third-party API ever touches user content. Open source under MIT.',
+        'A full-stack self-hosted chat and journal application that runs entirely on the user’s own hardware - no third-party API ever touches user content. Open source under MIT.',
       bullets: [
-        'Built a self-hosted chat and journal app that runs entirely on the user’s own hardware with a single `docker compose up` — no third-party API ever touches user content.',
+        'Built a self-hosted chat and journal app that runs entirely on the user’s own hardware with a single `docker compose up` - no third-party API ever touches user content.',
         'Integrated local Ollama models (Llama 3.2 3B) so no data leaves the host, degrading gracefully when the model is offline.',
-        // CV flag: "encrypted at rest, key derived from password" — NOT "end-to-end".
+        // CV flag: "encrypted at rest, key derived from password" - NOT "end-to-end".
         'Implemented per-user journal encryption at rest with a key derived from the user’s password, so the server operator cannot read another user’s entries.',
         'Built full-text search over messages and memories with SQLite FTS5 against a human-readable markdown vault.',
         'Shipped chat with presence, delivery and read receipts, reactions, and link previews, plus time capsules, scheduled letters, a shared dreams board, and a locally generated monthly PDF scrapbook.',
@@ -460,7 +460,7 @@ export const profile: Profile = {
   awards: [pixelSilver],
 
   // CV: print in two tiers. C++, CI/CD, pytest, and Jest are deliberately
-  // absent — not yet true; the learning items live in the roadmap below.
+  // absent - not yet true; the learning items live in the roadmap below.
   skills: [
     {
       label: 'Primary',
@@ -526,7 +526,7 @@ export const profile: Profile = {
 
   roadmap: {
     building: {
-      text: 'Building Wayfinder — an AI codebase mentor',
+      text: 'Building Wayfinder - an AI codebase mentor',
       href: 'https://github.com/Sowan3k/Wayfinder-',
     },
     // Skills-gap learning roadmap (CV): none is a CV skill until real, so each
@@ -544,7 +544,7 @@ export const profile: Profile = {
 };
 
 /* ------------------------------------------------------------------ *
- * Flavor text — owner-approved content, flagged pending review (Phase 9).
+ * Flavor text - owner-approved content, flagged pending review (Phase 9).
  * Drawn from real facts; the owner picks/edits final wording before ship.
  * ------------------------------------------------------------------ */
 

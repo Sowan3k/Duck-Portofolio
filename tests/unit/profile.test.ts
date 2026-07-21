@@ -81,7 +81,7 @@ describe('identity', () => {
   });
 });
 
-describe('contact — email, GitHub, LinkedIn only, no phone', () => {
+describe('contact - email, GitHub, LinkedIn only, no phone', () => {
   it('publishes exactly the three allowed channels', () => {
     const kinds = profile.contact.map((c) => c.kind).sort();
     expect(kinds).toEqual(['email', 'github', 'linkedin']);
@@ -169,7 +169,7 @@ describe('experience', () => {
   });
 });
 
-describe('projects — exactly four featured, in order', () => {
+describe('projects - exactly four featured, in order', () => {
   it('is the locked roster in the locked order', () => {
     expect(profile.projects.map((p) => p.id)).toEqual([
       'bahasabot',
@@ -334,7 +334,7 @@ describe('project media maps to real runtime files on disk', () => {
 describe('roadmap (living whiteboard)', () => {
   it('has the exact current build target and learning roster', () => {
     expect(profile.roadmap.building).toEqual({
-      text: 'Building Wayfinder — an AI codebase mentor',
+      text: 'Building Wayfinder - an AI codebase mentor',
       href: 'https://github.com/Sowan3k/Wayfinder-',
     });
     expect(profile.roadmap.learning.map((item) => item.text)).toEqual([

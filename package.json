@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "description": "Swan's Office — a portfolio you don't scroll, you visit.",
+  "description": "Swan's Office - a portfolio you don't scroll, you visit.",
   "engines": {
     "node": ">=20"
   },

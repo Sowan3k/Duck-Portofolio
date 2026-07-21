@@ -1,7 +1,7 @@
 /**
- * dialogue.ts — the duck's voice, typed as data (CLAUDE.md §5, bible §6/§10).
+ * dialogue.ts - the duck's voice, typed as data (CLAUDE.md §5, bible §6/§10).
  *
- * Voice: confident, calm, funny, slightly sarcastic, welcoming — never arrogant,
+ * Voice: confident, calm, funny, slightly sarcastic, welcoming - never arrogant,
  * never a chatbot. Every line ≤ 60 characters, ≤ 3 lines per set before content
  * opens (law 2). Facts live in profile.ts; these lines are personality only, so
  * they carry no factual claim to keep out of sync (law 4). OWNER reviews all
@@ -25,7 +25,7 @@ export type LineSet = string[];
 export interface ObjectDialogue {
   /** First-visit line sets (one is chosen per interaction). */
   first: LineSet[];
-  /** Repeat-visit alternates — the duck remembers you (§5 memory). */
+  /** Repeat-visit alternates - the duck remembers you (§5 memory). */
   repeat: LineSet[];
 }
 
@@ -37,20 +37,20 @@ export const originIntro: LineSet = [
   "Hi! I'm Swan.",
   '…well, actually, I’m Sowan.',
   'People kept calling me Swan. I embraced it.',
-  'Welcome to my office — have a look around.',
+  'Welcome to my office - have a look around.',
   'The computer’s my projects. The folder’s my CV.',
   'Click anything, and I’ll explain.',
 ];
 
 /** A one-time greeting flavored by the visitor's local time. */
 export const greetingByTime: Record<TimeOfDay, LineSet> = {
-  night: ['…mm? Oh — a visitor.', 'It’s late. Mind the yawning.'],
+  night: ['…mm? Oh - a visitor.', 'It’s late. Mind the yawning.'],
   morning: ['Morning. Coffee’s still hot.', 'What can I show you?'],
-  day: ['Afternoon — good timing.', 'Have a look around.'],
+  day: ['Afternoon - good timing.', 'Have a look around.'],
   evening: ['Evening. Quiet hour at the office.', 'Take your time.'],
 };
 
-/** The three easter eggs — bible §16, and no more (non-goal: no new eggs). */
+/** The three easter eggs - bible §16, and no more (non-goal: no new eggs). */
 export const easterEggs = {
   hire: 'I’ve been waiting for that command.',
   spam: 'Easy… one question at a time.',
@@ -59,11 +59,11 @@ export const easterEggs = {
 
 export const objectDialogue: Record<SceneContentId, ObjectDialogue> = {
   about: {
-    first: [['Oh — hello.', 'Curious who’s behind the desk?', 'Pull up a chair.']],
+    first: [['Oh - hello.', 'Curious who’s behind the desk?', 'Pull up a chair.']],
     repeat: [['Back to read about me?', 'I’m flattered.']],
   },
   projects: {
-    first: [['Projects, huh?', 'Checking if I know what I’m doing?', 'Fair enough — let me show you.']],
+    first: [['Projects, huh?', 'Checking if I know what I’m doing?', 'Fair enough - let me show you.']],
     repeat: [['You’ve already seen my projects…', 'But sure, look again.']],
   },
   experience: {

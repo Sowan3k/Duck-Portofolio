@@ -1,5 +1,5 @@
 /*
- * ambient.css — the office's ambient loops (Phase 5 task 4).
+ * ambient.css - the office's ambient loops (Phase 5 task 4).
  * Hard rule: transform/opacity only, so every loop holds 60fps on a mid-range
  * phone. Nothing here is interactive; the whole layer is aria-hidden.
  */
@@ -24,7 +24,7 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Wall clock — real local time. Only the hands; the face is painted.
+ * Wall clock - real local time. Only the hands; the face is painted.
  * ------------------------------------------------------------------ */
 .ambient-clock__hour,
 .ambient-clock__minute {
@@ -60,7 +60,7 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Coffee steam — wisps rising and fading off the mug.
+ * Coffee steam - wisps rising and fading off the mug.
  * ------------------------------------------------------------------ */
 .ambient-steam__wisp {
   position: absolute;
@@ -98,7 +98,7 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Window rain — faint moving streaks over the (already rainy) window.
+ * Window rain - faint moving streaks over the (already rainy) window.
  * ------------------------------------------------------------------ */
 .ambient-rain__sheet {
   position: absolute;
@@ -138,7 +138,7 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Banker's-lamp glow — a warm pool that gently breathes.
+ * Banker's-lamp glow - a warm pool that gently breathes.
  * ------------------------------------------------------------------ */
 .ambient-lamp {
   background: radial-gradient(

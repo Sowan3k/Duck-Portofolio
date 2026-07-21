@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
 /**
- * ClockHands — the wall clock shows the visitor's real local time (CLAUDE.md §1,
+ * ClockHands - the wall clock shows the visitor's real local time (CLAUDE.md §1,
  * §4). Only the hands are drawn in SVG; the blank round face is painted in the
  * art. Hour/minute are set from the clock and refreshed while the office stays
  * open; the second hand sweeps via a pure-CSS animation (no per-second React
  * re-render) whose negative delay starts it at the current second.
  *
- * Reduced motion: the sweep is frozen — the hands still show the correct time,
+ * Reduced motion: the sweep is frozen - the hands still show the correct time,
  * they just don't move (transform-only, and no motion under the global reset).
  */
 export default function ClockHands({ reduced }: { reduced: boolean }) {

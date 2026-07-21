@@ -1,5 +1,5 @@
 /**
- * warm-cursor.ts — the static pages' cursor effect (owner decisions 2026-07-21).
+ * warm-cursor.ts - the static pages' cursor effect (owner decisions 2026-07-21).
  *
  * Faithful zero-dependency port of the requested MagneticCursor look: a solid
  * white dot in `mix-blend-mode: exclusion` (the inverting "bubble") with a
@@ -9,11 +9,11 @@
  * element leaning toward the pointer and springing back elastically.
  *
  * The GSAP/vecteur dependencies of the original are replaced with one rAF
- * loop and lerp easing — same motion grammar, ~2KB instead of ~30KB.
+ * loop and lerp easing - same motion grammar, ~2KB instead of ~30KB.
  *
  * Static pages only: desktop (hover + fine pointer), fully disabled under
  * prefers-reduced-motion, auto-paused while the office overlay covers the
- * page — the painted office never sees it.
+ * page - the painted office never sees it.
  */
 
 const SIZE = 40; // dot diameter, per the requested demo
@@ -24,7 +24,7 @@ const SPEED_MULT = 0.02; // liquid stretch per px/frame, per the original
 const MAX_SX = 1; // stretch up to 2× long
 const MAX_SY = 0.3; // thin down to 0.7×
 const LEAN_FACTOR = 0.3;
-const LEAN_MAX = 18; // px — visible magnetism without wrecking layout
+const LEAN_MAX = 18; // px - visible magnetism without wrecking layout
 
 const TEXT_TAGS = new Set(['P', 'SPAN', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'LI', 'DT', 'DD']);
 

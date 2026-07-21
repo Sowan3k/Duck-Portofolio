@@ -8,7 +8,7 @@ import {
 } from '../../lib/sceneLayers';
 
 /**
- * SceneLayers — the painted office (Phase 5), replacing the Phase-3 gray-box.
+ * SceneLayers - the painted office (Phase 5), replacing the Phase-3 gray-box.
  * Nine approved cutouts stacked back-to-front by array order (index = z), each a
  * responsive <picture> (AVIF primary, WebP fallback). The whole stack is
  * decorative: it's `aria-hidden`, and the focusable Hotspots layer (with the

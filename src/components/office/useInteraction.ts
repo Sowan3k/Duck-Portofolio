@@ -7,7 +7,7 @@ import {
 } from './engine';
 
 /**
- * useInteraction — wraps the pure interaction reducer and schedules the timed
+ * useInteraction - wraps the pure interaction reducer and schedules the timed
  * transitions of the canonical timing table (§5). Input-driven phases (talking,
  * open) have no timer; they wait for the visitor. Reduced motion collapses every
  * timed beat to ≤150ms.

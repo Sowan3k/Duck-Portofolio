@@ -1,13 +1,13 @@
 /**
- * engine.ts — the office's timing constants and view-level types.
+ * engine.ts - the office's timing constants and view-level types.
  *
  * The full interaction state machine (CLAUDE.md §5 canonical timing table)
  * lands in Phase 4. Phase 3 needs the CRT power-on timing, the reduced-motion
- * fallback, and the entry→office view states — all as named constants here, the
+ * fallback, and the entry→office view states - all as named constants here, the
  * single source (no magic numbers in components, CLAUDE.md §5).
  */
 
-/** CRT power-on duration — owner-tuned against the live prototype (status.md 2026-07-20). */
+/** CRT power-on duration - owner-tuned against the live prototype (status.md 2026-07-20). */
 export const CRT_POWER_ON_MS = 1350;
 
 /** prefers-reduced-motion collapses every transition to at most this crossfade. */
@@ -49,7 +49,7 @@ export type OfficeView = 'entry' | 'crt' | 'office' | 'standard';
 
 import type { SceneContentId } from '../../lib/scene';
 
-/** Named timings — the single source (no magic numbers in components, §5). */
+/** Named timings - the single source (no magic numbers in components, §5). */
 export const TIMING = {
   /** Input → duck settles → first line (worst case ≤ 1.2s, §5 hard rule). */
   NOTICE_MS: 1000,
@@ -65,7 +65,7 @@ export const TIMING = {
   RETURN_MS: 450,
 } as const;
 
-/** Duck pose states — consumed by the Rive rig in Phase 6; state-only now. */
+/** Duck pose states - consumed by the Rive rig in Phase 6; state-only now. */
 export type DuckState =
   | 'idle'
   | 'notice'

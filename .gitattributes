@@ -2,7 +2,7 @@
 # copies still check out CRLF where the platform wants it.
 * text=auto eol=lf
 
-# Binary assets — never touch.
+# Binary assets - never touch.
 *.png binary
 *.webp binary
 *.avif binary

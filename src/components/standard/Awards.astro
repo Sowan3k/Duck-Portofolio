@@ -1,6 +1,6 @@
 ---
 /**
- * Awards.astro — the PIXEL Silver award, rendered from profile.awards as DOM
+ * Awards.astro - the PIXEL Silver award, rendered from profile.awards as DOM
  * text (law 3). The real numbers (249 students, evaluated by 30 people) come
  * from the CV.
  */
@@ -16,7 +16,7 @@ import Section from './Section.astro';
           <span class="text-3xl" aria-hidden="true">🏅</span>
           <div>
             <h3 class="font-sans text-lg font-bold text-ink">
-              {award.title} — {award.event}
+              {award.title} - {award.event}
             </h3>
             <p class="mt-1 font-sans text-base text-ink">{award.detail}</p>
             <ul class="mt-2 flex flex-wrap gap-2 list-none p-0">

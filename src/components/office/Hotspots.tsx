@@ -2,11 +2,11 @@ import type { CSSProperties } from 'react';
 import type { Hotspot } from '../../lib/scene';
 
 /**
- * Hotspots — one focusable, labelled control per interactive object (law 7),
+ * Hotspots - one focusable, labelled control per interactive object (law 7),
  * absolutely positioned by scene-relative %, z-ordered by depth band. The
  * résumé folder is a real <a download> (law 2). Every control is ≥44px with its
- * label revealed on hover/focus, during the first-visit/look-around flash, or —
- * on touch — when it is the first-tapped (selected) object (CLAUDE.md §4).
+ * label revealed on hover/focus, during the first-visit/look-around flash, or - 
+ * on touch - when it is the first-tapped (selected) object (CLAUDE.md §4).
  */
 interface Props {
   hotspots: Hotspot[];

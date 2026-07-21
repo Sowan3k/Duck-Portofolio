@@ -4,11 +4,11 @@ import { PANEL_ART, UI_DIR } from './panels';
 import PanelContent from './PanelContent';
 
 /**
- * ContentPanel — the physical UI shell. The object's approved blank art is the
+ * ContentPanel - the physical UI shell. The object's approved blank art is the
  * skin; DOM content renders over its writable region (law 3). It behaves as an
  * accessible dialog: focus moves in on open, Esc closes and focus returns to the
  * object (handled by Office), and the rest of the scene is inert while it's open
- * — so nothing is trapped in JS, yet Tab stays where it belongs (law 7).
+ * - so nothing is trapped in JS, yet Tab stays where it belongs (law 7).
  */
 interface Props {
   contentId: SceneContentId;

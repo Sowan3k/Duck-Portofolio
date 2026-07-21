@@ -1,7 +1,7 @@
 import { profile } from '../../content/profile';
 
 /**
- * vcard.ts — "take a card": a vCard built from profile.ts (name, headline,
+ * vcard.ts - "take a card": a vCard built from profile.ts (name, headline,
  * email, GitHub, LinkedIn). No phone number, ever (CV decision, law 4-adjacent).
  */
 export function buildVCard(): string {

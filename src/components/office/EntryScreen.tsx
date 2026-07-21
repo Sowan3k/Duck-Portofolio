@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { profile } from '../../content/profile';
 
 /**
- * EntryScreen — the framed-portrait cover (law 3: all text is DOM). "Press
+ * EntryScreen - the framed-portrait cover (law 3: all text is DOM). "Press
  * Enter / tap to come in" enables once the scene is ready; the speaker toggle
  * defaults ON (law 8); the standard-view link is always visible (law 5).
  */
@@ -55,7 +55,7 @@ export default function EntryScreen({
         </picture>
 
         <h1 className="entry__title">Welcome to Swan's Office</h1>
-        <p className="entry__sub">A portfolio you don't scroll — you visit.</p>
+        <p className="entry__sub">A portfolio you don't scroll - you visit.</p>
 
         <button
           ref={enterRef}

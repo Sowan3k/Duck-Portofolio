@@ -1,6 +1,6 @@
 ---
 /**
- * Picture.astro — responsive <picture> for the approved runtime images.
+ * Picture.astro - responsive <picture> for the approved runtime images.
  * Emits AVIF → WebP sources with width variants and a WebP <img> fallback.
  * Filenames follow the runtime convention `{dir}/{stem}-{w}w.{ext}`.
  * Images below the fold pass loading="lazy" (the default); the hero portrait
@@ -10,7 +10,7 @@ interface Props {
   stem: string;
   alt: string;
   widths: readonly number[];
-  /** The `sizes` attribute — how wide the image renders at each breakpoint. */
+  /** The `sizes` attribute - how wide the image renders at each breakpoint. */
   sizes: string;
   /** Intrinsic dimensions of the largest variant (sets aspect ratio, no CLS). */
   width: number;

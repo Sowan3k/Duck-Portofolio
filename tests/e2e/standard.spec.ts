@@ -5,7 +5,7 @@ import AxeBuilder from '@axe-core/playwright';
  * The standard view is a complete portfolio a recruiter can use without ever
  * seeing the office (law 5): the no-JS surface, the SEO surface, and one tap
  * from the office. With JS the office overlay covers it on load, so these tests
- * reach it the way a visitor does — via the "Standard view" link — or with JS
+ * reach it the way a visitor does - via the "Standard view" link - or with JS
  * disabled (its canonical form).
  */
 
@@ -60,7 +60,7 @@ test('résumé downloads directly from hero and contact (law 2)', async ({ page 
   expect(res.headers()['content-type']).toContain('pdf');
 });
 
-test('publishes email, GitHub, LinkedIn — and no phone number', async ({ page }) => {
+test('publishes email, GitHub, LinkedIn - and no phone number', async ({ page }) => {
   await openStandardView(page);
   await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
   await expect(page.locator('a[href="https://github.com/Sowan3k"]').first()).toBeVisible();
@@ -140,7 +140,7 @@ test('SEO artifacts and server-rendered content are present', async ({ page }) =
     /projects, experience, skills, and contact details/
   );
 
-  // The standard view is server-rendered (the SEO baseline) — present in the
+  // The standard view is server-rendered (the SEO baseline) - present in the
   // raw HTML without executing any script.
   const html = await (await page.request.get('/')).text();
   expect(html).toContain('Noor Mohammad Sowan');

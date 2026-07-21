@@ -1,5 +1,5 @@
 /*
- * global.css — the one stylesheet imported by Base.astro.
+ * global.css - the one stylesheet imported by Base.astro.
  * Order matters: Tailwind first, then our @theme tokens so they register.
  */
 @import 'tailwindcss';
@@ -28,7 +28,7 @@ body {
   min-height: 100vh;
 }
 
-/* Visible focus everywhere — never removed (CLAUDE.md law 7, §8). */
+/* Visible focus everywhere - never removed (CLAUDE.md law 7, §8). */
 :focus-visible {
   outline: 3px solid var(--color-green);
   outline-offset: 2px;
@@ -52,8 +52,8 @@ html.office-ready [data-open-office] {
   display: inline-flex;
 }
 
-/* Liquid cursor (static pages only — src/scripts/warm-cursor.ts): the solid
- * inverting dot from the requested MagneticCursor look — white fill in
+/* Liquid cursor (static pages only - src/scripts/warm-cursor.ts): the solid
+ * inverting dot from the requested MagneticCursor look - white fill in
  * exclusion blend with a contrast-boosting backdrop, liquid squash-stretch in
  * JS. Sits UNDER the office overlay (z 1000) so it can never appear over the
  * painted office; the script also pauses itself there. */
@@ -116,7 +116,7 @@ html.office-ready [data-open-office] {
 .btn:active {
   transform: translateY(1px);
 }
-/* Primary CTA (résumé): deep-brown on cream text — 9.3:1. */
+/* Primary CTA (résumé): deep-brown on cream text - 9.3:1. */
 .btn--primary {
   background: var(--color-suit);
   color: var(--color-cream);
@@ -155,7 +155,7 @@ html.office-ready [data-open-office] {
   padding: 1.5rem;
 }
 
-/* Small status badge — ink on mustard (7.6:1). */
+/* Small status badge - ink on mustard (7.6:1). */
 .badge {
   display: inline-block;
   padding: 0.15rem 0.55rem;
@@ -170,7 +170,7 @@ html.office-ready [data-open-office] {
   border: 1px solid var(--color-wood);
 }
 
-/* Inline text links — wood-dark (6.4:1), green on hover. */
+/* Inline text links - wood-dark (6.4:1), green on hover. */
 .prose-link {
   color: var(--color-wood-dark);
   text-decoration: underline;

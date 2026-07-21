@@ -1,13 +1,13 @@
 ---
 /**
- * Base.astro — the document shell for every page.
+ * Base.astro - the document shell for every page.
  * Full meta (title, description, canonical, OG, favicons) so the standard view
  * is a clean SEO surface (CLAUDE.md §6, law 5). Global styles + fonts load here.
  */
 import '../styles/global.css';
 import { profile } from '../content/profile';
 // Preload the two above-the-fold font files (bundled, hashed URLs) so the real
-// faces are painted first — eliminates the font-swap reflow (CLS < 0.05, §8).
+// faces are painted first - eliminates the font-swap reflow (CLS < 0.05, §8).
 import interLatin400 from '@fontsource/inter/files/inter-latin-400-normal.woff2';
 import patrickHandLatin400 from '@fontsource/patrick-hand/files/patrick-hand-latin-400-normal.woff2';
 
@@ -21,8 +21,8 @@ interface Props {
 }
 
 const {
-  title = `Swan's Office — ${profile.knownAs}'s Portfolio`,
-  description = `${profile.name} — ${profile.headline}. Explore projects, experience, skills, and contact details.`,
+  title = `Swan's Office - ${profile.knownAs}'s Portfolio`,
+  description = `${profile.name} - ${profile.headline}. Explore projects, experience, skills, and contact details.`,
   path = Astro.url.pathname,
   index = true,
 }: Props = Astro.props;
@@ -43,7 +43,7 @@ const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
     <meta name="theme-color" content="#2e7d4f" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Font preload — real faces paint first, no swap reflow (CLS). -->
+    <!-- Font preload - real faces paint first, no swap reflow (CLS). -->
     <link rel="preload" href={interLatin400} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={patrickHandLatin400} as="font" type="font/woff2" crossorigin />
 
@@ -75,7 +75,7 @@ const ogImage = new URL('/assets/social/og-swan-at-desk.png', Astro.site).href;
     {/* Hydration-failure safety net: if the island never signals ready, reveal
         the standard view so a JS error can't trap the visitor. The window is
         generous (10s) so a slow-but-working hydration is never misread as a
-        failure — this only catches a genuine "JS never ran" case. */}
+        failure - this only catches a genuine "JS never ran" case. */}
     <script is:inline>
       window.setTimeout(function () {
         if (!document.documentElement.classList.contains('office-ready')) {

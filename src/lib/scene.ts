@@ -1,5 +1,5 @@
 /**
- * scene.ts — the nine interactive objects of Swan's Office (CLAUDE.md §4 table).
+ * scene.ts - the nine interactive objects of Swan's Office (CLAUDE.md §4 table).
  *
  * Hotspot geometry is in scene-relative percentages so one coordinate system
  * survives responsive scaling (§8). Phase 5 registered these to the painted
@@ -66,18 +66,18 @@ export const hotspots: Hotspot[] = [
     id: 'desk-duck',
     contentId: 'about',
     label: 'About me',
-    ariaLabel: 'About Sowan — talk to the duck',
+    ariaLabel: 'About Sowan - talk to the duck',
     rect: { xPct: 53, yPct: 32, wPct: 18, hPct: 27 },
     z: 40,
     band: 'midground',
     reaction: 'talk',
   },
   {
-    // The monitor on the desk, foreground — sits in front of the filing cabinet.
+    // The monitor on the desk, foreground - sits in front of the filing cabinet.
     id: 'computer',
     contentId: 'projects',
     label: 'Projects',
-    ariaLabel: 'Projects — open the storybook',
+    ariaLabel: 'Projects - open the storybook',
     rect: { xPct: 16, yPct: 44, wPct: 17, hPct: 19 },
     z: 30,
     band: 'foreground',
@@ -88,7 +88,7 @@ export const hotspots: Hotspot[] = [
     id: 'filing-cabinet',
     contentId: 'experience',
     label: 'Experience',
-    ariaLabel: 'Work experience — open the paper folder',
+    ariaLabel: 'Work experience - open the paper folder',
     rect: { xPct: 17, yPct: 24, wPct: 13, hPct: 20 },
     z: 20,
     band: 'midground',
@@ -102,7 +102,7 @@ export const hotspots: Hotspot[] = [
     id: 'bookshelf',
     contentId: 'skills',
     label: 'Skills',
-    ariaLabel: 'Skills and technologies — open the book',
+    ariaLabel: 'Skills and technologies - open the book',
     rect: { xPct: 25, yPct: 4, wPct: 24, hPct: 56 },
     z: 10,
     band: 'background',
@@ -113,19 +113,19 @@ export const hotspots: Hotspot[] = [
     id: 'trophy-shelf',
     contentId: 'awards',
     label: 'Awards',
-    ariaLabel: 'Awards — open the trophy detail',
+    ariaLabel: 'Awards - open the trophy detail',
     rect: { xPct: 54, yPct: 3, wPct: 13, hPct: 15 },
     z: 10,
     band: 'background',
     reaction: 'talk',
   },
   {
-    // The small framed certificate on the wall (partly occluded by the chair —
+    // The small framed certificate on the wall (partly occluded by the chair - 
     // this targets its clear upper-left, above Swan's shoulder; §4 fixture note).
     id: 'graduation-frame',
     contentId: 'education',
     label: 'Education',
-    ariaLabel: 'Education — open the framed certificate',
+    ariaLabel: 'Education - open the framed certificate',
     rect: { xPct: 52, yPct: 21, wPct: 9, hPct: 9 },
     z: 10,
     band: 'background',
@@ -148,7 +148,7 @@ export const hotspots: Hotspot[] = [
     id: 'telephone',
     contentId: 'contact',
     label: 'Contact',
-    ariaLabel: 'Contact — open the business card',
+    ariaLabel: 'Contact - open the business card',
     rect: { xPct: 75, yPct: 61, wPct: 15, hPct: 16 },
     z: 40,
     band: 'foreground',
@@ -159,7 +159,7 @@ export const hotspots: Hotspot[] = [
     id: 'whiteboard',
     contentId: 'roadmap',
     label: 'Roadmap',
-    ariaLabel: 'Current goals and roadmap — open the whiteboard',
+    ariaLabel: 'Current goals and roadmap - open the whiteboard',
     rect: { xPct: 77, yPct: 5, wPct: 22, hPct: 27 },
     z: 10,
     band: 'background',

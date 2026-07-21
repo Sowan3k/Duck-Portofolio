@@ -1,5 +1,5 @@
 /**
- * panels.ts — which approved blank art skins each object's physical UI, and
+ * panels.ts - which approved blank art skins each object's physical UI, and
  * where its DOM content sits (law 3: text renders over blank props). Content
  * insets are gray-box estimates; Phase 5 registers them to the painted art.
  */

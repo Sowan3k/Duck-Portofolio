@@ -1,5 +1,5 @@
 /**
- * Rain — a subtle moving streak layer over the window (CLAUDE.md §4 ambient).
+ * Rain - a subtle moving streak layer over the window (CLAUDE.md §4 ambient).
  * The window already has painted rain; this adds just a little motion on top, so
  * it's kept faint. Two translateY-only gradient layers give a shallow parallax;
  * clipped to the window rect by the parent's `overflow: hidden`. Frozen/hidden

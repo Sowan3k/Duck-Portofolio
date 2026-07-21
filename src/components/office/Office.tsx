@@ -27,12 +27,12 @@ const PRELOAD_LAYER_IDS = new Set([
 ]);
 
 // The physical-UI panels (and all the profile content rendering) are only
-// needed once an object opens — code-split so the initial island stays small
+// needed once an object opens - code-split so the initial island stays small
 // and hydrates fast (keeps LCP down).
 const ContentPanel = lazy(() => import('./ui/ContentPanel'));
 
 /**
- * Office — the island root. Runs the entry → CRT → office flow over the standard
+ * Office - the island root. Runs the entry → CRT → office flow over the standard
  * view (client-only so no-JS shows the standard view, law 5), then hosts the
  * full interaction pattern (CLAUDE.md §5): click an object → the duck notices →
  * dialogue → content opens as a physical panel → close → the duck returns. The
@@ -86,7 +86,7 @@ export default function Office() {
 
   // Mount: only NOW is the office real. Adding `office-ready` reveals the
   // overlay (CSS), so if this island never hydrates the standard view stays the
-  // whole experience — a JS failure can't trap the visitor.
+  // whole experience - a JS failure can't trap the visitor.
   useEffect(() => {
     document.documentElement.classList.add('office-ready');
     setReady(true);
@@ -96,7 +96,7 @@ export default function Office() {
       const visited = localStorage.getItem(STORAGE_KEYS.visitedObjects);
       if (visited) visitedRef.current = new Set(JSON.parse(visited) as string[]);
     } catch {
-      /* storage blocked — defaults */
+      /* storage blocked - defaults */
     }
     const rm = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReduced(rm.matches);
@@ -164,7 +164,7 @@ export default function Office() {
     try {
       if (localStorage.getItem(STORAGE_KEYS.rotateHint)) return;
     } catch {
-      /* storage blocked — still show once this session */
+      /* storage blocked - still show once this session */
     }
     const show = window.setTimeout(() => {
       setRotateHint(true);
@@ -303,7 +303,7 @@ export default function Office() {
       }
       spamCount.current = 0;
       // On touch, the first tap reveals the object's label; the second opens it
-      // (the hover affordance has no equivalent on touch — CLAUDE.md §4).
+      // (the hover affordance has no equivalent on touch - CLAUDE.md §4).
       if (coarse && selectedId !== hotspot.id) {
         setSelectedId(hotspot.id);
         return;
@@ -450,7 +450,7 @@ export default function Office() {
       {(view === 'crt' || view === 'office') && (
         <>
           <div className="scene-viewport" inert={sceneLocked}>
-            {/* The office lives inside a warm vintage CRT monitor — the chassis
+            {/* The office lives inside a warm vintage CRT monitor - the chassis
                 fills the letterbox and makes the power-on literal: you switch
                 the monitor on and the office is inside (owner call, 2026-07-21).
                 On portrait screens the monitor gains a stand + floor shadow so
@@ -484,7 +484,7 @@ export default function Office() {
                       }}
                     />
                   )}
-                  {/* The coffee mug — an invisible hit area over the painted mug
+                  {/* The coffee mug - an invisible hit area over the painted mug
                       for the caffeine easter egg (bible §16). */}
                   <button
                     type="button"

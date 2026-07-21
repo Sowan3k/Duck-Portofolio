@@ -1,6 +1,6 @@
 ---
 /**
- * index.astro — the standard view (law 5: ships first, the SEO/no-JS surface,
+ * index.astro - the standard view (law 5: ships first, the SEO/no-JS surface,
  * a complete portfolio a recruiter can use without ever seeing the office),
  * with the office island (Phase 3) mounted over it. With JS the office covers
  * the page (entry → CRT → gray-box office); without JS the overlay is hidden
@@ -21,7 +21,7 @@ import Office from '../components/office/Office.tsx';
 ---
 
 <Base>
-  {/* The entry portrait is the LCP (server-rendered, covers the fetch) — preload
+  {/* The entry portrait is the LCP (server-rendered, covers the fetch) - preload
       it so it paints as early as possible. */}
   <link
     slot="head"
@@ -32,7 +32,7 @@ import Office from '../components/office/Office.tsx';
     fetchpriority="high"
   />
 
-  {/* The standard view — made inert by the island while the office is open. */}
+  {/* The standard view - made inert by the island while the office is open. */}
   <div id="standard-view">
     <a class="skip-link" href="#main">Skip to content</a>
     <Hero />
@@ -49,12 +49,12 @@ import Office from '../components/office/Office.tsx';
     <Footer />
   </div>
 
-  {/* The office. client:idle so React hydrates AFTER first paint — the
+  {/* The office. client:idle so React hydrates AFTER first paint - the
       server-rendered entry portrait (the LCP) isn't blocked by React's render
       work. No-JS still shows the standard view (overlay hidden via noscript). */}
   <Office client:idle />
 
-  {/* Warm cursor glow — static pages only; pauses itself while the office
+  {/* Warm cursor glow - static pages only; pauses itself while the office
       overlay is up (owner decision 2026-07-21). */}
   <script>
     import '../scripts/warm-cursor';

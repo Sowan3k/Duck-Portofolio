@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { TIMING } from './engine';
 
 /**
- * Dialogue — the duck's speech panel (approved V-020 art as skin, DOM text on
- * top — law 3). Lines advance on input only (never a timer, law 2); a Skip
+ * Dialogue - the duck's speech panel (approved V-020 art as skin, DOM text on
+ * top - law 3). Lines advance on input only (never a timer, law 2); a Skip
  * affordance jumps straight to the content. Word-chunk reveal ~40ms/word, off
  * under reduced motion. aria-live announces each line.
  */

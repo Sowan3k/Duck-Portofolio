@@ -1,5 +1,5 @@
 /**
- * sceneLayers.ts — the painted office as typed layer data (Phase 5).
+ * sceneLayers.ts - the painted office as typed layer data (Phase 5).
  *
  * The four depth layers reconstruct the *fully clean* office (Swan and every
  * liftable prop removed) byte-identically; Swan and the four movable props then
@@ -8,7 +8,7 @@
  *   background-wall → midground-furniture → desk-surface → Swan → desk-occluders
  *     → résumé folder → skills book → telephone handset → contact card
  *
- * (layer order is authoritative — V-011 report `layer_order`.)
+ * (layer order is authoritative - V-011 report `layer_order`.)
  *
  * Placements are in scene-relative percentages so one coordinate system survives
  * responsive scaling (§8), and they are REGISTERED, not estimated:
@@ -20,7 +20,7 @@
  *    cut from the master.
  *
  * All files are the approved, byte-identical runtime exports copied into
- * `public/assets/scene/` (never re-encoded — the top breakpoint is the gated
+ * `public/assets/scene/` (never re-encoded - the top breakpoint is the gated
  * ≤700KB pack). AVIF is primary (byte-identical to the gate at every tier);
  * WebP is the fallback (gated 2896w scene layers, smaller tiers below).
  */
@@ -87,7 +87,7 @@ export const sceneLayers: SceneLayer[] = [
     place: { kind: 'rect', leftPct: 47.58, topPct: 16.21, widthPct: 30.94 },
   },
   {
-    // Desk front lip / papers that occlude Swan's lower body — sits above Swan.
+    // Desk front lip / papers that occlude Swan's lower body - sits above Swan.
     id: 'desk-occluders',
     stem: 'scene-desk-occluders--v01',
     widths: [724, 1448, 2896],

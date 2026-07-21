@@ -1,5 +1,5 @@
 /**
- * Steam — soft wisps rising off the coffee mug (CLAUDE.md §4 ambient). Pure
+ * Steam - soft wisps rising off the coffee mug (CLAUDE.md §4 ambient). Pure
  * transform/opacity (translateY + scale + fade), so it holds 60fps; frozen and
  * hidden under reduced motion by the global reset + the parent's motion guard.
  */

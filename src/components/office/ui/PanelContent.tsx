@@ -4,7 +4,7 @@ import { profile, PROJECT_MEDIA, type Project } from '../../../content/profile';
 import { downloadVCard } from '../vcard';
 
 /**
- * PanelContent — the real portfolio content that renders onto each physical
+ * PanelContent - the real portfolio content that renders onto each physical
  * prop, from profile.ts (never duplicated, law 4). Compact versions of the
  * standard-view sections, styled for the props (ink on the blank paper).
  */
@@ -119,7 +119,7 @@ function About() {
   return (
     <div className="pc-about">
       <p className="pc-lead">
-        {profile.name} — {profile.headline}
+        {profile.name} - {profile.headline}
       </p>
       <p>{profile.summary}</p>
       <p className="pc-muted">Outside the terminal: {profile.interests}</p>
@@ -127,7 +127,7 @@ function About() {
         {profile.leadership.map((l) => (
           <li key={l.text}>
             {l.text}
-            {l.period ? ` — ${l.period}` : ''}
+            {l.period ? ` - ${l.period}` : ''}
           </li>
         ))}
       </ul>
@@ -184,7 +184,7 @@ function Awards() {
       {profile.awards.map((a) => (
         <div key={a.id}>
           <p className="pc-lead">
-            🏅 {a.title} — {a.event}
+            🏅 {a.title} - {a.event}
           </p>
           <p>{a.detail}</p>
           <ul className="pc-chips">
@@ -275,7 +275,7 @@ function Resume() {
       <p className="pc-lead">{profile.name}</p>
       <p className="pc-muted">{profile.headline}</p>
       <p>{profile.summary}</p>
-      {/* The real download — never gated (law 2). */}
+      {/* The real download - never gated (law 2). */}
       <a className="btn btn--primary" href="/resume.pdf" download>
         Download résumé (PDF)
       </a>
